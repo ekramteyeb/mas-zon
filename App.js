@@ -4,6 +4,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Provider } from "react-redux";
 import HomeScreen from "./screens/HomeScreen";
+import MainDishScreen from "./screens/MainDishScreen";
 import { store } from "./store";
 
 export default function App() {
@@ -17,6 +18,11 @@ export default function App() {
             <Stack.Screen
               name="HomeScreen"
               component={HomeScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="MainDishScreen"
+              component={MainDishScreen}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>

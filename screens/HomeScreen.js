@@ -24,8 +24,9 @@ const HomeScreen = () => {
           }}
         />
       </TouchableOpacity>
-
-      <MenuNavOptions />
+      <View style={{ padding: 3 }}>
+        <MenuNavOptions />
+      </View>
     </SafeAreaView>
   );
 };

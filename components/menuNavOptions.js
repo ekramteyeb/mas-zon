@@ -10,7 +10,7 @@ const data = [
     title: "MainDishes",
     //image: "https://links.papareact.com/28w",
     image: "https://husstey.sirv.com/Images/mas-zon/maindish.webp",
-    sreen: "EatsScreen",
+    sreen: "MainDishScreen",
   },
   {
     id: "9102",
@@ -59,12 +59,17 @@ const MenuNavOptions = () => {
             onPress={() => navigation.navigate(item.sreen)}
             style={[
               tw`bg-gray-100  pl-0 m-1 mb-2 `,
-              { width: 110, borderBottomWidth: 4, borderBottomColor: "red" },
+              {
+                width: "31%",
+                borderBottomWidth: 4,
+                borderBottomColor: "red",
+              },
             ]}
           >
             <View
               style={{
                 paddingLeft: 0,
+                borderRadius: 4,
               }}
             >
               <Image
