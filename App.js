@@ -7,6 +7,7 @@ import HomeScreen from "./screens/HomeScreen";
 import MainDishScreen from "./screens/MainDishScreen";
 import SaladScreen from "./screens/SaladScreen";
 import { store } from "./store";
+import SoupScreen from "./screens/SoupScreen";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -29,6 +30,11 @@ export default function App() {
             <Stack.Screen
               name="SaladScreen"
               component={SaladScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="SoupScreen"
+              component={SoupScreen}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>

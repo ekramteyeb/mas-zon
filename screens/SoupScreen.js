@@ -12,9 +12,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-const SaladScreen = () => {
+const SoupScreen = () => {
   const [products, setProducts] = useState([]);
-  let [count, setCount] = useState(0);
 
   useEffect(async () => {
     try {
@@ -25,7 +24,6 @@ const SaladScreen = () => {
       );
       let json = await response.json();
       setProducts(json);
-      setCount(count + 1);
     } catch (error) {
       console.log(error);
     }
@@ -72,7 +70,7 @@ const SaladScreen = () => {
   );
 };
 
-export default SaladScreen;
+export default SoupScreen;
 
 const styles = StyleSheet.create({
   container: {

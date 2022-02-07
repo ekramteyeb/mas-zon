@@ -17,7 +17,7 @@ const data = [
     title: "Soup",
     image: "https://husstey.sirv.com/Images/mas-zon/soup.webp",
     //"https://husstey.sirv.com/Images/VW%20Beetle.jpg",
-    sreen: "WhatsupScreen",
+    sreen: "SoupScreen",
   },
   {
     id: "9103",
