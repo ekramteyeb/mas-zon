@@ -29,7 +29,7 @@ const data = [
     id: "2323",
     title: "Salads",
     image: "https://husstey.sirv.com/Images/mas-zon/salad.webp",
-    sreen: "CountriesScreen",
+    sreen: "SaladScreen",
   },
   {
     id: "2424",
