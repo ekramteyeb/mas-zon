@@ -10,6 +10,7 @@ import { store } from "./store";
 import SoupScreen from "./screens/SoupScreen";
 import SoftDrinksScreen from "./screens/SoftDrinksScreen";
 import CakesScreen from "./screens/CakesScreen";
+import HotDrinksScreen from "./screens/HotDrinksScreen";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -47,6 +48,11 @@ export default function App() {
             <Stack.Screen
               name="CakesScreen"
               component={CakesScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="HotDrinksScreen"
+              component={HotDrinksScreen}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>
