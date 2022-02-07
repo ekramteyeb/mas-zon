@@ -8,6 +8,8 @@ import MainDishScreen from "./screens/MainDishScreen";
 import SaladScreen from "./screens/SaladScreen";
 import { store } from "./store";
 import SoupScreen from "./screens/SoupScreen";
+import SoftDrinksScreen from "./screens/SoftDrinksScreen";
+import CakesScreen from "./screens/CakesScreen";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -35,6 +37,16 @@ export default function App() {
             <Stack.Screen
               name="SoupScreen"
               component={SoupScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="SoftDrinksScreen"
+              component={SoftDrinksScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="CakesScreen"
+              component={CakesScreen}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>

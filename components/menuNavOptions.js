@@ -23,7 +23,7 @@ const data = [
     id: "9103",
     title: "Cakes",
     image: "https://husstey.sirv.com/Images/mas-zon/cakes.webp",
-    sreen: "CountriesScreen",
+    sreen: "CakesScreen",
   },
   {
     id: "2323",
@@ -35,13 +35,13 @@ const data = [
     id: "2424",
     title: "Hot Drinks",
     image: "https://husstey.sirv.com/Images/mas-zon/coffee2.jpg",
-    sreen: "CountriesScreen",
+    sreen: "HotDrinksScreen",
   },
   {
     id: "1234",
     title: "Soft Drinks",
     image: "https://husstey.sirv.com/Images/mas-zon/softdrinks.webp",
-    sreen: "MapScreen",
+    sreen: "SoftDrinksScreen",
   },
 ];
 const MenuNavOptions = () => {
