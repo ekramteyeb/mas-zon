@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     backgroundColor: "steelblue",
   },
   body: {
-    fontSize: 30,
+    fontSize: 40,
     fontWeight: "bold",
     color: "#888",
   },
