@@ -21,10 +21,12 @@ const CakesScreen = () => {
       let response = await fetch(
         //"https://daki-ecommerce.herokuapp.com/api/v1/products"
         //"https://restcountries.com/v2/all"
-        "https://api.thecatapi.com/v1/breeds?&api_key=d2fa1b3f-bf8a-41be-9ff9-633e9bd15621"
+        // "https://api.thecatapi.com/v1/breeds?&api_key=d2fa1b3f-bf8a-41be-9ff9-633e9bd15621"
+        "http://localhost:8000/api/v1/products"
       );
       let json = await response.json();
-      setProducts(json);
+      console.log(json.data);
+      setProducts(json.data);
       setCount(count + 1);
     } catch (error) {
       console.log(error);
@@ -47,18 +49,21 @@ const CakesScreen = () => {
         <FlatList
           data={products}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => alert(`${item.rating}`)}>
-              <View style={[styles.item, tw`bg-gray-600`]}>
+            <TouchableOpacity onPress={() => alert(`${item.details}`)}>
+              <View style={[styles.item, tw`bg-gray-400`]}>
                 <View style={styles.productImageContainer}>
                   <Image
                     style={styles.productImage}
                     source={{
-                      uri: `${item?.image?.url}`,
+                      uri: `${item?.image}`,
                     }}
                   />
                 </View>
-                <Text styles={styles.title}>{item.name}</Text>
-                <Text styles={styles.title}> € {item.adaptability}</Text>
+                <View>
+                  <Text style={styles.title}>{item.name}</Text>
+                  <Text style={styles.title}> {item.price} bir</Text>
+                  <Button title="Add"></Button>
+                </View>
               </View>
             </TouchableOpacity>
           )}
@@ -82,20 +87,21 @@ const styles = StyleSheet.create({
   },
   item: {
     backgroundColor: "#f9c2ff",
-    padding: 20,
+    padding: 0,
     marginVertical: 6,
     marginHorizontal: 8,
     display: "flex",
     justifyContent: "space-around",
     flexDirection: "row",
     alignItems: "center",
-    borderRadius: 5,
+    borderRadius: 8,
     position: "relative",
   },
   title: {
-    fontSize: 48,
+    fontSize: 25,
     fontWeight: "bold",
     fontFamily: "Cochin",
+    color: "white",
   },
   header: {
     fontSize: 32,
@@ -106,14 +112,15 @@ const styles = StyleSheet.create({
     paddingTop: 15,
   },
   productImage: {
-    width: 120,
-    height: 120,
+    width: 160,
+    height: 160,
+    borderRadius: 8,
     resizeMode: "cover",
   },
   productImageContainer: {
-    width: 128,
     paddingLeft: 0,
-    borderWidth: 2,
+    padding: 10,
+
     borderRightColor: "green",
   },
 });
