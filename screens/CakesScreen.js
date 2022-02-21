@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import tw from "tailwind-react-native-classnames";
+import axios from "axios";
 import {
   StyleSheet,
   Text,
@@ -15,22 +16,22 @@ import {
 const CakesScreen = () => {
   const [products, setProducts] = useState([]);
   let [count, setCount] = useState(0);
+  //"https://daki-ecommerce.herokuapp.com/api/v1/products"
+  //"https://restcountries.com/v2/all"
+  // "https://api.thecatapi.com/v1/breeds?&api_key=d2fa1b3f-bf8a-41be-9ff9-633e9bd15621"
 
-  useEffect(async () => {
-    try {
-      let response = await fetch(
-        //"https://daki-ecommerce.herokuapp.com/api/v1/products"
-        //"https://restcountries.com/v2/all"
-        // "https://api.thecatapi.com/v1/breeds?&api_key=d2fa1b3f-bf8a-41be-9ff9-633e9bd15621"
-        "http://localhost:8000/api/v1/products"
-      );
-      let json = await response.json();
-      console.log(json.data);
-      setProducts(json.data);
-      setCount(count + 1);
-    } catch (error) {
-      console.log(error);
-    }
+  useEffect(() => {
+    axios
+      .get("https://todo-php-api.herokuapp.com/api/v1/products")
+      .then(function (response) {
+        setProducts(response.data.data);
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    // setProducts(json.data);
+    //setCount(count + 1);
   }, []);
   /* const getArticlesFromApi = async () => {
     let response = await fetch(
@@ -50,7 +51,7 @@ const CakesScreen = () => {
           data={products}
           renderItem={({ item }) => (
             <TouchableOpacity onPress={() => alert(`${item.details}`)}>
-              <View style={[styles.item, tw`bg-gray-400`]}>
+              <View style={[styles.item, tw`bg-green-700`]}>
                 <View style={styles.productImageContainer}>
                   <Image
                     style={styles.productImage}
@@ -106,7 +107,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 32,
     fontWeight: "bold",
-    color: "orange",
+    color: "red",
     paddingLeft: 15,
     paddingBottom: 15,
     paddingTop: 15,
@@ -120,7 +121,5 @@ const styles = StyleSheet.create({
   productImageContainer: {
     paddingLeft: 0,
     padding: 10,
-
-    borderRightColor: "green",
   },
 });
