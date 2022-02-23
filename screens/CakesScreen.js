@@ -17,14 +17,16 @@ const CakesScreen = () => {
   const [products, setProducts] = useState([]);
   let [count, setCount] = useState(0);
   //"https://daki-ecommerce.herokuapp.com/api/v1/products"
+  //"https://todo-php-api.herokuapp.com/api/v1/products"
   //"https://restcountries.com/v2/all"
   // "https://api.thecatapi.com/v1/breeds?&api_key=d2fa1b3f-bf8a-41be-9ff9-633e9bd15621"
 
   useEffect(() => {
     axios
-      .get("https://todo-php-api.herokuapp.com/api/v1/products")
+      .get("https://daki-ecommerce.herokuapp.com/api/v1/products")
       .then(function (response) {
-        setProducts(response.data.data);
+        console.log(response.data);
+        setProducts(response.data);
         console.log(response.data);
       })
       .catch(function (error) {
@@ -101,7 +103,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 25,
     fontWeight: "bold",
-    fontFamily: "Cochin",
     color: "white",
   },
   header: {

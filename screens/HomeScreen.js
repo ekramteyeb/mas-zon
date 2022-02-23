@@ -10,20 +10,13 @@ import {
 import tw from "tailwind-react-native-classnames";
 
 import MenuNavOptions from "../components/menuNavOptions";
+import NavBarTop from "../components/NavBarTop";
 
 const HomeScreen = () => {
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
-      <Text>Home</Text>
-      <TouchableOpacity>
-        <Image
-          style={[tw`rounded-full bg-green-900`, styles.icon]}
-          source={{
-            uri: "https://husstey.sirv.com/Images/icon2.jpeg",
-            //require("../assets/icon2.webp")
-          }}
-        />
-      </TouchableOpacity>
+      <NavBarTop />
+
       <View style={{ padding: 3 }}>
         <MenuNavOptions />
       </View>

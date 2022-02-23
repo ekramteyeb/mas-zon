@@ -42,7 +42,6 @@ const SaladScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.header}> {products.length} Available Products</Text>
       {products?.length !== 0 ? (
         <FlatList
           data={products}
