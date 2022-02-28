@@ -25,9 +25,7 @@ const CakesScreen = () => {
     axios
       .get("https://daki-ecommerce.herokuapp.com/api/v1/products")
       .then(function (response) {
-        console.log(response.data);
         setProducts(response.data);
-        console.log(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -53,10 +51,10 @@ const CakesScreen = () => {
           data={products}
           renderItem={({ item }) => (
             <TouchableOpacity onPress={() => alert(`${item.details}`)}>
-              <View style={[styles.item, tw`bg-green-700`]}>
+              <View style={[styles.item, tw`bg-green-500`]}>
                 <View style={styles.productImageContainer}>
                   <Image
-                    style={styles.productImage}
+                    style={[styles.productImage, tw`bg-green-500`]}
                     source={{
                       uri: `${item?.image}`,
                     }}
@@ -65,6 +63,7 @@ const CakesScreen = () => {
                 <View>
                   <Text style={styles.title}>{item.name}</Text>
                   <Text style={styles.title}> {item.price} bir</Text>
+                  <Text>{""}</Text>
                   <Button title="Add"></Button>
                 </View>
               </View>
@@ -90,15 +89,16 @@ const styles = StyleSheet.create({
   },
   item: {
     backgroundColor: "#f9c2ff",
-    padding: 0,
+    padding: 14,
+    paddingRight: 20,
     marginVertical: 6,
-    marginHorizontal: 8,
+    marginHorizontal: 6,
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     flexDirection: "row",
-    alignItems: "center",
-    borderRadius: 8,
-    position: "relative",
+
+    borderRadius: 6,
+    /* position: "relative", */
   },
   title: {
     fontSize: 25,
@@ -114,13 +114,10 @@ const styles = StyleSheet.create({
     paddingTop: 15,
   },
   productImage: {
-    width: 160,
-    height: 160,
-    borderRadius: 8,
-    resizeMode: "cover",
+    width: 100,
+    height: 100,
+    borderRadius: 6,
+    resizeMode: "center",
   },
-  productImageContainer: {
-    paddingLeft: 0,
-    padding: 10,
-  },
+  productImageContainer: {},
 });

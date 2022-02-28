@@ -4,7 +4,7 @@ import tw from "tailwind-react-native-classnames";
 export default function NavBarTop() {
   return (
     <>
-      <View style={[styles.container, tw`bg-gray-200 h-60`]}>
+      <View style={[styles.container, tw`bg-gray-400 h-60`]}>
         <TouchableOpacity>
           <Image
             style={[tw`rounded-full`, styles.icon]}
