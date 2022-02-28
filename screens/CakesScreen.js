@@ -12,8 +12,10 @@ import {
   StatusBar,
   TouchableOpacity,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const CakesScreen = () => {
+  const navigation = useNavigation();
   const [products, setProducts] = useState([]);
   let [count, setCount] = useState(0);
   //"https://daki-ecommerce.herokuapp.com/api/v1/products"
@@ -50,7 +52,9 @@ const CakesScreen = () => {
         <FlatList
           data={products}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => alert(`${item.details}`)}>
+            <TouchableOpacity
+              onPress={(item) => navigation.navigate("ProductDetail")}
+            >
               <View style={[styles.item, tw`bg-green-500`]}>
                 <View style={styles.productImageContainer}>
                   <Image
