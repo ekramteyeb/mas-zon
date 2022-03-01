@@ -62,7 +62,7 @@ const MenuNavOptions = () => {
               {
                 width: "31%",
                 borderBottomWidth: 4,
-                borderBottomColor: "red",
+                borderBottomColor: "purple",
               },
             ]}
           >

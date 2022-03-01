@@ -11,13 +11,14 @@ import tw from "tailwind-react-native-classnames";
 
 import MenuNavOptions from "../components/menuNavOptions";
 import NavBarTop from "../components/NavBarTop";
+import MostSoldLists from "./MostSoldLists";
 
 const HomeScreen = () => {
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
       <NavBarTop />
-
-      <View style={{ padding: 3 }}>
+      <MostSoldLists />
+      <View style={{ padding: 0 }}>
         <MenuNavOptions />
       </View>
     </SafeAreaView>

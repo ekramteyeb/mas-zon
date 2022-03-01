@@ -8,13 +8,11 @@ import {
   TouchableOpacity,
 } from "react-native";
 import tw from "tailwind-react-native-classnames";
-import GoBackButton from "./GoBackButton";
 
-export default function ProductDetail({ item }) {
-  const navigation = useNavigation();
+export default function MostSold({ item }) {
   return (
     <>
-      <View style={[styles.container, tw`bg-gray-400 h-60`]}>
+      <View style={[styles.container, tw`bg-red-400 h-32`]}>
         <TouchableOpacity>
           <Image
             style={[tw`rounded-full`, styles.icon]}
@@ -25,10 +23,7 @@ export default function ProductDetail({ item }) {
           />
         </TouchableOpacity>
 
-        <Text>This is detail page coming soon ......</Text>
-        <Text>{""}</Text>
-
-        <GoBackButton />
+        <Text>{item}</Text>
       </View>
     </>
   );
@@ -36,9 +31,8 @@ export default function ProductDetail({ item }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    width: "99%",
-    marginLeft: "auto",
+    width: "90%",
+    marginLeft: 10,
     marginRight: "auto",
     padding: 20,
     //backgroundColor: "lightgray",
