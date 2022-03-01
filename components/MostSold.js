@@ -12,8 +12,8 @@ import tw from "tailwind-react-native-classnames";
 export default function MostSold({ item }) {
   return (
     <>
-      <View style={[styles.container, tw`bg-red-400 h-32`]}>
-        <TouchableOpacity>
+      <TouchableOpacity>
+        <View style={[styles.container, tw`bg-blue-300 h-32`]}>
           <Image
             style={[tw`rounded-full`, styles.icon]}
             source={{
@@ -21,25 +21,34 @@ export default function MostSold({ item }) {
               //require("../assets/icon2.webp")
             }}
           />
-        </TouchableOpacity>
-
-        <Text>{item}</Text>
-      </View>
+          <Text style={styles.text}>{item}</Text>
+          <Text style={styles.text}>{item}</Text>
+        </View>
+      </TouchableOpacity>
     </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    width: "90%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: 300,
     marginLeft: 10,
     marginRight: "auto",
-    padding: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
     //backgroundColor: "lightgray",
-    borderRadius: 6,
+    borderRadius: 5,
   },
   icon: {
     height: 100,
     width: 100,
+  },
+  text: {
+    color: "black",
+    fontSize: 24,
   },
 });
