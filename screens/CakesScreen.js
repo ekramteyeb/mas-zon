@@ -51,6 +51,7 @@ const CakesScreen = () => {
       {products?.length !== 0 ? (
         <FlatList
           data={products}
+          initialNumToRender={4}
           renderItem={({ item }) => (
             <TouchableOpacity
               onPress={(item) => navigation.navigate("ProductDetail")}
