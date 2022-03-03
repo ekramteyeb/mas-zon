@@ -6,6 +6,7 @@ export default function GoBackButton() {
   const navigation = useNavigation();
   return (
     <View>
+      <Text>This is coming soon...</Text>
       <Button
         title="Back"
         onPress={() => {
