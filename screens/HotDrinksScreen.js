@@ -10,6 +10,8 @@ import {
   StyleSheet,
   SafeAreaView,
 } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { setToken } from "../slices/navSlice";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -23,11 +25,14 @@ const HotDrinksScreen = () => {
   const [notification, setNotification] = useState(false);
   const notificationListener = useRef();
   const responseListener = useRef();
+  const state = useSelector((state) => state.nav);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    registerForPushNotificationsAsync().then((token) =>
-      setExpoPushToken(token)
-    );
+    registerForPushNotificationsAsync().then((token) => {
+      dispatch(setToken(token));
+      setExpoPushToken(token);
+    });
 
     // This listener is fired whenever a notification is received while the app is foregrounded
     notificationListener.current =
@@ -79,7 +84,7 @@ const HotDrinksScreen = () => {
 };
 
 // Can use this function below, OR use Expo's Push Notification Tool-> https://expo.dev/notifications
-async function sendPushNotification(expoPushToken) {
+export async function sendPushNotification(expoPushToken) {
   const message = {
     to: expoPushToken,
     sound: "default",
@@ -99,7 +104,7 @@ async function sendPushNotification(expoPushToken) {
   });
 }
 
-async function registerForPushNotificationsAsync() {
+export async function registerForPushNotificationsAsync() {
   let token;
   if (Device.isDevice) {
     const { status: existingStatus } =

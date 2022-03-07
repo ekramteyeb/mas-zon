@@ -1,5 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
+import { HomeOutlined } from "@ant-design/icons";
 import {
   SafeAreaView,
   TouchableOpacity,
@@ -11,114 +12,66 @@ import {
   StyleSheet,
   TextInput,
   Button,
+  Dimensions,
 } from "react-native";
 import { Icon } from "react-native-elements";
 import tw from "tailwind-react-native-classnames";
+import { useDispatch, useSelector } from "react-redux";
+import { setCart } from "../slices/navSlice";
+import { sendPushNotification } from "./HotDrinksScreen";
 
-const data = [
-  {
-    title: "Main dishes",
-    data: ["Pizza", "Burger", "Risotto"],
-  },
-  {
-    title: "Sides",
-    data: ["French Fries", "Onion Rings", "Fried Shrimps"],
-  },
-  {
-    title: "Drinks",
-    data: ["Water", "Coke", "Beer"],
-  },
-  {
-    title: "Desserts",
-    data: ["Cheese Cake", "Ice Cream"],
-  },
-];
-const Item = ({ title }) => (
-  <TouchableOpacity onPress={(e) => alert("you presed me")}>
-    <View style={[styles.item, tw`bg-gray-200`]}>
-      <Text style={styles.title}>{title}</Text>
-    </View>
-  </TouchableOpacity>
-);
 const SoftDrinksScreen = () => {
-  const [number1, onChangeText] = React.useState(null);
-  const [number, onChangeNumber] = React.useState(null);
-  const [result, setResult] = React.useState(null);
+  const state = useSelector((state) => state.nav);
+  const dispatch = useDispatch();
+  console.log(state, "the state is ");
+
   return (
-    <SafeAreaView style={[styles.container, tw`bg-white h-full `]}>
-      <View style={styles.game}>
-        <Text style={styles.title}>Reema's Game</Text>
-        <View style={styles.buttonAdd}>
-          <TextInput
-            style={styles.title}
-            onChangeText={onChangeText}
-            value={number1}
-            placeholder="enter number"
-          />
-        </View>
-        <View style={styles.buttonAdd}>
-          <TextInput
-            style={styles.title}
-            onChangeText={onChangeNumber}
-            value={number}
-            placeholder="enter number"
-            keyboardType="numeric"
-          />
-        </View>
-        <View style={styles.buttonAdd}>
-          <Button
-            onPress={function () {
-              setResult(Number(number) + Number(number1));
-              onChangeNumber(null);
-              onChangeText(null);
-            }}
-            title="Add"
-            color="#841584"
-            accessibilityLabel="Learn more to add sth about this purple button"
-          />
-        </View>
-        <Text style={styles.title}>{result}</Text>
+    <View style={[styles.container /* tw`bg-white h-full` */]}>
+      <View style={tw`border-2 w-10 h-10 rounded-full m-0 pt-1 `}>
+        <Text style={tw`text-red-500 text-xl font-bold text-center `}>
+          {state.cart}
+        </Text>
       </View>
-      <SectionList
-        style={tw`pt-2`}
-        sections={data}
-        keyExtractor={(item, index) => item + index}
-        renderItem={({ item }) => <Item title={item} />}
-        renderSectionHeader={({ section: { title } }) => (
-          <Text style={[styles.header, tw`bg-red-200 `]}>{title}</Text>
-        )}
+      <Icon raised name="home" color="#517fa4" onPress={() => alert("homee")} />
+      <Icon
+        raised
+        name="logo-youtube"
+        type="ionicon"
+        color="red"
+        onPress={() => alert("homee")}
       />
-    </SafeAreaView>
+      <Icon
+        raised
+        name="add-sharp"
+        type="ionicon"
+        color="blue"
+        onPress={() => alert("homee")}
+      />
+
+      <Button
+        title="Add cart"
+        style={styles.buttons}
+        onPress={() => {
+          dispatch(setCart(state.cart + 1)), sendPushNotification(state.token);
+        }}
+      ></Button>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: StatusBar.currentHeight,
-    marginHorizontal: 6,
+    //paddingTop: StatusBar.currentHeight,
+    //marginHorizontal: 6,
+    backgroundColor: "#fff",
+    /* alignItems: "center",
+    justifyContent: "space-around", */
   },
-  item: {
-    padding: 20,
-    marginVertical: 8,
-  },
-  header: {
-    fontSize: 32,
-    backgroundColor: "#ffff",
-    paddingLeft: 12,
-  },
-  title: {
-    fontSize: 24,
-  },
-  game: {
-    backgroundColor: "blue",
-    height: 200,
-  },
-  buttonAdd: {
-    padding: 5,
-    backgroundColor: "lightblue",
-    borderWidth: 2,
-    width: "50%",
+  buttons: {
+    width: 10,
+    padding: 10,
+    backgroundColor: "red",
   },
 });
 
