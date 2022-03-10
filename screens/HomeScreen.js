@@ -20,7 +20,7 @@ import MostSoldLists from "./MostSoldLists";
 const HomeScreen = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.nav);
-  console.log(state, "home token");
+
   //get user device token
   useEffect(() => {
     registerForPushNotificationsAsync().then((token) => {

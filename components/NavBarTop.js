@@ -1,11 +1,20 @@
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { Icon } from "react-native-elements/dist/icons/Icon";
 import tw from "tailwind-react-native-classnames";
 
 export default function NavBarTop() {
   return (
     <>
-      <View style={[styles.container, tw`h-20`]}>
+      <View style={[styles.container, tw`bg-gray-100 h-16 border-gray-200`]}>
         <TouchableOpacity>
+          <Icon
+            name="menu"
+            color="black"
+            raised
+            style={tw`bg-blue-300`}
+            type="ionicon"
+          />
+
           {/*  <Image
             style={[tw`rounded-full`, styles.icon]}
             source={{
@@ -13,7 +22,6 @@ export default function NavBarTop() {
               //require("../assets/icon2.webp")
             }}
           /> */}
-          <Text>Logo Navigation menu</Text>
         </TouchableOpacity>
       </View>
     </>
@@ -25,10 +33,10 @@ const styles = StyleSheet.create({
     width: "98%",
     marginLeft: "auto",
     marginRight: "auto",
-    padding: 20,
-
-    borderRadius: 8,
-    marginBottom: 6,
+    borderWidth: 2,
+    borderRadius: 2,
+    marginBottom: 2,
+    marginTop: 2,
   },
   icon: {
     height: 100,
