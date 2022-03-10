@@ -8,13 +8,12 @@ export default function NavBarTop() {
       <View style={[styles.container, tw`bg-gray-100 h-16 border-gray-200`]}>
         <TouchableOpacity>
           <Icon
-            name="menu"
+            name="list-sharp"
             color="black"
             raised
             style={tw`bg-blue-300`}
             type="ionicon"
           />
-
           {/*  <Image
             style={[tw`rounded-full`, styles.icon]}
             source={{
