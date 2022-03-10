@@ -38,14 +38,14 @@ const SoftDrinksScreen = () => {
         name="logo-youtube"
         type="ionicon"
         color="red"
-        onPress={() => alert("homee got me ")}
+        onPress={() => alert("homegot me ")}
       />
       <Icon
         raised
         name="add-sharp"
         type="ionicon"
         color="blue"
-        onPress={() => alert("homee")}
+        onPress={() => alert("home")}
       />
 
       <Button
