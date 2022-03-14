@@ -19,6 +19,7 @@ import tw from "tailwind-react-native-classnames";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../slices/navSlice";
 import { sendPushNotification } from "./HotDrinksScreen";
+import Cart from "../components/Cart";
 
 const SoftDrinksScreen = () => {
   const state = useSelector((state) => state.nav);
@@ -27,11 +28,7 @@ const SoftDrinksScreen = () => {
 
   return (
     <View style={[styles.container /* tw`bg-white h-full` */]}>
-      <View style={tw`border-2 w-10 h-10 rounded-full m-0 pt-1 `}>
-        <Text style={tw`text-red-500 text-xl font-bold text-center `}>
-          {state.cart}
-        </Text>
-      </View>
+      <Cart cart={state.cart} />
       <Icon raised name="home" color="#517fa4" onPress={() => alert("homee")} />
       <Icon
         raised
