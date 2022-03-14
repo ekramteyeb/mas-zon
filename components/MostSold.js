@@ -13,7 +13,7 @@ export default function MostSold({ item }) {
   return (
     <>
       <TouchableOpacity>
-        <View style={[styles.container, tw`bg-blue-300 h-32`]}>
+        <View style={[styles.container, tw`bg-blue-300 h-36`]}>
           <Image
             style={[tw`rounded-full`, styles.icon]}
             source={{

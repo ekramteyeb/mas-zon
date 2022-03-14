@@ -11,10 +11,14 @@ import {
   StatusBar,
   TouchableOpacity,
 } from "react-native";
+import NavBarTop from "../components/NavBarTop";
+import { useDispatch, useSelector } from "react-redux";
+import { setCart } from "../slices/navSlice";
 
 const SoupScreen = () => {
   const [products, setProducts] = useState([]);
-
+  const cart = useSelector((state) => state.nav.cart);
+  const dispatch = useDispatch();
   useEffect(async () => {
     try {
       let response = await fetch(
@@ -40,7 +44,8 @@ const SoupScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.header}> {products.length} Available Products</Text>
+      <NavBarTop />
+
       {products?.length !== 0 ? (
         <FlatList
           data={products}
@@ -55,8 +60,19 @@ const SoupScreen = () => {
                     }}
                   />
                 </View>
-                <Text styles={styles.title}>{item.name}</Text>
-                <Text styles={styles.title}> € {item.adaptability}</Text>
+                <View style={tw`pl-8`}>
+                  <Text style={styles.title}>{item.name}</Text>
+                  <Text style={styles.title}> € {item.adaptability}</Text>
+                  <View style={styles.fixToText}>
+                    <Button
+                      title="add"
+                      onPress={() => {
+                        dispatch(setCart(cart + 1));
+                      }}
+                      style={styles.button}
+                    ></Button>
+                  </View>
+                </View>
               </View>
             </TouchableOpacity>
           )}
@@ -75,33 +91,34 @@ export default SoupScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
+
+    /* marginTop: StatusBar.currentHeight || 0, */
     backgroundColor: "#f0f8ff",
   },
   item: {
     backgroundColor: "#f9c2ff",
-    padding: 20,
+    padding: 10,
     marginVertical: 6,
     marginHorizontal: 8,
     display: "flex",
-    justifyContent: "space-around",
     flexDirection: "row",
     alignItems: "center",
     borderRadius: 5,
-    position: "relative",
   },
   title: {
-    fontSize: 48,
+    fontSize: 16,
     fontWeight: "bold",
-    fontFamily: "Cochin",
+    color: "#ffff",
   },
-  header: {
-    fontSize: 32,
-    fontWeight: "bold",
-    color: "orange",
-    paddingLeft: 15,
-    paddingBottom: 15,
-    paddingTop: 15,
+
+  fixToText: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  separator: {
+    marginVertical: 8,
+    borderBottomColor: "#737373",
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
   productImage: {
     width: 120,
