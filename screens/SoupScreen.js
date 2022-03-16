@@ -65,7 +65,7 @@ const SoupScreen = () => {
                   <Text style={styles.title}> € {item.adaptability}</Text>
                   <View style={styles.fixToText}>
                     <Button
-                      title="add"
+                      title="add to cart "
                       onPress={() => {
                         dispatch(setCart(cart + 1));
                       }}
@@ -115,11 +115,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  separator: {
-    marginVertical: 8,
-    borderBottomColor: "#737373",
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
+
   productImage: {
     width: 120,
     height: 120,
@@ -127,8 +123,6 @@ const styles = StyleSheet.create({
   },
   productImageContainer: {
     width: 128,
-    paddingLeft: 0,
-    borderWidth: 2,
-    borderRightColor: "green",
+    paddingLeft: 4,
   },
 });
