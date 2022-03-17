@@ -1,12 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Image,
-  SafeAreaView,
-} from "react-native";
+import { StyleSheet, StatusBar, View, Image, SafeAreaView } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 
 import tw from "tailwind-react-native-classnames";
@@ -29,7 +22,7 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <SafeAreaView style={tw`bg-white h-full`}>
+    <SafeAreaView style={[styles.container, tw`bg-white h-full`]}>
       <NavBarTop />
       <MostSoldLists />
 
@@ -43,6 +36,9 @@ const HomeScreen = () => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+  container: {
+    marginHorizontal: 0,
+  },
   icon: {
     height: 100,
     width: 100,
