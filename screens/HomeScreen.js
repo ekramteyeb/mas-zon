@@ -6,6 +6,7 @@ import tw from 'tailwind-react-native-classnames'
 
 import MenuNavOptions from '../components/menuNavOptions'
 import NavBarTop from '../components/NavBarTop'
+import Tabs from '../components/Tab'
 import { setToken } from '../slices/navSlice'
 import { registerForPushNotificationsAsync } from './HotDrinksScreen'
 import MostSoldLists from './MostSoldLists'
@@ -24,6 +25,7 @@ const HomeScreen = () => {
   return (
     <SafeAreaView style={[styles.container, tw`bg-white h-full`]}>
       <NavBarTop />
+      <Tabs />
       <MostSoldLists />
 
       <View style={{ padding: 0 }}>
