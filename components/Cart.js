@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import tw from "tailwind-react-native-classnames";
+import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import tw from 'tailwind-react-native-classnames'
 
 const Cart = ({ cart }) => {
   return (
@@ -9,9 +9,9 @@ const Cart = ({ cart }) => {
         {cart}
       </Text>
     </View>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Cart
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({})

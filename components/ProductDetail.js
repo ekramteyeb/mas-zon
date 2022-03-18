@@ -1,17 +1,17 @@
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation } from '@react-navigation/native'
 import {
   Text,
   Button,
   View,
   StyleSheet,
   Image,
-  TouchableOpacity,
-} from "react-native";
-import tw from "tailwind-react-native-classnames";
-import GoBackButton from "./GoBackButton";
+  TouchableOpacity
+} from 'react-native'
+import tw from 'tailwind-react-native-classnames'
+import GoBackButton from './GoBackButton'
 
 export default function ProductDetail({ item }) {
-  const navigation = useNavigation();
+  const navigation = useNavigation()
   return (
     <>
       <View style={[styles.container, tw`bg-gray-400 h-60`]}>
@@ -19,33 +19,33 @@ export default function ProductDetail({ item }) {
           <Image
             style={[tw`rounded-full`, styles.icon]}
             source={{
-              uri: "https://husstey.sirv.com/Images/icon2.jpeg",
+              uri: 'https://husstey.sirv.com/Images/icon2.jpeg'
               //require("../assets/icon2.webp")
             }}
           />
         </TouchableOpacity>
 
         <Text>This is detail page coming soon ......</Text>
-        <Text>{""}</Text>
+        <Text>{''}</Text>
 
         <GoBackButton />
       </View>
     </>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "99%",
-    marginLeft: "auto",
-    marginRight: "auto",
+    width: '99%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     padding: 20,
     //backgroundColor: "lightgray",
-    borderRadius: 6,
+    borderRadius: 6
   },
   icon: {
     height: 100,
-    width: 100,
-  },
-});
+    width: 100
+  }
+})

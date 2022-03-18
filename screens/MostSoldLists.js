@@ -1,21 +1,21 @@
-import React from "react";
+import React from 'react'
 import {
   StyleSheet,
   Text,
   View,
   FlatList,
-  TouchableOpacity,
-} from "react-native";
-import tw from "tailwind-react-native-classnames";
-import MostSold from "../components/MostSold";
+  TouchableOpacity
+} from 'react-native'
+import tw from 'tailwind-react-native-classnames'
+import MostSold from '../components/MostSold'
 
 export default function MostSoldLists() {
   const products = [
-    { id: 1, name: "abce" },
-    { id: 2, name: "abcee" },
-    { id: 3, name: "durew" },
-    { id: 4, name: "abce" },
-  ];
+    { id: 1, name: 'abce' },
+    { id: 2, name: 'abcee' },
+    { id: 3, name: 'durew' },
+    { id: 4, name: 'abce' }
+  ]
   return (
     <View>
       {products?.length !== 0 ? (
@@ -36,7 +36,7 @@ export default function MostSoldLists() {
         <Text>noting to display</Text>
       )}
     </View>
-  );
+  )
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({})

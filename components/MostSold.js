@@ -1,13 +1,13 @@
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation } from '@react-navigation/native'
 import {
   Text,
   Button,
   View,
   StyleSheet,
   Image,
-  TouchableOpacity,
-} from "react-native";
-import tw from "tailwind-react-native-classnames";
+  TouchableOpacity
+} from 'react-native'
+import tw from 'tailwind-react-native-classnames'
 
 export default function MostSold({ item }) {
   return (
@@ -17,7 +17,7 @@ export default function MostSold({ item }) {
           <Image
             style={[tw`rounded-full`, styles.icon]}
             source={{
-              uri: "https://husstey.sirv.com/Images/icon2.jpeg",
+              uri: 'https://husstey.sirv.com/Images/icon2.jpeg'
               //require("../assets/icon2.webp")
             }}
           />
@@ -26,29 +26,29 @@ export default function MostSold({ item }) {
         </View>
       </TouchableOpacity>
     </>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     width: 300,
     marginLeft: 2,
-    marginRight: "auto",
+    marginRight: 'auto',
     paddingLeft: 10,
     paddingRight: 10,
     //backgroundColor: "lightgray",
-    borderRadius: 5,
+    borderRadius: 5
   },
   icon: {
     height: 100,
-    width: 100,
+    width: 100
   },
   text: {
-    color: "red",
-    fontSize: 24,
-  },
-});
+    color: 'red',
+    fontSize: 24
+  }
+})

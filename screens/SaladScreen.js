@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import tw from "tailwind-react-native-classnames";
+import React, { useEffect, useState } from 'react'
+import tw from 'tailwind-react-native-classnames'
 import {
   StyleSheet,
   Text,
@@ -9,27 +9,27 @@ import {
   FlatList,
   Image,
   StatusBar,
-  TouchableOpacity,
-} from "react-native";
+  TouchableOpacity
+} from 'react-native'
 
 const SaladScreen = () => {
-  const [products, setProducts] = useState([]);
-  let [count, setCount] = useState(0);
-
+  const [products, setProducts] = useState([])
+  let [count, setCount] = useState(0)
+  const essu = 'name'
   useEffect(async () => {
     try {
       let response = await fetch(
         //"https://daki-ecommerce.herokuapp.com/api/v1/products"
         //"https://restcountries.com/v2/all"
-        "https://api.thecatapi.com/v1/breeds?&api_key=d2fa1b3f-bf8a-41be-9ff9-633e9bd15621"
-      );
-      let json = await response.json();
-      setProducts(json);
-      setCount(count + 1);
+        'https://api.thecatapi.com/v1/breeds?&api_key=d2fa1b3f-bf8a-41be-9ff9-633e9bd15621'
+      )
+      let json = await response.json()
+      setProducts(json)
+      setCount(count + 1)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  }, []);
+  }, [])
   /* const getArticlesFromApi = async () => {
     let response = await fetch(
       "https://daki-ecommerce.herokuapp.com/api/v1/products"
@@ -52,7 +52,7 @@ const SaladScreen = () => {
                   <Image
                     style={styles.productImage}
                     source={{
-                      uri: `${item?.image?.url}`,
+                      uri: `${item?.image?.url}`
                     }}
                   />
                 </View>
@@ -68,51 +68,51 @@ const SaladScreen = () => {
         <Text>noting to display</Text>
       )}
     </SafeAreaView>
-  );
-};
+  )
+}
 
-export default SaladScreen;
+export default SaladScreen
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
-    backgroundColor: "#f0f8ff",
+    backgroundColor: '#f0f8ff'
   },
   item: {
-    backgroundColor: "#f9c2ff",
+    backgroundColor: '#f9c2ff',
     padding: 20,
     marginVertical: 6,
     marginHorizontal: 8,
-    display: "flex",
-    justifyContent: "space-around",
-    flexDirection: "row",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'space-around',
+    flexDirection: 'row',
+    alignItems: 'center',
     borderRadius: 5,
-    position: "relative",
+    position: 'relative'
   },
   title: {
     fontSize: 48,
-    fontWeight: "bold",
-    fontFamily: "Cochin",
+    fontWeight: 'bold',
+    fontFamily: 'Cochin'
   },
   header: {
     fontSize: 32,
-    fontWeight: "bold",
-    color: "orange",
+    fontWeight: 'bold',
+    color: 'orange',
     paddingLeft: 15,
     paddingBottom: 15,
-    paddingTop: 15,
+    paddingTop: 15
   },
   productImage: {
     width: 120,
     height: 120,
-    resizeMode: "cover",
+    resizeMode: 'cover'
   },
   productImageContainer: {
     width: 128,
     paddingLeft: 0,
     borderWidth: 2,
-    borderRightColor: "green",
-  },
-});
+    borderRightColor: 'green'
+  }
+})

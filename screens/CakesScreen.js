@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import tw from "tailwind-react-native-classnames";
-import axios from "axios";
+import React, { useEffect, useState } from 'react'
+import tw from 'tailwind-react-native-classnames'
+import axios from 'axios'
 import {
   StyleSheet,
   Text,
@@ -10,14 +10,14 @@ import {
   FlatList,
   Image,
   StatusBar,
-  TouchableOpacity,
-} from "react-native";
-import { useNavigation } from "@react-navigation/native";
+  TouchableOpacity
+} from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
 const CakesScreen = () => {
-  const navigation = useNavigation();
-  const [products, setProducts] = useState([]);
-  let [count, setCount] = useState(0);
+  const navigation = useNavigation()
+  const [products, setProducts] = useState([])
+  let [count, setCount] = useState(0)
   //"https://daki-ecommerce.herokuapp.com/api/v1/products"
   //"https://todo-php-api.herokuapp.com/api/v1/products"
   //"https://restcountries.com/v2/all"
@@ -25,16 +25,16 @@ const CakesScreen = () => {
 
   useEffect(() => {
     axios
-      .get("https://daki-ecommerce.herokuapp.com/api/v1/products")
+      .get('https://daki-ecommerce.herokuapp.com/api/v1/products')
       .then(function (response) {
-        setProducts(response.data);
+        setProducts(response.data)
       })
       .catch(function (error) {
-        console.log(error);
-      });
+        console.log(error)
+      })
     // setProducts(json.data);
     //setCount(count + 1);
-  }, []);
+  }, [])
   /* const getArticlesFromApi = async () => {
     let response = await fetch(
       "https://daki-ecommerce.herokuapp.com/api/v1/products"
@@ -54,21 +54,21 @@ const CakesScreen = () => {
           initialNumToRender={4}
           renderItem={({ item }) => (
             <TouchableOpacity
-              onPress={(item) => navigation.navigate("ProductDetail")}
+              onPress={(item) => navigation.navigate('ProductDetail')}
             >
               <View style={[styles.item, tw`bg-green-500`]}>
                 <View style={styles.productImageContainer}>
                   <Image
                     style={[styles.productImage, tw`bg-green-500`]}
                     source={{
-                      uri: `${item?.image}`,
+                      uri: `${item?.image}`
                     }}
                   />
                 </View>
                 <View>
                   <Text style={styles.title}>{item.name}</Text>
                   <Text style={styles.title}> {item.price} bir</Text>
-                  <Text>{""}</Text>
+                  <Text>{''}</Text>
                   <Button title="Add"></Button>
                 </View>
               </View>
@@ -81,48 +81,48 @@ const CakesScreen = () => {
         <Text>noting to display</Text>
       )}
     </SafeAreaView>
-  );
-};
+  )
+}
 
-export default CakesScreen;
+export default CakesScreen
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
-    backgroundColor: "#f0f8ff",
+    backgroundColor: '#f0f8ff'
   },
   item: {
-    backgroundColor: "#f9c2ff",
+    backgroundColor: '#f9c2ff',
     padding: 14,
     paddingRight: 20,
     marginVertical: 6,
     marginHorizontal: 6,
-    display: "flex",
-    justifyContent: "space-between",
-    flexDirection: "row",
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
 
-    borderRadius: 6,
+    borderRadius: 6
     /* position: "relative", */
   },
   title: {
     fontSize: 25,
-    fontWeight: "bold",
-    color: "white",
+    fontWeight: 'bold',
+    color: 'white'
   },
   header: {
     fontSize: 32,
-    fontWeight: "bold",
-    color: "red",
+    fontWeight: 'bold',
+    color: 'red',
     paddingLeft: 15,
     paddingBottom: 15,
-    paddingTop: 15,
+    paddingTop: 15
   },
   productImage: {
     width: 100,
     height: 100,
     borderRadius: 6,
-    resizeMode: "center",
+    resizeMode: 'center'
   },
-  productImageContainer: {},
-});
+  productImageContainer: {}
+})

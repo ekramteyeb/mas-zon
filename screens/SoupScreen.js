@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import tw from "tailwind-react-native-classnames";
+import React, { useEffect, useState } from 'react'
+import tw from 'tailwind-react-native-classnames'
 import {
   StyleSheet,
   Text,
@@ -9,29 +9,29 @@ import {
   FlatList,
   Image,
   StatusBar,
-  TouchableOpacity,
-} from "react-native";
-import NavBarTop from "../components/NavBarTop";
-import { useDispatch, useSelector } from "react-redux";
-import { setCart } from "../slices/navSlice";
+  TouchableOpacity
+} from 'react-native'
+import NavBarTop from '../components/NavBarTop'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCart } from '../slices/navSlice'
 
 const SoupScreen = () => {
-  const [products, setProducts] = useState([]);
-  const cart = useSelector((state) => state.nav.cart);
-  const dispatch = useDispatch();
+  const [products, setProducts] = useState([])
+  const cart = useSelector((state) => state.nav.cart)
+  const dispatch = useDispatch()
   useEffect(async () => {
     try {
       let response = await fetch(
         //"https://daki-ecommerce.herokuapp.com/api/v1/products"
         //"https://restcountries.com/v2/all"
-        "https://api.thecatapi.com/v1/breeds?&api_key=d2fa1b3f-bf8a-41be-9ff9-633e9bd15621"
-      );
-      let json = await response.json();
-      setProducts(json);
+        'https://api.thecatapi.com/v1/breeds?&api_key=d2fa1b3f-bf8a-41be-9ff9-633e9bd15621'
+      )
+      let json = await response.json()
+      setProducts(json)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  }, []);
+  }, [])
   /* const getArticlesFromApi = async () => {
     let response = await fetch(
       "https://daki-ecommerce.herokuapp.com/api/v1/products"
@@ -56,7 +56,7 @@ const SoupScreen = () => {
                   <Image
                     style={styles.productImage}
                     source={{
-                      uri: `${item?.image?.url}`,
+                      uri: `${item?.image?.url}`
                     }}
                   />
                 </View>
@@ -67,7 +67,7 @@ const SoupScreen = () => {
                     <Button
                       title="add to cart "
                       onPress={() => {
-                        dispatch(setCart(cart + 1));
+                        dispatch(setCart(cart + 1))
                       }}
                       style={styles.button}
                     ></Button>
@@ -83,46 +83,46 @@ const SoupScreen = () => {
         <Text>noting to display</Text>
       )}
     </SafeAreaView>
-  );
-};
+  )
+}
 
-export default SoupScreen;
+export default SoupScreen
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
 
     /* marginTop: StatusBar.currentHeight || 0, */
-    backgroundColor: "#f0f8ff",
+    backgroundColor: '#f0f8ff'
   },
   item: {
-    backgroundColor: "#f9c2ff",
+    backgroundColor: '#f9c2ff',
     padding: 10,
     marginVertical: 6,
     marginHorizontal: 8,
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    borderRadius: 5,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 5
   },
   title: {
     fontSize: 16,
-    fontWeight: "bold",
-    color: "#ffff",
+    fontWeight: 'bold',
+    color: '#ffff'
   },
 
   fixToText: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
 
   productImage: {
     width: 120,
     height: 120,
-    resizeMode: "cover",
+    resizeMode: 'cover'
   },
   productImageContainer: {
     width: 128,
-    paddingLeft: 4,
-  },
-});
+    paddingLeft: 4
+  }
+})

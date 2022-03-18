@@ -1,51 +1,51 @@
-import { useNavigation } from "@react-navigation/native";
-import React from "react";
-import { FlatList, TouchableOpacity, Text, View, Image } from "react-native";
-import { Icon } from "react-native-elements";
-import tw from "tailwind-react-native-classnames";
+import { useNavigation } from '@react-navigation/native'
+import React from 'react'
+import { FlatList, TouchableOpacity, Text, View, Image } from 'react-native'
+import { Icon } from 'react-native-elements'
+import tw from 'tailwind-react-native-classnames'
 
 const data = [
   {
-    id: "5678",
-    title: "MainDishes",
+    id: '5678',
+    title: 'MainDishes',
     //image: "https://links.papareact.com/28w",
-    image: "https://husstey.sirv.com/Images/mas-zon/maindish.webp",
-    sreen: "MainDishScreen",
+    image: 'https://husstey.sirv.com/Images/mas-zon/maindish.webp',
+    sreen: 'MainDishScreen'
   },
   {
-    id: "9102",
-    title: "Soup",
-    image: "https://husstey.sirv.com/Images/mas-zon/soup.webp",
+    id: '9102',
+    title: 'Soup',
+    image: 'https://husstey.sirv.com/Images/mas-zon/soup.webp',
     //"https://husstey.sirv.com/Images/VW%20Beetle.jpg",
-    sreen: "SoupScreen",
+    sreen: 'SoupScreen'
   },
   {
-    id: "9103",
-    title: "Cakes",
-    image: "https://husstey.sirv.com/Images/mas-zon/cakes.webp",
-    sreen: "CakesScreen",
+    id: '9103',
+    title: 'Cakes',
+    image: 'https://husstey.sirv.com/Images/mas-zon/cakes.webp',
+    sreen: 'CakesScreen'
   },
   {
-    id: "2323",
-    title: "Salad",
-    image: "https://husstey.sirv.com/Images/mas-zon/salad.webp",
-    sreen: "SaladScreen",
+    id: '2323',
+    title: 'Salad',
+    image: 'https://husstey.sirv.com/Images/mas-zon/salad.webp',
+    sreen: 'SaladScreen'
   },
   {
-    id: "2424",
-    title: "Hot Drinks",
-    image: "https://husstey.sirv.com/Images/mas-zon/coffee2.jpg",
-    sreen: "HotDrinksScreen",
+    id: '2424',
+    title: 'Hot Drinks',
+    image: 'https://husstey.sirv.com/Images/mas-zon/coffee2.jpg',
+    sreen: 'HotDrinksScreen'
   },
   {
-    id: "1234",
-    title: "Soft Drinks",
-    image: "https://husstey.sirv.com/Images/mas-zon/softdrinks.webp",
-    sreen: "SoftDrinksScreen",
-  },
-];
+    id: '1234',
+    title: 'Soft Drinks',
+    image: 'https://husstey.sirv.com/Images/mas-zon/softdrinks.webp',
+    sreen: 'SoftDrinksScreen'
+  }
+]
 const MenuNavOptions = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation()
 
   return (
     <>
@@ -60,22 +60,22 @@ const MenuNavOptions = () => {
             style={[
               tw`bg-gray-100  pl-0 m-1 mb-2 `,
               {
-                width: "31%",
+                width: '31%',
                 borderBottomWidth: 4,
-                borderBottomColor: "green",
-              },
+                borderBottomColor: 'green'
+              }
             ]}
           >
             <View
               style={{
                 paddingLeft: 0,
-                borderRadius: 4,
+                borderRadius: 4
               }}
             >
               <Image
                 style={[
                   tw` bg-green-200`,
-                  { height: 106, resizeMode: "cover" },
+                  { height: 106, resizeMode: 'cover' }
                 ]}
                 source={{ uri: item.image }}
               />
@@ -87,8 +87,8 @@ const MenuNavOptions = () => {
             /> */}
               <Text
                 style={[
-                  { textAlign: "center" },
-                  tw`mt-2  text-lg font-semibold`,
+                  { textAlign: 'center' },
+                  tw`mt-2  text-lg font-semibold`
                 ]}
               >
                 {item.title}
@@ -98,7 +98,7 @@ const MenuNavOptions = () => {
         )}
       />
     </>
-  );
-};
+  )
+}
 
-export default MenuNavOptions;
+export default MenuNavOptions

@@ -7,7 +7,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "format": "prettier --write '**/*.{js, ts, tsx}' "
   },
   "dependencies": {
     "@react-navigation/native": "^6.0.8",
@@ -35,7 +36,8 @@
   },
   "devDependencies": {
     "@ant-design/icons": "^4.7.0",
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "prettier": "^2.6.0"
   },
   "private": true
 }
