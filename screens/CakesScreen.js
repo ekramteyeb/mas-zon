@@ -6,31 +6,39 @@ import {
   Text,
   View,
   SafeAreaView,
-  Button,
   FlatList,
   Image,
   StatusBar,
   TouchableOpacity
 } from 'react-native'
+import { Button } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
+import { useSelector } from 'react-redux'
 
 const CakesScreen = () => {
   const navigation = useNavigation()
   const [products, setProducts] = useState([])
   let [count, setCount] = useState(0)
+  const token = useSelector((state) => state.nav.loginToken)
   //"https://daki-ecommerce.herokuapp.com/api/v1/products"
   //"https://todo-php-api.herokuapp.com/api/v1/products"
   //"https://restcountries.com/v2/all"
   // "https://api.thecatapi.com/v1/breeds?&api_key=d2fa1b3f-bf8a-41be-9ff9-633e9bd15621"
 
   useEffect(() => {
-    axios
-      .get('https://daki-ecommerce.herokuapp.com/api/v1/products')
+    axios({
+      method: 'GET',
+      url: 'https://mass-zone-backend.herokuapp.com/api/products',
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
       .then(function (response) {
-        setProducts(response.data)
+        console.log(response.data)
+        setProducts(response.data.data)
       })
       .catch(function (error) {
-        console.log(error)
+        console.log('not fetched')
       })
     // setProducts(json.data);
     //setCount(count + 1);
@@ -47,7 +55,9 @@ const CakesScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.header}> {products.length} Available Products</Text>
+      <Text style={[styles.header, tw`bg-gray-200`]}>
+        {products.length} different choices
+      </Text>
       {products?.length !== 0 ? (
         <FlatList
           data={products}
@@ -56,7 +66,7 @@ const CakesScreen = () => {
             <TouchableOpacity
               onPress={(item) => navigation.navigate('ProductDetail')}
             >
-              <View style={[styles.item, tw`bg-green-500`]}>
+              <View style={[styles.item, tw`bg-gray-500`]}>
                 <View style={styles.productImageContainer}>
                   <Image
                     style={[styles.productImage, tw`bg-green-500`]}
@@ -65,11 +75,19 @@ const CakesScreen = () => {
                     }}
                   />
                 </View>
-                <View>
+                <View style={styles.details}>
                   <Text style={styles.title}>{item.name}</Text>
                   <Text style={styles.title}> {item.price} bir</Text>
                   <Text>{''}</Text>
-                  <Button title="Add"></Button>
+                  <Button
+                    icon={{
+                      name: 'shop',
+                      size: 15,
+                      color: 'white'
+                    }}
+                    title="ADD"
+                    buttonStyle={styles.button}
+                  />
                 </View>
               </View>
             </TouchableOpacity>
@@ -78,7 +96,7 @@ const CakesScreen = () => {
           /* extraData={selectedId} */
         />
       ) : (
-        <Text>noting to display</Text>
+        <Text>noting tto display</Text>
       )}
     </SafeAreaView>
   )
@@ -89,13 +107,12 @@ export default CakesScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
-    backgroundColor: '#f0f8ff'
+    marginTop: StatusBar.currentHeight || 0
+    //backgroundColor: '#f0f8ff'
   },
   item: {
-    backgroundColor: '#f9c2ff',
-    padding: 14,
-    paddingRight: 20,
+    padding: 8,
+    paddingRight: 0,
     marginVertical: 6,
     marginHorizontal: 6,
     display: 'flex',
@@ -106,23 +123,25 @@ const styles = StyleSheet.create({
     /* position: "relative", */
   },
   title: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    color: 'white'
+    fontSize: 20,
+
+    color: 'orange'
   },
   header: {
-    fontSize: 32,
+    fontSize: 26,
     fontWeight: 'bold',
-    color: 'red',
-    paddingLeft: 15,
-    paddingBottom: 15,
-    paddingTop: 15
+    color: 'purple',
+    textAlign: 'center'
+  },
+  details: {
+    padding: 20
   },
   productImage: {
-    width: 100,
-    height: 100,
+    width: 190,
+    height: 140,
     borderRadius: 6,
-    resizeMode: 'center'
+    resizeMode: 'cover'
   },
+  button: { width: 100 },
   productImageContainer: {}
 })
