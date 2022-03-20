@@ -1,11 +1,5 @@
-import {
-  StyleSheet,
-  Text,
-  Button,
-  TextInput,
-  onChangeText,
-  View
-} from 'react-native'
+import { StyleSheet, Text, TextInput, onChangeText, View } from 'react-native'
+import { Button } from 'react-native-elements'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import tw from 'tailwind-react-native-classnames'
@@ -38,7 +32,7 @@ const Login = () => {
       })
   }
   return (
-    <View style={tw`h-full bg-green-200 p-10 pt-40 `}>
+    <View style={tw`h-full bg-green-300 p-10  pt-40`}>
       {notify ? (
         <Text
           style={[styles.login, tw` text-xl font-semibold text-red-500 pl-4 `]}
@@ -46,12 +40,12 @@ const Login = () => {
           {notify}
         </Text>
       ) : (
-        <Text>''</Text>
+        <Text></Text>
       )}
       <Text
         style={[styles.login, tw` text-xl font-semibold text-gray-500 pl-4 `]}
       >
-        Login
+        Login Register
       </Text>
 
       <TextInput
@@ -75,13 +69,19 @@ const Login = () => {
           keyboardType="numeric"
         /> */}
       <Button
-        title="Enter "
+        title="Login "
+        icon={{
+          name: 'login',
+          size: 15,
+          color: 'white'
+        }}
+        buttonStyle={styles.button}
         onPress={() => {
           handleLogin()
           onChangeEmail(null)
           onChangePassword(null)
         }}
-      ></Button>
+      />
     </View>
   )
 }
@@ -90,10 +90,16 @@ export default Login
 
 const styles = StyleSheet.create({
   input: {
-    height: 40,
+    height: 46,
     margin: 12,
-    borderWidth: 1,
-    padding: 10,
+    borderWidth: 0.2,
+    padding: 8,
+
     backgroundColor: 'white'
+  },
+  button: {
+    width: 100,
+    marginLeft: 80,
+    marginTop: 10
   }
 })
