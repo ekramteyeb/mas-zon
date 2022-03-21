@@ -45,7 +45,7 @@ const Login = () => {
       <Text
         style={[styles.login, tw` text-xl font-semibold text-gray-500 pl-4 `]}
       >
-        Login Register
+        Login
       </Text>
 
       <TextInput

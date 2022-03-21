@@ -3,7 +3,6 @@ import tw from 'tailwind-react-native-classnames'
 import axios from 'axios'
 import {
   StyleSheet,
-  Text,
   View,
   SafeAreaView,
   FlatList,
@@ -11,7 +10,7 @@ import {
   StatusBar,
   TouchableOpacity
 } from 'react-native'
-import { Button } from 'react-native-elements'
+import { Button, Text } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
 import { useSelector } from 'react-redux'
 
@@ -34,8 +33,7 @@ const CakesScreen = () => {
       }
     })
       .then(function (response) {
-        console.log(response.data)
-        setProducts(response.data.data)
+        setProducts(response.data.data.sort((a, b) => b.price - a.price))
       })
       .catch(function (error) {
         console.log('not fetched')
@@ -64,9 +62,11 @@ const CakesScreen = () => {
           initialNumToRender={4}
           renderItem={({ item }) => (
             <TouchableOpacity
-              onPress={(item) => navigation.navigate('ProductDetail')}
+              onPress={() => {
+                navigation.navigate('ProductDetail', { product: item })
+              }}
             >
-              <View style={[styles.item, tw`bg-gray-500`]}>
+              <View style={[styles.item, tw`bg-gray-200`]}>
                 <View style={styles.productImageContainer}>
                   <Image
                     style={[styles.productImage, tw`bg-green-500`]}
@@ -123,8 +123,8 @@ const styles = StyleSheet.create({
     /* position: "relative", */
   },
   title: {
-    fontSize: 20,
-
+    fontSize: 14,
+    fontWeight: 'bold',
     color: 'orange'
   },
   header: {
@@ -138,8 +138,8 @@ const styles = StyleSheet.create({
   },
   productImage: {
     width: 190,
-    height: 140,
-    borderRadius: 6,
+    height: 160,
+    borderRadius: 4,
     resizeMode: 'cover'
   },
   button: { width: 100 },
