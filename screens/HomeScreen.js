@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import {
   StyleSheet,
   StatusBar,
@@ -15,20 +16,44 @@ import Login from '../components/Login'
 import MenuNavOptions from '../components/menuNavOptions'
 import NavBarTop from '../components/NavBarTop'
 import Tabs from '../components/Tab'
-import { setLoginToken, setToken } from '../slices/navSlice'
+import {
+  setLoginToken,
+  setToken,
+  setProducts,
+  setCart
+} from '../slices/navSlice'
 import { registerForPushNotificationsAsync } from './HotDrinksScreen'
 import MostSoldLists from './MostSoldLists'
 
 const HomeScreen = () => {
   const dispatch = useDispatch()
   const state = useSelector((state) => state.nav)
+  const token = useSelector((state) => state.nav.loginToken)
 
-  console.log(state.loginToken)
   //get user device token
   useEffect(() => {
     registerForPushNotificationsAsync().then((token) => {
       dispatch(setToken(token))
     })
+  }, [])
+
+  // fetch products
+  useEffect(() => {
+    axios({
+      method: 'GET',
+      url: 'https://mass-zone-backend.herokuapp.com/api/products',
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then(function (response) {
+        dispatch(setProducts(response.data.data))
+      })
+      .catch(function (error) {
+        console.log('not fetched')
+      })
+    // setProducts(json.data);
+    //setCount(count + 1);
   }, [])
 
   return (

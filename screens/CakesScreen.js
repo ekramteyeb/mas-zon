@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import tw from 'tailwind-react-native-classnames'
-import axios from 'axios'
+
 import {
   StyleSheet,
   View,
@@ -16,31 +16,15 @@ import { useSelector } from 'react-redux'
 
 const CakesScreen = () => {
   const navigation = useNavigation()
-  const [products, setProducts] = useState([])
+  const products = useSelector((state) => state.nav.products)
   let [count, setCount] = useState(0)
-  const token = useSelector((state) => state.nav.loginToken)
+  console.log(products, 'products from cake')
+
   //"https://daki-ecommerce.herokuapp.com/api/v1/products"
   //"https://todo-php-api.herokuapp.com/api/v1/products"
   //"https://restcountries.com/v2/all"
   // "https://api.thecatapi.com/v1/breeds?&api_key=d2fa1b3f-bf8a-41be-9ff9-633e9bd15621"
 
-  useEffect(() => {
-    axios({
-      method: 'GET',
-      url: 'https://mass-zone-backend.herokuapp.com/api/products',
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-      .then(function (response) {
-        setProducts(response.data.data.sort((a, b) => b.price - a.price))
-      })
-      .catch(function (error) {
-        console.log('not fetched')
-      })
-    // setProducts(json.data);
-    //setCount(count + 1);
-  }, [])
   /* const getArticlesFromApi = async () => {
     let response = await fetch(
       "https://daki-ecommerce.herokuapp.com/api/v1/products"

@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   cart: 0,
   token: [],
-  loginToken: null
+  loginToken: null,
+  products: null
 }
 
 export const navSlice = createSlice({
@@ -18,17 +19,21 @@ export const navSlice = createSlice({
     },
     setLoginToken: (state, action) => {
       state.loginToken = action.payload
+    },
+    setProducts: (state, action) => {
+      state.products = action.payload
     }
   }
 })
 
-export const { setCart, setToken, setLoginToken } = navSlice.actions
+export const { setCart, setToken, setLoginToken, setProducts } =
+  navSlice.actions
 
 //Selectors
 
 export const selectCart = (state) => state.nav.cart
 export const selectToken = (state) => state.nav.token
 export const selectLoginToken = (state) => state.nav.loginToken
-
+export const selectProducts = (state) => state.nav.products
 // reducer
 export default navSlice.reducer
