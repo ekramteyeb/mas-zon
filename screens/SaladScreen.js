@@ -11,34 +11,12 @@ import {
   StatusBar,
   TouchableOpacity
 } from 'react-native'
+import { useSelector } from 'react-redux'
 
 const SaladScreen = () => {
-  const [products, setProducts] = useState([])
-  let [count, setCount] = useState(0)
-  const essu = 'name'
-  useEffect(async () => {
-    try {
-      let response = await fetch(
-        //"https://daki-ecommerce.herokuapp.com/api/v1/products"
-        //"https://restcountries.com/v2/all"
-        'https://api.thecatapi.com/v1/breeds?&api_key=d2fa1b3f-bf8a-41be-9ff9-633e9bd15621'
-      )
-      let json = await response.json()
-      setProducts(json)
-      setCount(count + 1)
-    } catch (error) {
-      console.log(error)
-    }
-  }, [])
-  /* const getArticlesFromApi = async () => {
-    let response = await fetch(
-      "https://daki-ecommerce.herokuapp.com/api/v1/products"
-    );
-    let json = await response.json();
-    set;
-
-    //return json;
-  }; */
+  const products = useSelector((state) => state.nav.products).filter(
+    (p) => p.catetory == 'salad'
+  )
 
   return (
     <SafeAreaView style={styles.container}>

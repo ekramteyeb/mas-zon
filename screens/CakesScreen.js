@@ -10,80 +10,16 @@ import {
   StatusBar,
   TouchableOpacity
 } from 'react-native'
-import { Button, Text } from 'react-native-elements'
-import { useNavigation } from '@react-navigation/native'
+
 import { useSelector } from 'react-redux'
+import ProductList from '../components/ProductList'
 
 const CakesScreen = () => {
-  const navigation = useNavigation()
-  const products = useSelector((state) => state.nav.products)
-  let [count, setCount] = useState(0)
-  console.log(products, 'products from cake')
-
-  //"https://daki-ecommerce.herokuapp.com/api/v1/products"
-  //"https://todo-php-api.herokuapp.com/api/v1/products"
-  //"https://restcountries.com/v2/all"
-  // "https://api.thecatapi.com/v1/breeds?&api_key=d2fa1b3f-bf8a-41be-9ff9-633e9bd15621"
-
-  /* const getArticlesFromApi = async () => {
-    let response = await fetch(
-      "https://daki-ecommerce.herokuapp.com/api/v1/products"
-    );
-    let json = await response.json();
-    set;
-
-    //return json;
-  }; */
-
-  return (
-    <SafeAreaView style={styles.container}>
-      <Text style={[styles.header, tw`bg-gray-200`]}>
-        {products.length} different choices
-      </Text>
-      {products?.length !== 0 ? (
-        <FlatList
-          data={products}
-          initialNumToRender={4}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('ProductDetail', { product: item })
-              }}
-            >
-              <View style={[styles.item, tw`bg-gray-200`]}>
-                <View style={styles.productImageContainer}>
-                  <Image
-                    style={[styles.productImage, tw`bg-green-500`]}
-                    source={{
-                      uri: `${item?.image}`
-                    }}
-                  />
-                </View>
-                <View style={styles.details}>
-                  <Text style={styles.title}>{item.name}</Text>
-                  <Text style={styles.title}> {item.price} bir</Text>
-                  <Text>{''}</Text>
-                  <Button
-                    icon={{
-                      name: 'shop',
-                      size: 15,
-                      color: 'white'
-                    }}
-                    title="ADD"
-                    buttonStyle={styles.button}
-                  />
-                </View>
-              </View>
-            </TouchableOpacity>
-          )}
-          keyExtractor={(item) => item.id}
-          /* extraData={selectedId} */
-        />
-      ) : (
-        <Text>noting tto display</Text>
-      )}
-    </SafeAreaView>
+  let products = useSelector((state) => state.nav.products)?.filter(
+    (p) => p.category == 'cake'
   )
+
+  return <ProductList products={products} />
 }
 
 export default CakesScreen
@@ -91,8 +27,8 @@ export default CakesScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0
-    //backgroundColor: '#f0f8ff'
+    marginTop: StatusBar.currentHeight || 0,
+    backgroundColor: '#f0f8ff'
   },
   item: {
     padding: 8,
@@ -126,6 +62,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     resizeMode: 'cover'
   },
-  button: { width: 100 },
+
   productImageContainer: {}
 })

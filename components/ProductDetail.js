@@ -1,5 +1,12 @@
 import { useNavigation } from '@react-navigation/native'
-import { Button, View, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import {
+  Button,
+  SafeAreaView,
+  View,
+  StyleSheet,
+  Image,
+  TouchableOpacity
+} from 'react-native'
 import tw from 'tailwind-react-native-classnames'
 import { Text } from 'react-native-elements'
 import GoBackButton from './GoBackButton'
@@ -10,14 +17,15 @@ export default function ProductDetail({ navigation, route }) {
   console.log(product)
   return (
     <>
-      <View style={[styles.container, tw`bg-gray-200 `]}>
+      <SafeAreaView style={[styles.container, tw`bg-gray-200 `]}>
         <TouchableOpacity>
           <Image
-            style={[tw``, styles.icon]}
+            style={[tw`bg-gray-200`, styles.icon]}
             source={{
               uri: product.image
               //require("../assets/icon2.webp")
             }}
+            resizeMode="cover"
           />
         </TouchableOpacity>
         <View style={tw`pl-4 pb-10 pt-6`}>
@@ -26,7 +34,7 @@ export default function ProductDetail({ navigation, route }) {
           <Text>Ingredients: {product.details}</Text>
         </View>
         <GoBackButton />
-      </View>
+      </SafeAreaView>
     </>
   )
 }
