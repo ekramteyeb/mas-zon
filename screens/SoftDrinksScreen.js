@@ -24,7 +24,7 @@ import Cart from '../components/Cart'
 const SoftDrinksScreen = () => {
   const state = useSelector((state) => state.nav)
   const dispatch = useDispatch()
-  console.log(state, 'the state is ')
+  console.log(state, 'the state in soft drinks ')
 
   return (
     <View style={[styles.container /* tw`bg-white h-full` */]}>

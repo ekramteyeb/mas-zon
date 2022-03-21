@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TextInput, onChangeText, View } from 'react-native'
 import { Button } from 'react-native-elements'
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import tw from 'tailwind-react-native-classnames'
 import axios from 'axios'
 import { setLoginToken } from '../slices/navSlice'
@@ -12,6 +12,8 @@ const Login = () => {
   const [notify, setNotify] = React.useState(null)
   //const [number, onChangeNumber] = React.useState(null)
   const dispatch = useDispatch()
+  const deviceToken = useSelector((state) => state.nav.token)
+  console.log(deviceToken, 'device token from login')
   const handleLogin = () => {
     if (!email || !password) {
       setNotify('Please enter email/password')
