@@ -19,9 +19,9 @@ const HomeScreen = () => {
   //const temporaryToken = '1|yukzD74qfMlyirUe133g53H1qf1jooZbaznUqR5A'
 
   //get user device token
+
   useEffect(() => {
     registerForPushNotificationsAsync().then((token) => {
-      console.log(token, 'user device token')
       dispatch(setToken(token))
     })
   }, [])
