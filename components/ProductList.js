@@ -17,10 +17,8 @@ const ProductList = ({ products }) => {
   const navigation = useNavigation()
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={[styles.header, tw`bg-gray-100`]}>
-        {products?.length} Different Choices
-      </Text>
+    <SafeAreaView style={[styles.container, tw`bg-gray-100`]}>
+      <Text style={[styles.header]}>{products?.length} Different Choices</Text>
       {products?.length !== 0 ? (
         <FlatList
           data={products}
@@ -64,8 +62,9 @@ export default ProductList
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
-    backgroundColor: '#f0f8ff'
+    //marginTop: StatusBar.currentHeight || 0,
+    paddingTop: 12,
+    backgroundColor: 'red'
   },
   item: {
     padding: 8,
@@ -82,13 +81,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 14,
     fontWeight: 'bold',
-    color: 'orange'
+    color: 'black'
   },
   header: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    color: 'purple',
-    textAlign: 'center'
+    fontSize: 20,
+    color: 'black',
+    textAlign: 'right',
+    paddingRight: 16
   },
   details: {
     padding: 20

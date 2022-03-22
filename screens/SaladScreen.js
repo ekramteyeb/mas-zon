@@ -15,8 +15,8 @@ import { useSelector } from 'react-redux'
 import ProductList from '../components/ProductList'
 
 const SaladScreen = () => {
-  const products = useSelector((state) => state.nav.products)?.filter(
-    (p) => p.category == 'pizza'
+  const products = useSelector((state) => state.nav.products).filter(
+    (p) => p.price < 400
   )
 
   return <ProductList products={products} />

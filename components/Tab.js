@@ -6,7 +6,7 @@ export default function Tabs() {
   const [index, setIndex] = React.useState(0)
 
   return (
-    <View style={{ height: 200 }}>
+    <View style={{ height: 160 }}>
       <Tab
         value={index}
         onChange={(e) => setIndex(e)}
