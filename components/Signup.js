@@ -29,14 +29,13 @@ export default function Signup() {
       password: password,
       confirm_password: confirm_password
     }
-    console.log(data, 'data sent')
+
     axios({
       method: 'POST',
       url: 'https://mass-zone-backend.herokuapp.com/api/register',
       data: data
     })
       .then(function (response) {
-        console.log(response.data.data)
         dispatch(setLoginToken(response.data.data.token))
         navigation.navigate('HomeScreen')
       })

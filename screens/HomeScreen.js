@@ -36,7 +36,7 @@ const HomeScreen = () => {
       }
     })
       .then(function (response) {
-        console.log(response.data.data)
+        console.log('feteched again')
         dispatch(setProducts(response.data.data))
       })
       .catch(function (error) {
@@ -44,7 +44,7 @@ const HomeScreen = () => {
       })
     // setProducts(json.data);
     //setCount(count + 1);
-  }, [])
+  }, [state.loginToken])
 
   return (
     <SafeAreaView style={[styles.container, tw`bg-white h-full`]}>

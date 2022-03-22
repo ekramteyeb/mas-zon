@@ -20,7 +20,7 @@ const Login = () => {
   const handleLogin = () => {
     if (!email || !password) {
       setNotify('Please enter email/password')
-
+      notify ? setTimeout(() => setNotify(null), 3000) : ''
       return
     }
     const data = { email: email, password: password }
@@ -37,7 +37,7 @@ const Login = () => {
         console.log('not fetched', error)
       })
   }
-  notify ? setTimeout(() => setNotify(null), 3000) : ''
+
   return (
     <View style={tw`h-full bg-green-300 p-10  pt-40`}>
       {notify ? (
