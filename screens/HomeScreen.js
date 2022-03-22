@@ -16,7 +16,8 @@ import MostSoldLists from './MostSoldLists'
 const HomeScreen = () => {
   const dispatch = useDispatch()
   const state = useSelector((state) => state.nav)
-  const temporaryToken = '1|yukzD74qfMlyirUe133g53H1qf1jooZbaznUqR5A'
+  //const temporaryToken = '1|yukzD74qfMlyirUe133g53H1qf1jooZbaznUqR5A'
+
   //get user device token
   useEffect(() => {
     registerForPushNotificationsAsync().then((token) => {
@@ -31,7 +32,7 @@ const HomeScreen = () => {
       method: 'GET',
       url: 'https://mass-zone-backend.herokuapp.com/api/products',
       headers: {
-        Authorization: `Bearer ${temporaryToken}`
+        Authorization: `Bearer ${state.loginToken}`
       }
     })
       .then(function (response) {
@@ -46,26 +47,24 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={[styles.container, tw`bg-white h-full`]}>
-      {
-        /* state.loginToken */ true ? (
-          <>
-            <Button
-              title="close"
-              onPress={() => {
-                dispatch(setLoginToken(null))
-              }}
-            ></Button>
-            <NavBarTop />
-            <Tabs />
-            <MostSoldLists />
-            <View style={{ padding: 0 }}>
-              <MenuNavOptions />
-            </View>
-          </>
-        ) : (
-          <Login />
-        )
-      }
+      {state.loginToken ? (
+        <>
+          <Button
+            title="close"
+            onPress={() => {
+              dispatch(setLoginToken(null))
+            }}
+          ></Button>
+          <NavBarTop />
+          <Tabs />
+          <MostSoldLists />
+          <View style={{ padding: 0 }}>
+            <MenuNavOptions />
+          </View>
+        </>
+      ) : (
+        <Login />
+      )}
     </SafeAreaView>
   )
 }

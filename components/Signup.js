@@ -7,29 +7,36 @@ import axios from 'axios'
 import { setLoginToken } from '../slices/navSlice'
 import { useNavigation } from '@react-navigation/native'
 
-const Login = () => {
+export default function Signup() {
   const [email, onChangeEmail] = React.useState(null)
   const [password, onChangePassword] = React.useState(null)
+  const [confirm_password, onChangeConfirmPassword] = React.useState(null)
   const [notify, setNotify] = React.useState(null)
   //const [number, onChangeNumber] = React.useState(null)
   const dispatch = useDispatch()
+  const navigation = useNavigation()
   const deviceToken = useSelector((state) => state.nav.token)
 
-  const navigation = useNavigation()
-
-  const handleLogin = () => {
+  const handleSignup = () => {
     if (!email || !password) {
       setNotify('Please enter email/password')
-
+      setTimeout(() => setNotify(null), 3000)
       return
     }
-    const data = { email: email, password: password }
+    const data = {
+      name: email,
+      email: email,
+      password: password,
+      confirm_password: confirm_password
+    }
+    console.log(data, 'data sent')
     axios({
       method: 'POST',
-      url: 'https://mass-zone-backend.herokuapp.com/api/login',
+      url: 'https://mass-zone-backend.herokuapp.com/api/register',
       data: data
     })
       .then(function (response) {
+        console.log(response.data.data)
         dispatch(setLoginToken(response.data.data.token))
         navigation.navigate('HomeScreen')
       })
@@ -37,9 +44,8 @@ const Login = () => {
         console.log('not fetched', error)
       })
   }
-  notify ? setTimeout(() => setNotify(null), 3000) : ''
   return (
-    <View style={tw`h-full bg-green-300 p-10  pt-40`}>
+    <View style={tw`h-full bg-green-300 p-10  pt-20`}>
       {notify ? (
         <Text
           style={[styles.login, tw` text-xl font-semibold text-red-500 pl-4 `]}
@@ -49,10 +55,7 @@ const Login = () => {
       ) : (
         <Text></Text>
       )}
-
-      <Text h4 onPress={() => navigation.navigate('Signup')}>
-        Login
-      </Text>
+      <Text h4>Sign up </Text>
 
       <TextInput
         style={styles.input}
@@ -66,6 +69,12 @@ const Login = () => {
         placeholder="Enter password"
         value={password}
       />
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeConfirmPassword}
+        placeholder="Confirm password"
+        value={confirm_password}
+      />
 
       {/*  <TextInput
           style={styles.input}
@@ -75,7 +84,7 @@ const Login = () => {
           keyboardType="numeric"
         /> */}
       <Button
-        title="Login "
+        title="Signup "
         icon={{
           name: 'login',
           size: 15,
@@ -83,26 +92,25 @@ const Login = () => {
         }}
         buttonStyle={styles.button}
         onPress={() => {
-          handleLogin()
+          handleSignup()
           onChangeEmail(null)
           onChangePassword(null)
+          onChangeConfirmPassword(null)
         }}
       />
       <View style={tw`pt-2  items-center`}>
-        <Text>Not a member yet ? </Text>
+        <Text>Already a member ? </Text>
         <Text
           h4
-          onPress={() => navigation.navigate('Signup')}
+          onPress={() => navigation.navigate('Login')}
           style={{ textDecorationLine: 'underline', color: 'blue' }}
         >
-          Register
+          Login here
         </Text>
       </View>
     </View>
   )
 }
-
-export default Login
 
 const styles = StyleSheet.create({
   input: {

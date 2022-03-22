@@ -12,6 +12,8 @@ import SoftDrinksScreen from './screens/SoftDrinksScreen'
 import CakesScreen from './screens/CakesScreen'
 import HotDrinksScreen from './screens/HotDrinksScreen'
 import ProductDetail from './components/ProductDetail'
+import Signup from './components/Signup'
+import Login from './components/Login'
 
 export default function App() {
   const Stack = createNativeStackNavigator()
@@ -59,6 +61,16 @@ export default function App() {
             <Stack.Screen
               name="ProductDetail"
               component={ProductDetail}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Signup"
+              component={Signup}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Login"
+              component={Login}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>
