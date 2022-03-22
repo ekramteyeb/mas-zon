@@ -36,6 +36,7 @@ const HomeScreen = () => {
       }
     })
       .then(function (response) {
+        console.log(response.data.data)
         dispatch(setProducts(response.data.data))
       })
       .catch(function (error) {

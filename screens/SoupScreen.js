@@ -19,11 +19,7 @@ import ButtonToCart from '../components/ButtonToCart'
 import ProductList from '../components/ProductList'
 
 const SoupScreen = () => {
-  const cart = useSelector((state) => state.nav.cart)
-  const dispatch = useDispatch()
-  const navigation = useNavigation()
-
-  const products = useSelector((state) => state.nav.products).filter(
+  const products = useSelector((state) => state.nav.products)?.filter(
     (p) => p.category == 'soup'
   )
 

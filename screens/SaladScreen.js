@@ -12,41 +12,14 @@ import {
   TouchableOpacity
 } from 'react-native'
 import { useSelector } from 'react-redux'
+import ProductList from '../components/ProductList'
 
 const SaladScreen = () => {
-  const products = useSelector((state) => state.nav.products).filter(
-    (p) => p.catetory == 'salad'
+  const products = useSelector((state) => state.nav.products)?.filter(
+    (p) => p.category == 'pizza'
   )
 
-  return (
-    <SafeAreaView style={styles.container}>
-      {products?.length !== 0 ? (
-        <FlatList
-          data={products}
-          renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => alert(`${item.rating}`)}>
-              <View style={[styles.item, tw`bg-gray-600`]}>
-                <View style={styles.productImageContainer}>
-                  <Image
-                    style={styles.productImage}
-                    source={{
-                      uri: `${item?.image?.url}`
-                    }}
-                  />
-                </View>
-                <Text styles={styles.title}>{item.name}</Text>
-                <Text styles={styles.title}> € {item.adaptability}</Text>
-              </View>
-            </TouchableOpacity>
-          )}
-          keyExtractor={(item) => item.id}
-          /* extraData={selectedId} */
-        />
-      ) : (
-        <Text>noting to display</Text>
-      )}
-    </SafeAreaView>
-  )
+  return <ProductList products={products} />
 }
 
 export default SaladScreen
@@ -94,3 +67,34 @@ const styles = StyleSheet.create({
     borderRightColor: 'green'
   }
 })
+
+/* 
+
+ <SafeAreaView style={styles.container}>
+      {products?.length !== 0 ? (
+        <FlatList
+          data={products}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => alert(`${item.rating}`)}>
+              <View style={[styles.item, tw`bg-gray-300`]}>
+                <View style={styles.productImageContainer}>
+                  <Image
+                    style={styles.productImage}
+                    source={{
+                      uri: `${item?.image}`
+                    }}
+                  />
+                </View>
+                <Text styles={styles.title}>{item.name}</Text>
+                <Text styles={styles.title}> € {item.price}</Text>
+              </View>
+            </TouchableOpacity>
+          )}
+          keyExtractor={(item) => item.id}
+           />
+      ) : (
+        <Text>noting to display</Text>
+      )}
+    </SafeAreaView>
+       
+*/
