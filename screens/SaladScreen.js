@@ -15,11 +15,14 @@ import { useSelector } from 'react-redux'
 import ProductList from '../components/ProductList'
 
 const SaladScreen = () => {
-  const products = useSelector((state) => state.nav.products).filter(
-    (p) => p.price < 400
-  )
+  let products = useSelector((state) => state.nav.products)
+  let copyProducts = [...products].sort((a, b) => a.price - b.price)
 
-  return <ProductList products={products} />
+  return (
+    <>
+      <ProductList products={copyProducts} />
+    </>
+  )
 }
 
 export default SaladScreen
