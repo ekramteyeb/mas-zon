@@ -8,27 +8,31 @@ export default function NavBarTop() {
   const state = useSelector((state) => state.nav)
   return (
     <>
-      <View style={[styles.container, tw`bg-gray-100 h-16 border-gray-200`]}>
-        <TouchableOpacity>
-          <Icon
-            name="list"
-            color="purple"
-            raised
-            style={tw`bg-blue-300`}
-            type="ionicon"
-          />
+      {state.loginToken ? (
+        <View style={[styles.container, tw`bg-gray-100 h-16 border-gray-200`]}>
+          <TouchableOpacity>
+            <Icon
+              name="list"
+              color="purple"
+              raised
+              style={tw`bg-blue-300`}
+              type="ionicon"
+            />
 
-          {/*  <Image
+            {/*  <Image
             style={[tw`rounded-full`, styles.icon]}
             source={{
               uri: "https://husstey.sirv.com/Images/icon2.jpeg",
               //require("../assets/icon2.webp")
             }}
           /> */}
-        </TouchableOpacity>
-        <Text style={tw`text-xl font-bold text-gray-600`}>Mass Zone</Text>
-        {state.loginToken ? <Cart cart={state.cart} /> : <Text></Text>}
-      </View>
+          </TouchableOpacity>
+          <Text style={tw`text-xl font-bold text-gray-600`}>Mass Zone</Text>
+          <Cart cart={state.cart} />
+        </View>
+      ) : (
+        <Text></Text>
+      )}
     </>
   )
 }
