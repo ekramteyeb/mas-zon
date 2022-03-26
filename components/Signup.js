@@ -46,7 +46,7 @@ export default function Signup() {
       })
   }
   return (
-    <View style={tw`h-full bg-green-300 p-10  pt-20`}>
+    <View style={tw`h-full bg-green-400 p-10  pt-20`}>
       {notify ? (
         <Text
           style={[styles.login, tw` text-xl font-semibold text-red-500 pl-4 `]}

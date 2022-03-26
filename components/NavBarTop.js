@@ -5,7 +5,7 @@ import tw from 'tailwind-react-native-classnames'
 import Cart from './Cart'
 
 export default function NavBarTop() {
-  const cart = useSelector((state) => state.nav.cart)
+  const state = useSelector((state) => state.nav)
   return (
     <>
       <View style={[styles.container, tw`bg-gray-100 h-16 border-gray-200`]}>
@@ -27,7 +27,7 @@ export default function NavBarTop() {
           /> */}
         </TouchableOpacity>
         <Text style={tw`text-xl font-bold text-gray-600`}>Mass Zone</Text>
-        <Cart cart={cart} />
+        {state.loginToken ? <Cart cart={state.cart} /> : <Text></Text>}
       </View>
     </>
   )

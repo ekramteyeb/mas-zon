@@ -4,7 +4,7 @@ import tw from 'tailwind-react-native-classnames'
 
 const Cart = ({ cart }) => {
   return (
-    <View style={tw`border-2 w-10 h-10 rounded-full bg-blue-300`}>
+    <View style={tw` w-12 h-12 p-2 mr-4 rounded-full bg-blue-300`}>
       <Text style={tw`text-red-500 text-lg  font-bold text-center `}>
         {cart}
       </Text>

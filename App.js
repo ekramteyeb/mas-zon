@@ -14,6 +14,7 @@ import HotDrinksScreen from './screens/HotDrinksScreen'
 import ProductDetail from './components/ProductDetail'
 import Signup from './components/Signup'
 import Login from './components/Login'
+import NavBarTop from './components/NavBarTop'
 
 export default function App() {
   const Stack = createNativeStackNavigator()
@@ -22,6 +23,7 @@ export default function App() {
       <StatusBar backgroundColor="#61dafb" />
       <NavigationContainer>
         <SafeAreaProvider>
+          <NavBarTop />
           <Stack.Navigator>
             <Stack.Screen
               name="HomeScreen"

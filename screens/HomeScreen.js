@@ -56,9 +56,9 @@ const HomeScreen = () => {
               dispatch(setLoginToken(null))
             }}
           ></Button>
-          <NavBarTop />
+
           <Tabs />
-          <MostSoldLists />
+          <MostSoldLists products={state.products} />
           <View style={{ padding: 0 }}>
             <MenuNavOptions />
           </View>
