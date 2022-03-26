@@ -35,6 +35,8 @@ const Login = () => {
       })
       .catch(function (error) {
         console.log('not fetched', error)
+        setNotify('Incorrect email/password')
+        notify ? setTimeout(() => setNotify(null), 3000) : ''
       })
   }
 
