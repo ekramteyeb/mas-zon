@@ -73,11 +73,9 @@ const SoftDrinksScreen = () => {
         {users?.map((user, index) => (
           <View
             style={tw`bg-gray-200 p-2 h-14 m-1  items-center justify-between flex-row`}
+            key={user.id * 201}
           >
-            <Text
-              key={index * 201}
-              style={tw`  text-blue-800 text-lg dark:text-white`}
-            >
+            <Text style={tw`  text-blue-800 text-lg dark:text-white`}>
               {user.name} - {user.id}
             </Text>
             <Button
