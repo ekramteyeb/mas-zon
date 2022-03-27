@@ -5,17 +5,21 @@ import { useDispatch, useSelector } from 'react-redux'
 import tw from 'tailwind-react-native-classnames'
 import axios from 'axios'
 import { setLoginToken } from '../slices/navSlice'
+import { setUser } from '../slices/navSlice'
 import { useNavigation } from '@react-navigation/native'
 
 const Login = () => {
   const [email, onChangeEmail] = React.useState(null)
   const [password, onChangePassword] = React.useState(null)
   const [notify, setNotify] = React.useState(null)
+
   //const [number, onChangeNumber] = React.useState(null)
   const dispatch = useDispatch()
-  const deviceToken = useSelector((state) => state.nav.token)
+  const state = useSelector((state) => state.nav)
 
   const navigation = useNavigation()
+
+  //after login register device token for notification
 
   const handleLogin = () => {
     if (!email || !password) {
@@ -30,9 +34,11 @@ const Login = () => {
       data: data
     })
       .then(function (response) {
+        dispatch(setUser(response.data.data.id))
         dispatch(setLoginToken(response.data.data.token))
         navigation.navigate('HomeScreen')
       })
+
       .catch(function (error) {
         console.log('not fetched', error)
         setNotify('Incorrect email/password')

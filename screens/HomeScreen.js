@@ -16,6 +16,7 @@ import MostSoldLists from './MostSoldLists'
 const HomeScreen = () => {
   const dispatch = useDispatch()
   const state = useSelector((state) => state.nav)
+
   //const temporaryToken = '1|yukzD74qfMlyirUe133g53H1qf1jooZbaznUqR5A'
 
   //get user device token
@@ -44,6 +45,28 @@ const HomeScreen = () => {
       })
     // setProducts(json.data);
     //setCount(count + 1);
+  }, [state.loginToken])
+  useEffect(() => {
+    console.log('login token', state.loginToken)
+
+    console.log('user', state.user)
+
+    axios({
+      method: 'PUT',
+      url: `https://mass-zone-backend.herokuapp.com/api/users/${state.user}`,
+      data: { device: state.token[0] },
+      headers: {
+        Authorization: `Bearer ${state.loginToken}`
+      }
+    })
+      .then(function (response) {
+        console.log(response.data, 'device token response')
+      })
+      .catch(function (error) {
+        console.log('device not registerd', error)
+        /* setNotify('Incorrect email/password')
+        notify ? setTimeout(() => setNotify(null), 3000) : '' */
+      })
   }, [state.loginToken])
 
   return (
