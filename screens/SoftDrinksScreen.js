@@ -71,15 +71,18 @@ const SoftDrinksScreen = () => {
       <Text h4>{users ? `User is ${users[0].name}` : 'No user here'}</Text>
       <View>
         {users?.map((user, index) => (
-          <View style={tw`bg-gray-200 p-2 h-14 m-1  items-center flex-row`}>
+          <View
+            style={tw`bg-gray-200 p-2 h-14 m-1  items-center justify-between flex-row`}
+          >
             <Text
               key={index * 201}
-              style={tw` mr-8 text-blue-800 text-lg dark:text-white`}
+              style={tw`  text-blue-800 text-lg dark:text-white`}
             >
               {user.name} - {user.id}
             </Text>
             <Button
               title="Send text"
+              icon={{ name: 'chat', size: 15, color: 'orange' }}
               onPress={() => sendPushNotification(user.device)}
             />
           </View>
