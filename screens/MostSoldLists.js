@@ -6,7 +6,7 @@ import {
   FlatList,
   TouchableOpacity
 } from 'react-native'
-import tw from 'tailwind-react-native-classnames'
+import tw from 'twrnc'
 import MostSold from '../components/MostSold'
 
 export default function MostSoldLists({ products }) {

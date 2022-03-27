@@ -3,7 +3,7 @@ import axios from 'axios'
 import { StyleSheet, View, Button, SafeAreaView } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 
-import tw from 'tailwind-react-native-classnames'
+import tw from 'twrnc'
 import Login from '../components/Login'
 
 import MenuNavOptions from '../components/menuNavOptions'

@@ -1,7 +1,7 @@
 import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import { Icon } from 'react-native-elements/dist/icons/Icon'
 import { useSelector } from 'react-redux'
-import tw from 'tailwind-react-native-classnames'
+import tw from 'twrnc'
 import Cart from './Cart'
 
 export default function NavBarTop() {

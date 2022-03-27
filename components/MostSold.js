@@ -7,7 +7,7 @@ import {
   Image,
   TouchableOpacity
 } from 'react-native'
-import tw from 'tailwind-react-native-classnames'
+import tw from 'twrnc'
 
 export default function MostSold({ item }) {
   return (

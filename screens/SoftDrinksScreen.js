@@ -6,13 +6,13 @@ import {
   SafeAreaView,
   TouchableOpacity,
   View,
+  Text,
   StyleSheet,
   TextInput,
-  Button,
   Dimensions
 } from 'react-native'
-import { Icon, Text } from 'react-native-elements'
-import tw from 'tailwind-react-native-classnames'
+import { Icon, Button } from 'react-native-elements'
+import tw from 'twrnc'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCart } from '../slices/navSlice'
 import { sendPushNotification } from './HotDrinksScreen'
@@ -34,14 +34,11 @@ const SoftDrinksScreen = () => {
     })
       .then(function (response) {
         setUsers(response.data.data)
-        users.forEach((element) => {
-          sendPushNotification(element.device)
-        })
         console.log('User feteched', response.data.data)
         // dispatch(setProducts(response.data.data))
       })
       .catch(function (error) {
-        console.log('not fetched ,from local mysql server')
+        console.log('not fetched ,softdrinks screen')
       })
   }
 
@@ -64,15 +61,30 @@ const SoftDrinksScreen = () => {
         onPress={() => alert('home')}
       />
 
-      <Button
+      {/* <Button
         title="Add cart"
         style={styles.buttons}
         onPress={() => {
           dispatch(setCart(state.cart + 1)), sendPushNotification(state.token)
         }}
-      ></Button>
+      ></Button> */}
       <Text h4>{users ? `User is ${users[0].name}` : 'No user here'}</Text>
-
+      <View>
+        {users?.map((user, index) => (
+          <View style={tw`bg-gray-200 p-2 h-14 m-1  items-center flex-row`}>
+            <Text
+              key={index * 201}
+              style={tw` mr-8 text-blue-800 text-lg dark:text-white`}
+            >
+              {user.name} - {user.id}
+            </Text>
+            <Button
+              title="Send text"
+              onPress={() => sendPushNotification(user.device)}
+            />
+          </View>
+        ))}
+      </View>
       <Button title="Bring user" onPress={() => fetchUser()}></Button>
     </View>
   )

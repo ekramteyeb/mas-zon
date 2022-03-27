@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import tw from 'tailwind-react-native-classnames'
+import tw from 'twrnc'
 
 import {
   StyleSheet,

@@ -7,7 +7,7 @@ import {
   Image,
   TouchableOpacity
 } from 'react-native'
-import tw from 'tailwind-react-native-classnames'
+import tw from 'twrnc'
 import { Text } from 'react-native-elements'
 import GoBackButton from './GoBackButton'
 

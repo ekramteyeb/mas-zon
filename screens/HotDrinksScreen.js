@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import tw from 'tailwind-react-native-classnames'
+import tw from 'twrnc'
 import * as Device from 'expo-device'
 import * as Notifications from 'expo-notifications'
 import {
