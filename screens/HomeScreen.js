@@ -54,7 +54,7 @@ const HomeScreen = () => {
     axios({
       method: 'PUT',
       url: `https://mass-zone-backend.herokuapp.com/api/users/${state.user}`,
-      data: { device: state.token[0] },
+      data: { device: state.token },
       headers: {
         Authorization: `Bearer ${state.loginToken}`
       }

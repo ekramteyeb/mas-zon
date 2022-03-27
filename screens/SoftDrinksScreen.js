@@ -21,20 +21,23 @@ import Cart from '../components/Cart'
 const SoftDrinksScreen = () => {
   const state = useSelector((state) => state.nav)
   const dispatch = useDispatch()
-  const [user, setUser] = useState(null)
-  const tokentoken = '4|3FgxURT6E5PlTX22RuzqjSEFxBvyL2XLOj8oK8ar'
+  const [users, setUsers] = useState(null)
+  //const tokentoken = '4|3FgxURT6E5PlTX22RuzqjSEFxBvyL2XLOj8oK8ar'
   const fetchUser = () => {
     axios({
       method: 'GET',
       //url: 'http://127.0.0.1:8000/api/user',
-      url: 'https://mass-zone-backend.herokuapp.com/api/user',
+      url: 'https://mass-zone-backend.herokuapp.com/api/users',
       headers: {
         Authorization: `Bearer ${state.loginToken}`
       }
     })
       .then(function (response) {
-        setUser(response.data.name)
-        console.log('User feteched', response.data)
+        setUsers(response.data.data)
+        users.forEach((element) => {
+          sendPushNotification(element.device)
+        })
+        console.log('User feteched', response.data.data)
         // dispatch(setProducts(response.data.data))
       })
       .catch(function (error) {
@@ -68,7 +71,7 @@ const SoftDrinksScreen = () => {
           dispatch(setCart(state.cart + 1)), sendPushNotification(state.token)
         }}
       ></Button>
-      <Text h4>{user ? `User is ${user}` : 'No user here'}</Text>
+      <Text h4>{users ? `User is ${users[0].name}` : 'No user here'}</Text>
 
       <Button title="Bring user" onPress={() => fetchUser()}></Button>
     </View>
