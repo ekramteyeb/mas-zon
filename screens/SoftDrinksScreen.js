@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setCart } from '../slices/navSlice'
 import { sendPushNotification } from './HotDrinksScreen'
 import Cart from '../components/Cart'
+import ModalComponent from '../components/ModalComponent'
 
 const SoftDrinksScreen = () => {
   const state = useSelector((state) => state.nav)

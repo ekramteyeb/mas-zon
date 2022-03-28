@@ -9,6 +9,7 @@ import Login from '../components/Login'
 import MenuNavOptions from '../components/menuNavOptions'
 import NavBarTop from '../components/NavBarTop'
 import Tabs from '../components/Tab'
+import ModalComponent from '../components/ModalComponent'
 import { setLoginToken, setToken, setProducts } from '../slices/navSlice'
 import { registerForPushNotificationsAsync } from './HotDrinksScreen'
 import MostSoldLists from './MostSoldLists'
@@ -73,13 +74,6 @@ const HomeScreen = () => {
     <SafeAreaView style={[styles.container, tw`bg-white h-full`]}>
       {state.loginToken ? (
         <>
-          <Button
-            title="close"
-            onPress={() => {
-              dispatch(setLoginToken(null))
-            }}
-          ></Button>
-
           <Tabs />
           <MostSoldLists products={state.products} />
           <View style={{ padding: 0 }}>
