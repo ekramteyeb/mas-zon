@@ -53,7 +53,7 @@ const ModalComponent = () => {
         onPress={() => setModalVisible(true)}
       >
         <Icon
-          name="list"
+          name="grid"
           color="purple"
           raised
           style={[tw`bg-blue-300` /* styles.button, styles.buttonOpen */]}
