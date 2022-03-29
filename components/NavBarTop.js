@@ -24,9 +24,7 @@ export default function NavBarTop() {
           <Text style={tw`text-xl font-bold text-gray-600`}>Mass Zone</Text>
           <Cart cart={state.cart} />
         </View>
-      ) : (
-        <Text></Text>
-      )}
+      ) : null}
     </>
   )
 }

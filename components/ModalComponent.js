@@ -3,16 +3,20 @@ import { Icon } from 'react-native-elements/dist/icons/Icon'
 import tw from 'twrnc'
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native'
 import { Button } from 'react-native-elements'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setLoginToken } from '../slices/navSlice'
+import { useNavigation } from '@react-navigation/native'
 
 const ModalComponent = () => {
   const [modalVisible, setModalVisible] = useState(false)
+  const state = useSelector((state) => state.nav)
+  const navigation = useNavigation()
   const dispatch = useDispatch()
   return (
     <View style={styles.centeredView}>
       <Modal
         animationType="slide"
+        /* presentationStyle="fullScreen" */
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
@@ -21,13 +25,14 @@ const ModalComponent = () => {
         }}
       >
         <View style={styles.centeredView}>
-          <View style={[tw`bg-white`, styles.modalView]}>
-            <Text style={styles.modalText}>Hello World!</Text>
+          <View style={[tw`bg-green-300`, styles.modalView]}>
+            <Text style={styles.modalText}>Hello {state.user.name} !</Text>
             <Button
               title="Sign out"
               icon={{ name: 'logout', color: 'white', size: 18 }}
               onPress={() => {
                 dispatch(setLoginToken(null))
+                navigation.navigate('Login')
               }}
             ></Button>
             <Pressable

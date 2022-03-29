@@ -18,6 +18,7 @@ import NavBarTop from './components/NavBarTop'
 
 export default function App() {
   const Stack = createNativeStackNavigator()
+
   return (
     <Provider store={store}>
       <StatusBar backgroundColor="#61dafb" />

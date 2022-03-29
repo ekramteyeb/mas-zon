@@ -35,7 +35,7 @@ const SoftDrinksScreen = () => {
     })
       .then(function (response) {
         setUsers(response.data.data)
-        console.log('User feteched', response.data.data)
+
         // dispatch(setProducts(response.data.data))
       })
       .catch(function (error) {
@@ -69,7 +69,7 @@ const SoftDrinksScreen = () => {
           dispatch(setCart(state.cart + 1)), sendPushNotification(state.token)
         }}
       ></Button> */}
-      <Text h4>{users ? `User is ${users[0].name}` : 'No user here'}</Text>
+      <Text h4>{users ? `User is ${state.user?.name}` : 'No user here'}</Text>
       <View>
         {users?.map((user, index) => (
           <View
@@ -77,7 +77,7 @@ const SoftDrinksScreen = () => {
             key={user.id * 201}
           >
             <Text style={tw`  text-blue-800 text-lg dark:text-white`}>
-              {user.name} - {user.id}
+              {user.name}
             </Text>
             <Button
               title="Send text"

@@ -56,7 +56,9 @@ export default function Signup() {
       ) : (
         <Text></Text>
       )}
-      <Text h4>Sign up </Text>
+      <Text h4 style={{ paddingLeft: 8 }}>
+        Sign up
+      </Text>
 
       <TextInput
         style={styles.input}
@@ -64,6 +66,7 @@ export default function Signup() {
         placeholder="Enter email"
         value={email}
       />
+
       <TextInput
         style={styles.input}
         onChangeText={onChangePassword}
@@ -116,7 +119,7 @@ export default function Signup() {
 const styles = StyleSheet.create({
   input: {
     height: 46,
-    margin: 12,
+    margin: 4,
     borderWidth: 0.2,
     padding: 8,
 

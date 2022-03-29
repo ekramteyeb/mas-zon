@@ -10,7 +10,12 @@ import MenuNavOptions from '../components/menuNavOptions'
 import NavBarTop from '../components/NavBarTop'
 import Tabs from '../components/Tab'
 import ModalComponent from '../components/ModalComponent'
-import { setLoginToken, setToken, setProducts } from '../slices/navSlice'
+import {
+  setLoginToken,
+  setToken,
+  setProducts,
+  setUser
+} from '../slices/navSlice'
 import { registerForPushNotificationsAsync } from './HotDrinksScreen'
 import MostSoldLists from './MostSoldLists'
 
@@ -42,26 +47,24 @@ const HomeScreen = () => {
         dispatch(setProducts(response.data.data))
       })
       .catch(function (error) {
-        console.log('not fetched')
+        console.log('not fetched Products from home')
       })
     // setProducts(json.data);
     //setCount(count + 1);
   }, [state.loginToken])
+
+  //Register user device
   useEffect(() => {
-    console.log('login token', state.loginToken)
-
-    console.log('user', state.user)
-
     axios({
       method: 'PUT',
-      url: `https://mass-zone-backend.herokuapp.com/api/users/${state.user}`,
+      url: `https://mass-zone-backend.herokuapp.com/api/users/${state.user?.id}`,
       data: { device: state.token },
       headers: {
         Authorization: `Bearer ${state.loginToken}`
       }
     })
       .then(function (response) {
-        console.log(response.data, 'device token response')
+        dispatch(setUser(response.data.data))
       })
       .catch(function (error) {
         console.log('device not registerd', error)

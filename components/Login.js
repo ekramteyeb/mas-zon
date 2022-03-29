@@ -34,13 +34,14 @@ const Login = () => {
       data: data
     })
       .then(function (response) {
-        dispatch(setUser(response.data.data.id))
+        console.log(response.data.data, 'login data')
+        dispatch(setUser(response.data.data))
         dispatch(setLoginToken(response.data.data.token))
         navigation.navigate('HomeScreen')
       })
 
       .catch(function (error) {
-        console.log('not fetched', error)
+        console.log('not fetched login', error)
         setNotify('Incorrect email/password')
         notify ? setTimeout(() => setNotify(null), 3000) : ''
       })
@@ -58,7 +59,7 @@ const Login = () => {
         <Text></Text>
       )}
 
-      <Text h4 onPress={() => navigation.navigate('Signup')}>
+      <Text h4 style={{ paddingLeft: 20 }}>
         Login
       </Text>
 
