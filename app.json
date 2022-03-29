@@ -4,7 +4,7 @@
     "slug": "mass-zone",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/coffee.jpg",
+    "icon": "./assets/coffee.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
