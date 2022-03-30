@@ -1,6 +1,7 @@
 import React from 'react'
 import { Tab, Text, TabView } from 'react-native-elements'
 import { View } from 'react-native'
+import tw from 'twrnc'
 
 export default function Tabs() {
   const [index, setIndex] = React.useState(0)
@@ -50,7 +51,12 @@ export default function Tabs() {
         <TabView.Item style={{ backgroundColor: 'blue', width: '100%' }}>
           <Text h1>Favorite</Text>
         </TabView.Item>
-        <TabView.Item style={{ backgroundColor: 'orange', width: '100%' }}>
+        <TabView.Item
+          style={{
+            backgroundColor: 'orange',
+            width: '100%'
+          }}
+        >
           <Text h1>Cart</Text>
         </TabView.Item>
         {/*  <TabView.Item style={{ backgroundColor: 'green', width: '100%' }}>

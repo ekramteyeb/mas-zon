@@ -23,8 +23,6 @@ const HomeScreen = () => {
   const dispatch = useDispatch()
   const state = useSelector((state) => state.nav)
 
-  //const temporaryToken = '1|yukzD74qfMlyirUe133g53H1qf1jooZbaznUqR5A'
-
   //get user device token
 
   useEffect(() => {

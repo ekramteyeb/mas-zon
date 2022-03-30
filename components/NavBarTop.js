@@ -1,4 +1,11 @@
-import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import {
+  Text,
+  SafeAreaView,
+  StyleSheet,
+  StatusBar,
+  Image,
+  TouchableOpacity
+} from 'react-native'
 import { Icon } from 'react-native-elements/dist/icons/Icon'
 import { useSelector } from 'react-redux'
 import tw from 'twrnc'
@@ -10,7 +17,9 @@ export default function NavBarTop() {
   return (
     <>
       {state.loginToken ? (
-        <View style={[styles.container, tw`bg-gray-100 h-16 border-gray-200`]}>
+        <SafeAreaView
+          style={[styles.container, tw`bg-gray-100 h-16 border-gray-200`]}
+        >
           <TouchableOpacity>
             <ModalComponent />
             {/* <Icon
@@ -23,7 +32,7 @@ export default function NavBarTop() {
           </TouchableOpacity>
           <Text style={tw`text-xl font-bold text-gray-600`}>Mass Zone</Text>
           <Cart cart={state.cart} />
-        </View>
+        </SafeAreaView>
       ) : null}
     </>
   )
@@ -37,7 +46,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 2,
     marginBottom: 2,
-    marginTop: 2,
+    marginTop: StatusBar.currentHeight || 40,
+    // marginTop: 30,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',

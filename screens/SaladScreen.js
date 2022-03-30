@@ -16,7 +16,9 @@ import ProductList from '../components/ProductList'
 
 const SaladScreen = () => {
   let products = useSelector((state) => state.nav.products)
-  let copyProducts = [...products].sort((a, b) => a.price - b.price)
+  let copyProducts = products
+    ? [...products].sort((a, b) => a.price - b.price)
+    : []
 
   return (
     <>

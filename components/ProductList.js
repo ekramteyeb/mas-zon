@@ -13,12 +13,14 @@ import {
 
 import ButtonToCart from '../components/ButtonToCart'
 import { useNavigation } from '@react-navigation/native'
+import Tabs from './Tab'
 
 const ProductList = ({ products }) => {
   const navigation = useNavigation()
 
   return (
     <SafeAreaView style={[styles.container, tw`bg-gray-100`]}>
+      <Tabs />
       <Text style={[styles.header]}>{products?.length} Different Choices</Text>
       {products?.length !== 0 ? (
         <FlatList
@@ -88,7 +90,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'black',
     textAlign: 'right',
-    paddingRight: 16
+    paddingRight: 16,
+    padding: 16
   },
   details: {
     padding: 20

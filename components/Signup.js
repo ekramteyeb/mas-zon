@@ -33,6 +33,7 @@ export default function Signup() {
     axios({
       method: 'POST',
       url: 'https://mass-zone-backend.herokuapp.com/api/register',
+      //url: 'http://127.0.0.1:8000/api/register',
       data: data
     })
       .then(function (response) {

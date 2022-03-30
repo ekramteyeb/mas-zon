@@ -26,7 +26,7 @@ const ModalComponent = () => {
       >
         <View style={styles.centeredView}>
           <View style={[tw`bg-green-300`, styles.modalView]}>
-            <Text style={styles.modalText}>Hello {state.user.name} !</Text>
+            <Text style={styles.modalText}>Hello {state.user?.name} !</Text>
             <Button
               title="Sign out"
               icon={{ name: 'logout', color: 'white', size: 18 }}
