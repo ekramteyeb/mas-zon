@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { StyleSheet, View, Button, SafeAreaView } from 'react-native'
+import { StyleSheet, View, Button, StatusBar, SafeAreaView } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 
 import tw from 'twrnc'
@@ -93,6 +93,7 @@ export default HomeScreen
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 0
+    //marginTop: StatusBar.currentHeight || 0
   },
   icon: {
     height: 100,

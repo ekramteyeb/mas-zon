@@ -2,7 +2,6 @@ import {
   Text,
   SafeAreaView,
   StyleSheet,
-  StatusBar,
   Image,
   TouchableOpacity
 } from 'react-native'
@@ -10,6 +9,7 @@ import { Icon } from 'react-native-elements/dist/icons/Icon'
 import { useSelector } from 'react-redux'
 import tw from 'twrnc'
 import Cart from './Cart'
+import CartModal from './CartModal'
 import ModalComponent from './ModalComponent'
 
 export default function NavBarTop() {
@@ -30,8 +30,11 @@ export default function NavBarTop() {
               type="ionicon"
             /> */}
           </TouchableOpacity>
-          <Text style={tw`text-xl font-bold text-gray-600`}>Mass Zone</Text>
-          <Cart cart={state.cart} />
+          <Text style={tw`text-xl font-bold mr-12 ml-12 text-gray-600`}>
+            Mass Zone
+          </Text>
+          <CartModal />
+          {/* <Cart cart={state.cart} /> */}
         </SafeAreaView>
       ) : null}
     </>
@@ -46,12 +49,12 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 2,
     marginBottom: 2,
-    marginTop: StatusBar.currentHeight || 40,
+
     // marginTop: 30,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-around'
   },
   icon: {
     height: 100,
