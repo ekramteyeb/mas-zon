@@ -53,6 +53,7 @@ const MenuNavOptions = () => {
       <FlatList
         data={data}
         keyExtractor={(item) => item.id}
+        initialNumToRender={2}
         numColumns={3}
         renderItem={({ item }) => (
           <TouchableOpacity

@@ -24,7 +24,7 @@ const ModalComponent = () => {
           setModalVisible(!modalVisible)
         }}
       >
-        <View style={styles.centeredView}>
+        <View style={styles.flexEndView}>
           <View style={[tw`bg-green-300`, styles.modalView]}>
             <Text style={styles.modalText}>Hello {state.user?.name} !</Text>
             <Button
@@ -73,14 +73,13 @@ const ModalComponent = () => {
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
-    justifyContent: 'flex-end'
+    justifyContent: 'center'
     /* alignItems: 'center' */
   },
+  flexEndView: { flex: 1, justifyContent: 'flex-end' },
   modalView: {
-    marginTop: 20,
     width: '100%',
     height: '60%',
-
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,
     padding: 15,

@@ -29,7 +29,7 @@ export default function ProductDetail({ navigation, route }) {
           />
         </TouchableOpacity>
         <View style={tw`pl-4 pb-10 pt-6`}>
-          <Text h4>{product.name}</Text>
+          <Text h3>{product.name}</Text>
           <Text>Price : {product.price} birr</Text>
           <Text>Ingredients: {product.details}</Text>
         </View>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Icon } from 'react-native-elements/dist/icons/Icon'
 import tw from 'twrnc'
 import {
@@ -20,11 +20,16 @@ const CartModal = () => {
   const state = useSelector((state) => state.nav)
   const navigation = useNavigation()
   const dispatch = useDispatch()
+
+  /* useEffect(() => {
+    state.cart > 0 ? setModalVisible(true) : setModalVisible(false)
+  }, [state.cart]) */
   return (
     <View style={styles.centeredView}>
       <Modal
         animationType="slide"
         /* presentationStyle="fullScreen" */
+        hardwareAccelerated
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
@@ -57,7 +62,7 @@ const CartModal = () => {
                   resizeMode="cover"
                 />
 
-                <Text>hello cart</Text>
+                <Text>{state.cart} items </Text>
                 <Button
                   title="view cart"
                   onPress={() => alert('cart page is coming')}
@@ -102,7 +107,7 @@ const styles = StyleSheet.create({
   modalView: {
     marginTop: 20,
     width: '100%',
-    height: '12%',
+    height: '14%',
 
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,

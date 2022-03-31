@@ -30,10 +30,11 @@ export default function NavBarTop() {
               type="ionicon"
             /> */}
           </TouchableOpacity>
-          <Text style={tw`text-xl font-bold mr-12 ml-12 text-gray-600`}>
-            Mass Zone
-          </Text>
-          <CartModal />
+          <Text style={tw`text-xl font-bold text-gray-600`}>Mass Zone</Text>
+          <TouchableOpacity>
+            <CartModal />
+          </TouchableOpacity>
+
           {/* <Cart cart={state.cart} /> */}
         </SafeAreaView>
       ) : null}
@@ -50,11 +51,11 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     marginBottom: 2,
 
-    // marginTop: 30,
-    display: 'flex',
+    marginTop: 38,
+
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around'
+    justifyContent: 'space-between'
   },
   icon: {
     height: 100,

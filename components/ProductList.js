@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, memo } from 'react'
 import tw from 'twrnc'
 import { Button, Text } from 'react-native-elements'
 import {
@@ -60,7 +60,7 @@ const ProductList = ({ products }) => {
   )
 }
 
-export default ProductList
+export default memo(ProductList)
 
 const styles = StyleSheet.create({
   container: {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import {
   StyleSheet,
   Text,
@@ -9,13 +9,14 @@ import {
 import tw from 'twrnc'
 import MostSold from '../components/MostSold'
 
-export default function MostSoldLists({ products }) {
+function MostSoldLists({ products }) {
   return (
     <View>
       {products?.length !== 0 ? (
         <FlatList
           data={products}
           horizontal
+          initialNumToRender={1}
           renderItem={({ item }) => (
             <TouchableOpacity onPress={() => alert(`${item.rating}`)}>
               <View style={[styles.item]}>
@@ -32,5 +33,6 @@ export default function MostSoldLists({ products }) {
     </View>
   )
 }
+export default memo(MostSoldLists)
 
 const styles = StyleSheet.create({})

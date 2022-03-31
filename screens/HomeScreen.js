@@ -17,7 +17,7 @@ import {
   setUser
 } from '../slices/navSlice'
 import { registerForPushNotificationsAsync } from './HotDrinksScreen'
-import MostSoldLists from './MostSoldLists'
+import MostSoldLists from '../components/MostSoldLists'
 
 const HomeScreen = () => {
   const dispatch = useDispatch()
