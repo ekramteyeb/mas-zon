@@ -1,11 +1,13 @@
 import { StyleSheet, View, Image } from 'react-native'
 import React from 'react'
-import { Button, Text } from 'react-native-elements'
+import { Button, Text, Icon } from 'react-native-elements'
 import tw from 'twrnc'
 import { useSelector } from 'react-redux'
+import { useNavigation } from '@react-navigation/native'
 
 const CartModalManual = () => {
   const state = useSelector((state) => state.nav)
+  const navigation = useNavigation()
   return (
     <View
       style={[
@@ -17,7 +19,7 @@ const CartModalManual = () => {
         }
       ]}
     >
-      <View style={[tw`bg-red-500 p-1 pr-2`, styles.container]}>
+      <View style={[tw`bg-red-400 p-1 pr-2`, styles.container]}>
         <Image
           style={[tw`bg-gray-200`, styles.cartViewIcon]}
           source={{
@@ -37,10 +39,13 @@ const CartModalManual = () => {
           <Text style={tw`text-white`}>inclusive of tax </Text>
         </View>
         <Button
-          title="VIEW CART"
+          icon={<Icon name="shop" size={19} color="blue" />}
+          title=" VIEW CART"
           containerStyle={{ backgroundColor: 'white' }}
           type="outline"
-          onPress={() => alert('cart page is coming')}
+          onPress={() =>
+            navigation.navigate('CartScreen' /* { product: item } */)
+          }
         ></Button>
       </View>
     </View>

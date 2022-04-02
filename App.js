@@ -12,6 +12,7 @@ import SoftDrinksScreen from './screens/SoftDrinksScreen'
 import CakesScreen from './screens/CakesScreen'
 import HotDrinksScreen from './screens/HotDrinksScreen'
 import ProductDetail from './components/ProductDetail'
+import CartScreen from './screens/CartScreen'
 import Signup from './components/Signup'
 import Login from './components/Login'
 import NavBarTop from './components/NavBarTop'
@@ -64,6 +65,11 @@ export default function App() {
             <Stack.Screen
               name="ProductDetail"
               component={ProductDetail}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="CartScreen"
+              component={CartScreen}
               options={{ headerShown: false }}
             />
             <Stack.Screen
