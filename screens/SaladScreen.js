@@ -13,7 +13,7 @@ import {
 } from 'react-native'
 import { useSelector } from 'react-redux'
 import ProductList from '../components/ProductList'
-import Cart from '../components/Cart'
+import CartModalManual from '../components/CartModalManual'
 
 const SaladScreen = () => {
   let products = useSelector((state) => state.nav.products)
@@ -24,7 +24,7 @@ const SaladScreen = () => {
   return (
     <>
       <ProductList products={products} />
-      <Cart />
+      <CartModalManual />
     </>
   )
 }

@@ -8,7 +8,7 @@ import {
 import { Icon } from 'react-native-elements/dist/icons/Icon'
 import { useSelector } from 'react-redux'
 import tw from 'twrnc'
-import Cart from './Cart'
+import CartModalManual from './CartModalManual'
 import CartModal from './CartModal'
 import ModalComponent from './ModalComponent'
 

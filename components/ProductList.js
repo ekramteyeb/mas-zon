@@ -12,7 +12,7 @@ import {
 } from 'react-native'
 
 import ButtonToCart from '../components/ButtonToCart'
-import { Cart } from '../components/Cart'
+import { Cart } from './CartModalManual'
 import { useNavigation } from '@react-navigation/native'
 import Tabs from './Tab'
 

@@ -13,7 +13,7 @@ import {
 
 import { useSelector } from 'react-redux'
 import ProductList from '../components/ProductList'
-import Cart from '../components/Cart'
+import CartModalManual from '../components/CartModalManual'
 
 const CakesScreen = () => {
   let products = useSelector((state) => state.nav.products)?.filter(
@@ -23,7 +23,7 @@ const CakesScreen = () => {
   return (
     <>
       <ProductList products={products} />
-      <Cart />
+      <CartModalManual />
     </>
   )
 }

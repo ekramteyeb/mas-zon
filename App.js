@@ -15,7 +15,6 @@ import ProductDetail from './components/ProductDetail'
 import Signup from './components/Signup'
 import Login from './components/Login'
 import NavBarTop from './components/NavBarTop'
-import Cart from './components/Cart'
 
 export default function App() {
   const Stack = createNativeStackNavigator()

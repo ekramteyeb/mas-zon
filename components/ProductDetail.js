@@ -10,6 +10,7 @@ import {
 import tw from 'twrnc'
 import { Text } from 'react-native-elements'
 import GoBackButton from './GoBackButton'
+import HorizontalLine from './HorizontalLine'
 
 export default function ProductDetail({ navigation, route }) {
   //const navigation = useNavigation()
@@ -20,7 +21,7 @@ export default function ProductDetail({ navigation, route }) {
       <SafeAreaView style={[styles.container, tw`bg-gray-200 `]}>
         <TouchableOpacity>
           <Image
-            style={[tw`bg-gray-200`, styles.icon]}
+            style={[tw`bg-gray-200 p-20`, styles.icon]}
             source={{
               uri: product.image
               //require("../assets/icon2.webp")
@@ -28,9 +29,13 @@ export default function ProductDetail({ navigation, route }) {
             resizeMode="cover"
           />
         </TouchableOpacity>
-        <View style={tw`pl-4 pb-10 pt-6`}>
+        <View style={tw`pl-4 pb-10 pt-10`}>
           <Text h3>{product.name}</Text>
-          <Text>Price : {product.price} birr</Text>
+          <HorizontalLine />
+          <Text style={tw`text-red-600 text-6 mb-2`}>
+            Price : {product.price} birr
+          </Text>
+
           <Text>Ingredients: {product.details}</Text>
         </View>
         <GoBackButton />

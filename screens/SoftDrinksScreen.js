@@ -16,7 +16,7 @@ import tw from 'twrnc'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCart } from '../slices/navSlice'
 import { sendPushNotification } from './HotDrinksScreen'
-import Cart from '../components/Cart'
+import CartModalManual from '../components/CartModalManual'
 import ModalComponent from '../components/ModalComponent'
 
 const SoftDrinksScreen = () => {

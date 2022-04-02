@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setCart } from '../slices/navSlice'
 import ButtonToCart from '../components/ButtonToCart'
 import ProductList from '../components/ProductList'
-import Cart from '../components/Cart'
+import CartModalManual from '../components/CartModalManual'
 
 const SoupScreen = () => {
   const products = useSelector((state) => state.nav.products)?.filter(
@@ -27,7 +27,7 @@ const SoupScreen = () => {
   return (
     <>
       <ProductList products={products} />
-      <Cart />
+      <CartModalManual />
     </>
   )
 }

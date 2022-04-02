@@ -4,20 +4,20 @@ import { Button, Text } from 'react-native-elements'
 import tw from 'twrnc'
 import { useSelector } from 'react-redux'
 
-const Cart = () => {
+const CartModalManual = () => {
   const state = useSelector((state) => state.nav)
   return (
     <View
       style={[
-        tw`  mt-0 bg-red-600 p-2`,
+        tw`  mb-0 bg-gray-300 p-1 pt-2 `,
         {
           display: state.cart > 0 ? 'flex' : 'none',
-          height: '14%',
+          height: '15%',
           borderRadius: 2
         }
       ]}
     >
-      <View style={[tw`bg-gray-200 p-2`, styles.container]}>
+      <View style={[tw`bg-red-500 p-1 pr-2`, styles.container]}>
         <Image
           style={[tw`bg-gray-200`, styles.cartViewIcon]}
           source={{
@@ -30,14 +30,16 @@ const Cart = () => {
           }}
         />
         <View>
-          <Text>{state.cart} items </Text>
-          <Text h4>
-            {state.products ? state.products[0].price * state.cart : 0} birr{' '}
+          <Text style={tw`text-white`}>{state.cart} items </Text>
+          <Text h4 style={tw`text-white`}>
+            {state.products ? state.products[0].price * state.cart : 0} BIRR{' '}
           </Text>
-          <Text>inclusive of tax </Text>
+          <Text style={tw`text-white`}>inclusive of tax </Text>
         </View>
         <Button
-          title="CHECKOUT"
+          title="VIEW CART"
+          containerStyle={{ backgroundColor: 'white' }}
+          type="outline"
           onPress={() => alert('cart page is coming')}
         ></Button>
       </View>
@@ -45,7 +47,7 @@ const Cart = () => {
   )
 }
 
-export default Cart
+export default CartModalManual
 
 const styles = StyleSheet.create({
   container: {
@@ -54,5 +56,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between'
   },
-  cartViewIcon: { height: '90%', width: '30%', resizeMode: 'contain' }
+  cartViewIcon: {
+    height: '80%',
+    width: '20%',
+    borderRadius: 8,
+    resizeMode: 'cover'
+  }
 })
