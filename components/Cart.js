@@ -9,14 +9,15 @@ const Cart = () => {
   return (
     <View
       style={[
-        tw`  mb-6 bg-red-600 p-2`,
+        tw`  mt-0 bg-red-600 p-2`,
         {
           display: state.cart > 0 ? 'flex' : 'none',
-          height: '12%'
+          height: '14%',
+          borderRadius: 2
         }
       ]}
     >
-      <View style={[tw`bg-white p-3`, styles.container]}>
+      <View style={[tw`bg-gray-200 p-2`, styles.container]}>
         <Image
           style={[tw`bg-gray-200`, styles.cartViewIcon]}
           source={{
@@ -48,9 +49,10 @@ export default Cart
 
 const styles = StyleSheet.create({
   container: {
+    borderRadius: 2,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between'
   },
-  cartViewIcon: { height: '90%', width: '30%', resizeMode: 'cover' }
+  cartViewIcon: { height: '90%', width: '30%', resizeMode: 'contain' }
 })

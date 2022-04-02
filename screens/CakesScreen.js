@@ -13,13 +13,19 @@ import {
 
 import { useSelector } from 'react-redux'
 import ProductList from '../components/ProductList'
+import Cart from '../components/Cart'
 
 const CakesScreen = () => {
   let products = useSelector((state) => state.nav.products)?.filter(
     (p) => p.category == 'cake'
   )
 
-  return <ProductList products={products} />
+  return (
+    <>
+      <ProductList products={products} />
+      <Cart />
+    </>
+  )
 }
 
 export default CakesScreen

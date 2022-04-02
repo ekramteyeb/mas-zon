@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { StyleSheet, View, Button, StatusBar, SafeAreaView } from 'react-native'
+import {
+  StyleSheet,
+  View,
+  Button,
+  StatusBar,
+  ScrollView,
+  SafeAreaView
+} from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 
 import tw from 'twrnc'
@@ -41,7 +48,6 @@ const HomeScreen = () => {
       }
     })
       .then(function (response) {
-        console.log('feteched again')
         dispatch(setProducts(response.data.data))
       })
       .catch(function (error) {

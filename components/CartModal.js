@@ -79,8 +79,9 @@ const CartModal = () => {
         }}
       >
         <Icon
-          name="grid"
+          name="person"
           color="purple"
+          size={22}
           raised
           style={[tw`bg-blue-300` /* styles.button, styles.buttonOpen */]}
           type="ionicon"

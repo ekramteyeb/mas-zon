@@ -1,4 +1,4 @@
-import React, { useEffect, useState, memo } from 'react'
+import React, { useEffect, useState } from 'react'
 import tw from 'twrnc'
 import { Button, Text } from 'react-native-elements'
 import {
@@ -12,6 +12,7 @@ import {
 } from 'react-native'
 
 import ButtonToCart from '../components/ButtonToCart'
+import { Cart } from '../components/Cart'
 import { useNavigation } from '@react-navigation/native'
 import Tabs from './Tab'
 
@@ -19,48 +20,53 @@ const ProductList = ({ products }) => {
   const navigation = useNavigation()
 
   return (
-    <SafeAreaView style={[styles.container, tw`bg-gray-100`]}>
-      <Tabs />
-      <Text style={[styles.header]}>{products?.length} Different Choices</Text>
-      {products?.length !== 0 ? (
-        <FlatList
-          data={products}
-          initialNumToRender={4}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('ProductDetail', { product: item })
-              }}
-            >
-              <View style={[styles.item, tw`bg-gray-200`]}>
-                <View style={styles.productImageContainer}>
-                  <Image
-                    style={[styles.productImage, tw`bg-green-500`]}
-                    source={{
-                      uri: `${item?.image}`
-                    }}
-                  />
-                </View>
-                <View style={styles.details}>
-                  <Text style={styles.title}>{item.name}</Text>
-                  <Text style={styles.title}> {item.price} birr</Text>
+    <>
+      <SafeAreaView style={[styles.container, tw`bg-gray-100`]}>
+        <Text style={[styles.header]}>
+          {products?.length} Different Choices
+        </Text>
+        {products?.length !== 0 ? (
+          <FlatList
+            data={products}
+            initialNumToRender={4}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('ProductDetail', { product: item })
+                }}
+              >
+                <View style={[styles.item, tw`bg-gray-200`]}>
+                  <View style={styles.productImageContainer}>
+                    <Image
+                      style={[styles.productImage, tw`bg-green-500`]}
+                      source={{
+                        uri: `${item?.image}`
+                      }}
+                    />
+                  </View>
+                  <View style={styles.details}>
+                    <Text style={styles.title}>{item.name}</Text>
+                    <Text style={styles.title}>
+                      {item.price} birr {item.id}
+                    </Text>
 
-                  <ButtonToCart />
+                    <ButtonToCart />
+                  </View>
                 </View>
-              </View>
-            </TouchableOpacity>
-          )}
-          keyExtractor={(item) => item.id}
-          /* extraData={selectedId} */
-        />
-      ) : (
-        <Text>noting tto display</Text>
-      )}
-    </SafeAreaView>
+              </TouchableOpacity>
+            )}
+            keyExtractor={(item) => item.id}
+            /* extraData={selectedId} */
+          />
+        ) : (
+          <Text>noting to display</Text>
+        )}
+      </SafeAreaView>
+    </>
   )
 }
 
-export default memo(ProductList)
+export default ProductList
 
 const styles = StyleSheet.create({
   container: {

@@ -78,7 +78,6 @@ export default function App() {
               options={{ headerShown: false }}
             />
           </Stack.Navigator>
-          <Cart />
         </SafeAreaProvider>
       </NavigationContainer>
     </Provider>

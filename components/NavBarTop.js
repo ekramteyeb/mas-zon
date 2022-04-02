@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     marginBottom: 2,
 
-    marginTop: 38,
+    marginTop: Platform.OS === 'ios' ? 38 : 0,
 
     flexDirection: 'row',
     alignItems: 'center',

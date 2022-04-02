@@ -1,6 +1,14 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { FlatList, TouchableOpacity, Text, View, Image } from 'react-native'
+import {
+  FlatList,
+  TouchableOpacity,
+  Text,
+  ScrollView,
+  SafeAreaView,
+  View,
+  Image
+} from 'react-native'
 import { Icon } from 'react-native-elements'
 import tw from 'twrnc'
 
@@ -50,54 +58,56 @@ const MenuNavOptions = () => {
   return (
     <>
       <Text style={tw`text-lg font-bold ml-40`}>Menu</Text>
-      <FlatList
-        data={data}
-        keyExtractor={(item) => item.id}
-        initialNumToRender={2}
-        numColumns={3}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            onPress={() => navigation.navigate(item.sreen)}
-            style={[
-              tw`bg-gray-100  pl-0 m-1 mb-2 `,
-              {
-                width: '31%',
-                borderBottomWidth: 4,
-                borderBottomColor: 'green'
-              }
-            ]}
-          >
-            <View
-              style={{
-                paddingLeft: 0,
-                borderRadius: 4
-              }}
+      <SafeAreaView style={tw`flex`}>
+        <FlatList
+          data={data}
+          keyExtractor={(item) => item.id}
+          initialNumToRender={2}
+          numColumns={3}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              onPress={() => navigation.navigate(item.sreen)}
+              style={[
+                tw`bg-gray-100  pl-0 m-1 mb-2 `,
+                {
+                  width: '31%',
+                  borderBottomWidth: 4,
+                  borderBottomColor: 'green'
+                }
+              ]}
             >
-              <Image
-                style={[
-                  tw` bg-green-200`,
-                  { height: 106, resizeMode: 'cover' }
-                ]}
-                source={{ uri: item.image }}
-              />
-              {/* <Icon
+              <View
+                style={{
+                  paddingLeft: 0,
+                  borderRadius: 4
+                }}
+              >
+                <Image
+                  style={[
+                    tw` bg-green-200`,
+                    { height: 106, resizeMode: 'cover' }
+                  ]}
+                  source={{ uri: item.image }}
+                />
+                {/* <Icon
               style={tw`p-2 bg-black rounded-full w-10 mt-4 ml-4`}
               name="arrowright"
               color="white"
               type="antdesign"
             /> */}
-              <Text
-                style={[
-                  { textAlign: 'center' },
-                  tw`mt-2  text-lg font-semibold`
-                ]}
-              >
-                {item.title}
-              </Text>
-            </View>
-          </TouchableOpacity>
-        )}
-      />
+                <Text
+                  style={[
+                    { textAlign: 'center' },
+                    tw`mt-2  text-lg font-semibold`
+                  ]}
+                >
+                  {item.title}
+                </Text>
+              </View>
+            </TouchableOpacity>
+          )}
+        />
+      </SafeAreaView>
     </>
   )
 }

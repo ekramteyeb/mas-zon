@@ -45,7 +45,6 @@ const SoftDrinksScreen = () => {
 
   return (
     <View style={[styles.container /* tw`bg-white h-full` */]}>
-      <Cart cart={state.cart} />
       <Icon raised name="home" color="#517fa4" onPress={() => alert('homee')} />
       <Icon
         raised

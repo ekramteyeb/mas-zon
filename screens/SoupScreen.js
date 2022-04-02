@@ -17,13 +17,19 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setCart } from '../slices/navSlice'
 import ButtonToCart from '../components/ButtonToCart'
 import ProductList from '../components/ProductList'
+import Cart from '../components/Cart'
 
 const SoupScreen = () => {
   const products = useSelector((state) => state.nav.products)?.filter(
     (p) => p.category == 'soup'
   )
 
-  return <ProductList products={products} />
+  return (
+    <>
+      <ProductList products={products} />
+      <Cart />
+    </>
+  )
 }
 
 export default SoupScreen
