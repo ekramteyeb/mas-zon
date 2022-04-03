@@ -15,7 +15,7 @@ import HorizontalLine from './HorizontalLine'
 export default function ProductDetail({ navigation, route }) {
   //const navigation = useNavigation()
   const product = route.params.product
-  console.log(product)
+
   return (
     <>
       <SafeAreaView style={[styles.container, tw`bg-gray-200 `]}>

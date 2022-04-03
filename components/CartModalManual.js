@@ -13,7 +13,7 @@ const CartModalManual = () => {
       style={[
         tw`  mb-0 bg-gray-300 p-1 pt-2 `,
         {
-          display: state.cart > 0 ? 'flex' : 'none',
+          display: state.cart.length > 0 ? 'flex' : 'none',
           height: '15%',
           borderRadius: 2
         }
@@ -23,18 +23,20 @@ const CartModalManual = () => {
         <Image
           style={[tw`bg-gray-200`, styles.cartViewIcon]}
           source={{
-            uri: state.products
-              ? state.cart < state.products.length
-                ? state.products[state.cart].image
-                : state.products[0].image
-              : 'kk'
+            uri:
+              state.cart.length > 0
+                ? state.cart[state.cart.length - 1].image
+                : 'kk'
             //uri: require('../assets/coffee.png')
           }}
         />
         <View>
-          <Text style={tw`text-white`}>{state.cart} items </Text>
+          <Text style={tw`text-white`}>{state.cart.length} items </Text>
           <Text h4 style={tw`text-white`}>
-            {state.products ? state.products[0].price * state.cart : 0} BIRR{' '}
+            {state.cart.length > 0
+              ? state.cart.reduce((a, b) => a + b.price, 0)
+              : 0}{' '}
+            BIRR{' '}
           </Text>
           <Text style={tw`text-white`}>inclusive of tax </Text>
         </View>

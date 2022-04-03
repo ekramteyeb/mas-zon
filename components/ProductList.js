@@ -50,7 +50,7 @@ const ProductList = ({ products }) => {
                       {item.price} birr {item.id}
                     </Text>
 
-                    <ButtonToCart />
+                    <ButtonToCart product={item} />
                   </View>
                 </View>
               </TouchableOpacity>

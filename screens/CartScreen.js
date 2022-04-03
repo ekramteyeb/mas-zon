@@ -13,37 +13,15 @@ import {
 import { useSelector } from 'react-redux'
 import HorizontalLine from '../components/HorizontalLine'
 import GoBackButton from '../components/GoBackButton'
+import ProductList from '../components/ProductList'
 
 const CartScreen = () => {
   //const navigation = useNavigation()
-  const products = useSelector((state) => state.nav.products)
-  const product = products ? products[10] : []
-  //const product = route.params.product
-  //console.log(product)
+  const products = useSelector((state) => state.nav.cart)
+
   return (
     <>
-      <SafeAreaView style={[styles.container, tw`bg-gray-200 `]}>
-        <TouchableOpacity>
-          <Image
-            style={[tw`bg-gray-200 p-20`, styles.icon]}
-            source={{
-              uri: product.image
-              //require("../assets/icon2.webp")
-            }}
-            resizeMode="cover"
-          />
-        </TouchableOpacity>
-        <View style={tw`pl-4 pb-10 pt-10`}>
-          <Text h3>{product.name}</Text>
-          <HorizontalLine />
-          <Text style={tw`text-red-600 text-6 mb-2`}>
-            Price : {product.price} birr
-          </Text>
-
-          <Text>Ingredients: {product.details}</Text>
-        </View>
-        <GoBackButton />
-      </SafeAreaView>
+      <ProductList products={products} />
     </>
   )
 }
@@ -61,7 +39,8 @@ const styles = StyleSheet.create({
     borderRadius: 6
   },
   icon: {
-    height: 400,
-    width: '100%'
+    height: 100,
+    width: '50%',
+    resizeMode: 'contain'
   }
 })

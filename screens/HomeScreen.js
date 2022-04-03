@@ -29,7 +29,7 @@ import MostSoldLists from '../components/MostSoldLists'
 const HomeScreen = () => {
   const dispatch = useDispatch()
   const state = useSelector((state) => state.nav)
-
+  console.log('cart form home', state.cart)
   //get user device token
 
   useEffect(() => {

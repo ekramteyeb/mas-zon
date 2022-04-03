@@ -4,7 +4,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCart } from '../slices/navSlice'
 
-const ButtonToCart = () => {
+const ButtonToCart = ({ product }) => {
   const dispatch = useDispatch()
   const cart = useSelector((state) => state.nav.cart)
   return (
@@ -16,7 +16,7 @@ const ButtonToCart = () => {
           color: 'white'
         }}
         onPress={() => {
-          dispatch(setCart(cart + 1))
+          dispatch(setCart(product))
         }}
         title="ADD"
         buttonStyle={styles.button}

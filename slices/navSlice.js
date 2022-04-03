@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  cart: 0,
+  cart: [],
   token: null,
   loginToken: null,
   products: null,
@@ -13,7 +13,7 @@ export const navSlice = createSlice({
   initialState: initialState,
   reducers: {
     setCart: (state, action) => {
-      state.cart = action.payload
+      state.cart = [...state.cart, action.payload]
     },
     setToken: (state, action) => {
       state.token = action.payload
