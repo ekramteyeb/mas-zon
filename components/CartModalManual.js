@@ -5,7 +5,7 @@ import tw from 'twrnc'
 import { useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 
-const CartModalManual = () => {
+const CartModalManual = ({ name }) => {
   const state = useSelector((state) => state.nav)
   const navigation = useNavigation()
   return (
@@ -42,7 +42,7 @@ const CartModalManual = () => {
         </View>
         <Button
           icon={<Icon name="shop" size={19} color="blue" />}
-          title=" VIEW CART"
+          title={name}
           containerStyle={{ backgroundColor: 'white' }}
           type="outline"
           onPress={() =>

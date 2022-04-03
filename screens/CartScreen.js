@@ -13,7 +13,8 @@ import {
 import { useSelector } from 'react-redux'
 import HorizontalLine from '../components/HorizontalLine'
 import GoBackButton from '../components/GoBackButton'
-import ProductList from '../components/ProductList'
+import CartList from '../components/CartList'
+import CartModalManual from '../components/CartModalManual'
 
 const CartScreen = () => {
   //const navigation = useNavigation()
@@ -21,7 +22,8 @@ const CartScreen = () => {
 
   return (
     <>
-      <ProductList products={products} />
+      <CartList products={products} />
+      <CartModalManual name=" CHECKOUT" />
     </>
   )
 }
