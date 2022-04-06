@@ -8,7 +8,6 @@ import {
   TouchableOpacity
 } from 'react-native'
 import tw from 'twrnc'
-
 export default function MostSold({ item }) {
   return (
     <>
@@ -37,9 +36,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: 300,
-    marginLeft: 2,
-    marginRight: 'auto',
+    width: 'auto',
+    margin: 6,
+    marginTop: 4,
+    marginBottom: 2,
     paddingLeft: 10,
     paddingRight: 10,
     //backgroundColor: "lightgray",

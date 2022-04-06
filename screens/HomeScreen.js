@@ -82,7 +82,7 @@ const HomeScreen = () => {
       {state.loginToken ? (
         <>
           <Tabs />
-          <MostSoldLists products={state.products} />
+
           <View style={{ padding: 0 }}>
             <MenuNavOptions />
           </View>

@@ -2,12 +2,15 @@ import React from 'react'
 import { Tab, Text, TabView } from 'react-native-elements'
 import { View } from 'react-native'
 import tw from 'twrnc'
+import MostSoldLists from './MostSoldLists'
+import { useSelector } from 'react-redux'
 
 export default function Tabs() {
   const [index, setIndex] = React.useState(0)
+  const cart = useSelector((state) => state.nav.cart)
 
   return (
-    <View style={{ height: 160 }}>
+    <View style={{ height: '46%' }}>
       <Tab
         value={index}
         onChange={(e) => setIndex(e)}
@@ -46,10 +49,10 @@ export default function Tabs() {
 
       <TabView value={index} onChange={setIndex} animationType="spring">
         <TabView.Item style={{ backgroundColor: 'red', width: '100%' }}>
-          <Text h1>Recent</Text>
+          <MostSoldLists products={cart} />
         </TabView.Item>
         <TabView.Item style={{ backgroundColor: 'blue', width: '100%' }}>
-          <Text h1>Favorite</Text>
+          <MostSoldLists products={cart} />
         </TabView.Item>
         <TabView.Item
           style={{
@@ -57,7 +60,7 @@ export default function Tabs() {
             width: '100%'
           }}
         >
-          <Text h1>Cart</Text>
+          <MostSoldLists products={cart} />
         </TabView.Item>
         {/*  <TabView.Item style={{ backgroundColor: 'green', width: '100%' }}>
           <Text h1>Cart</Text>

@@ -15,7 +15,6 @@ function MostSoldLists({ products }) {
       {products?.length !== 0 ? (
         <FlatList
           data={products}
-          horizontal
           initialNumToRender={1}
           renderItem={({ item }) => (
             <TouchableOpacity onPress={() => alert(`${item.rating}`)}>
