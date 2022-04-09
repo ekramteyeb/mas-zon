@@ -13,6 +13,7 @@ import {
 } from 'react-native'
 
 import ButtonToCart from '../components/ButtonToCart'
+import GoBackButton from '../components/GoBackButton'
 import { CartModalManual } from './CartModalManual'
 import { useNavigation } from '@react-navigation/native'
 import Tabs from './Tab'
@@ -55,18 +56,12 @@ const CartList = ({ products }) => {
                     />
                   </View>
 
-                  {/* 
-                  const cartProduct = {
-    id: product.id,
-    counter: 1,
-    product: product
-  }
-                  
-                  */}
                   <View style={styles.details}>
                     <Text style={styles.title}>{item.product.name}</Text>
                     <Text style={styles.title}>{item.product?.price} birr</Text>
-                    <View style={tw`flex-row items-center justify-around`}>
+                    <View
+                      style={tw`flex-1 flex-row items-center justify-around`}
+                    >
                       <Button
                         title={
                           item.counter > 1 ? (
@@ -78,8 +73,8 @@ const CartList = ({ products }) => {
                               color={'white'}
                               onPress={() => {
                                 Alert.alert(
-                                  'You wanna remove from list',
-                                  'this message',
+                                  'You wanna remove item from list : ',
+                                  `${item.product.name}`,
                                   [
                                     {
                                       text: 'Cancel',
@@ -110,6 +105,7 @@ const CartList = ({ products }) => {
                           )
                         }
                         onPress={() => {
+                          if (item.counter <= 1) return
                           let modifiedProduct = {
                             ...item,
                             counter: item.counter - 1
@@ -120,7 +116,7 @@ const CartList = ({ products }) => {
                           dispatch(setUpdateCart(modifiedCart))
                         }}
                       ></Button>
-                      <Text>{item.counter}</Text>
+                      <Text style={{ margin: 6 }}>{item.counter}</Text>
                       <Button
                         title={<Icon name="add" size={20} color={'white'} />}
                         onPress={() => {
@@ -143,7 +139,12 @@ const CartList = ({ products }) => {
             /* extraData={selectedId} */
           />
         ) : (
-          <Text>noting to display</Text>
+          <>
+            <Text h4 style={tw`m-2`}>
+              Continue shoping{' '}
+            </Text>
+            <GoBackButton />
+          </>
         )}
       </SafeAreaView>
     </>
@@ -174,7 +175,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 14,
     fontWeight: 'bold',
-    color: 'black'
+    color: 'gray',
+    marginBottom: 4,
+    marginTop: 4
   },
   header: {
     fontSize: 16,
@@ -185,7 +188,10 @@ const styles = StyleSheet.create({
     paddingLeft: 10
   },
   details: {
-    padding: 20
+    flex: 1,
+    padding: 0,
+
+    alignItems: 'center'
   },
   productImage: {
     width: 160,
