@@ -7,6 +7,11 @@ import { setCart } from '../slices/navSlice'
 const ButtonToCart = ({ product }) => {
   const dispatch = useDispatch()
   const cart = useSelector((state) => state.nav.cart)
+  const cartProduct = {
+    id: product.id,
+    counter: 1,
+    product: product
+  }
   return (
     <View style={styles.fixToText}>
       <Button
@@ -16,7 +21,7 @@ const ButtonToCart = ({ product }) => {
           color: 'white'
         }}
         onPress={() => {
-          dispatch(setCart(product))
+          dispatch(setCart(cartProduct))
         }}
         title="ADD"
         buttonStyle={styles.button}

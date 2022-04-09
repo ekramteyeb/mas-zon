@@ -9,7 +9,7 @@ import {
   FlatList,
   Image,
   StatusBar,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import NavBarTop from '../components/NavBarTop'
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     flex: 1,
 
     /* marginTop: StatusBar.currentHeight || 0, */
-    backgroundColor: '#f0f8ff'
+    backgroundColor: '#f0f8ff',
   },
   item: {
     backgroundColor: '#f9c2ff',
@@ -49,26 +49,26 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 5
+    borderRadius: 5,
   },
   title: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#ffff'
+    color: '#ffff',
   },
 
   fixToText: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
 
   productImage: {
     width: 120,
     height: 120,
-    resizeMode: 'cover'
+    resizeMode: 'cover',
   },
   productImageContainer: {
     width: 128,
-    paddingLeft: 4
-  }
+    paddingLeft: 4,
+  },
 })
