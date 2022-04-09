@@ -32,7 +32,7 @@ const CartList = ({ products }) => {
           Cart : {products?.reduce((a, b) => a + b.counter, 0)} items in your
           cart{' '}
         </Text>
-        <Text style={[styles.header]}>
+        <Text h4 style={[styles.header]}>
           Total {products?.reduce((a, b) => a + b.counter * b.product.price, 0)}{' '}
           Birr
         </Text>
@@ -53,6 +53,7 @@ const CartList = ({ products }) => {
                       source={{
                         uri: `${item?.product.image}`
                       }}
+                      resizeMode="cover"
                     />
                   </View>
 

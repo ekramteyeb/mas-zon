@@ -5,7 +5,7 @@ import tw from 'twrnc'
 import { useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 
-const CartModalManual = ({ name }) => {
+const CartModalManual = ({ name, navigate }) => {
   const state = useSelector((state) => state.nav)
   const navigation = useNavigation()
   return (
@@ -45,7 +45,7 @@ const CartModalManual = ({ name }) => {
           containerStyle={{ backgroundColor: 'white' }}
           type="outline"
           onPress={() =>
-            navigation.navigate('CartScreen' /* { product: item } */)
+            navigation.navigate(`${navigate}` /* { product: item } */)
           }
         ></Button>
       </View>

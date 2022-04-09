@@ -23,7 +23,7 @@ const CartScreen = () => {
   return (
     <>
       <CartList products={products} />
-      <CartModalManual name=" CHECKOUT" />
+      <CartModalManual name=" CHECKOUT" navigate="CheckoutScreen" />
     </>
   )
 }

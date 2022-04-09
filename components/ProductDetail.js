@@ -15,6 +15,7 @@ import HorizontalLine from './HorizontalLine'
 export default function ProductDetail({ navigation, route }) {
   //const navigation = useNavigation()
   const product = route.params.product
+  console.log(product, 'from product detail')
 
   return (
     <>
@@ -35,7 +36,6 @@ export default function ProductDetail({ navigation, route }) {
           <Text style={tw`text-red-600 text-6 mb-2`}>
             Price : {product.price} birr
           </Text>
-
           <Text>Ingredients: {product.details}</Text>
         </View>
         <GoBackButton />
