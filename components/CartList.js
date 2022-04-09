@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import tw from 'twrnc'
-import { Button, Text } from 'react-native-elements'
+import { Button, Text, Icon } from 'react-native-elements'
 import {
   StyleSheet,
   View,
@@ -8,6 +8,7 @@ import {
   FlatList,
   Image,
   StatusBar,
+  Alert,
   TouchableOpacity
 } from 'react-native'
 
@@ -15,7 +16,7 @@ import ButtonToCart from '../components/ButtonToCart'
 import { CartModalManual } from './CartModalManual'
 import { useNavigation } from '@react-navigation/native'
 import Tabs from './Tab'
-import { setCart, setCartNull } from '../slices/navSlice'
+import { setCart, setUpdateCart } from '../slices/navSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
 const CartList = ({ products }) => {
@@ -31,7 +32,8 @@ const CartList = ({ products }) => {
           cart{' '}
         </Text>
         <Text style={[styles.header]}>
-          Total {products?.reduce((a, b) => a + b.product?.price, 0)} Birr
+          Total {products?.reduce((a, b) => a + b.counter * b.product.price, 0)}{' '}
+          Birr
         </Text>
         {products?.length !== 0 ? (
           <FlatList
@@ -66,28 +68,70 @@ const CartList = ({ products }) => {
                     <Text style={styles.title}>{item.product?.price} birr</Text>
                     <View style={tw`flex-row items-center justify-around`}>
                       <Button
-                        title="-"
+                        title={
+                          item.counter > 1 ? (
+                            <Icon name="remove" size={20} color={'white'} />
+                          ) : (
+                            <Icon
+                              name="delete"
+                              size={20}
+                              color={'white'}
+                              onPress={() => {
+                                Alert.alert(
+                                  'You wanna remove from list',
+                                  'this message',
+                                  [
+                                    {
+                                      text: 'Cancel',
+                                      //onPress: () => Alert.alert('Cancel Pressed'),
+                                      style: 'cancel'
+                                    },
+                                    {
+                                      text: 'Ok',
+                                      onPress: function () {
+                                        let modifiedCart = cart.filter(
+                                          (ca) => ca.id !== item.id
+                                        )
+                                        dispatch(setUpdateCart(modifiedCart))
+                                      },
+                                      style: 'cancel'
+                                    }
+                                  ],
+                                  {
+                                    cancelable: true
+                                    /* onDismiss: () =>
+                                      Alert.alert(
+                                        'This alert was dismissed by tapping outside of the alert dialog.'
+                                      ) */
+                                  }
+                                )
+                              }}
+                            />
+                          )
+                        }
                         onPress={() => {
                           let modifiedProduct = {
                             ...item,
                             counter: item.counter - 1
                           }
-                          let modifiedCart = [...cart, modifiedProduct]
-                          console.log('modefied cart ', modifiedCart)
+                          let modifiedCart = cart.map((ca) =>
+                            ca.id !== item.id ? ca : modifiedProduct
+                          )
+                          dispatch(setUpdateCart(modifiedCart))
                         }}
                       ></Button>
                       <Text>{item.counter}</Text>
                       <Button
-                        title="+"
+                        title={<Icon name="add" size={20} color={'white'} />}
                         onPress={() => {
                           let modifiedProduct = {
                             ...item,
                             counter: item.counter + 1
                           }
-                          //remove the item from cart
-                          let filterCart = cart.filter((p) => p.id != item.id)
-                          //modify the item with modified product
-                          let modifiedCart = [...filterCart, modifiedProduct]
+                          let modifiedCart = cart.map((ca) =>
+                            ca.id !== item.id ? ca : modifiedProduct
+                          )
+                          dispatch(setUpdateCart(modifiedCart))
                         }}
                       ></Button>
                     </View>

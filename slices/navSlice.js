@@ -15,6 +15,9 @@ export const navSlice = createSlice({
     setCart: (state, action) => {
       state.cart = [...state.cart, action.payload]
     },
+    setUpdateCart: (state, action) => {
+      state.cart = [...action.payload]
+    },
     setToken: (state, action) => {
       state.token = action.payload
     },
@@ -30,8 +33,14 @@ export const navSlice = createSlice({
   }
 })
 
-export const { setCart, setToken, setLoginToken, setProducts, setUser } =
-  navSlice.actions
+export const {
+  setCart,
+  setToken,
+  setLoginToken,
+  setProducts,
+  setUser,
+  setUpdateCart
+} = navSlice.actions
 
 //Selectors
 

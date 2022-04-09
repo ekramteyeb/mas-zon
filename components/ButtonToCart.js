@@ -21,7 +21,10 @@ const ButtonToCart = ({ product }) => {
           color: 'white'
         }}
         onPress={() => {
-          dispatch(setCart(cartProduct))
+          //checks if the item is aleardy in the item ? notify : add to cart list
+          cart.filter((ca) => ca.id == cartProduct.id).length > 0
+            ? alert('This item is aleardy in your cart')
+            : dispatch(setCart(cartProduct))
         }}
         title="ADD"
         buttonStyle={styles.button}
