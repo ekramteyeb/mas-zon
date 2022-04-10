@@ -7,15 +7,17 @@ import { useSelector } from 'react-redux'
 
 export default function Tabs() {
   const [index, setIndex] = React.useState(0)
-  const cart = useSelector((state) => state.nav.cart)
+  const state = useSelector((state) => state.nav)
+  const randomRecent = Math.floor(Math.random() * state.products.length)
+  const randomFavorite = Math.floor(Math.random() * state.products.length)
 
   return (
-    <View style={{ height: '46%' }}>
+    <View style={{ height: '28%' }}>
       <Tab
         value={index}
         onChange={(e) => setIndex(e)}
         indicatorStyle={{
-          backgroundColor: 'white',
+          backgroundColor: 'gray',
           height: 5
         }}
         variant="primary"
@@ -28,7 +30,7 @@ export default function Tabs() {
         <Tab.Item
           title="favorite"
           titleStyle={{ fontSize: 12 }}
-          icon={{ name: 'heart', type: 'ionicon', color: 'white' }}
+          icon={{ name: 'heart', type: 'ionicon', color: 'purple' }}
         />
         {/*  <Tab.Item
           title="home"
@@ -48,11 +50,11 @@ export default function Tabs() {
       </Tab>
 
       <TabView value={index} onChange={setIndex} animationType="spring">
-        <TabView.Item style={{ backgroundColor: 'red', width: '100%' }}>
-          <MostSoldLists products={cart} />
+        <TabView.Item style={[tw`bg-gray-300`, { width: '100%' }]}>
+          <MostSoldLists products={[state.products[randomRecent]]} />
         </TabView.Item>
-        <TabView.Item style={{ backgroundColor: 'blue', width: '100%' }}>
-          <MostSoldLists products={cart} />
+        <TabView.Item style={[tw`bg-gray-300`, { width: '100%' }]}>
+          <MostSoldLists products={[state.products[randomFavorite]]} />
         </TabView.Item>
         <TabView.Item
           style={{
@@ -60,7 +62,7 @@ export default function Tabs() {
             width: '100%'
           }}
         >
-          <MostSoldLists products={cart} />
+          <MostSoldLists products={state.cart} />
         </TabView.Item>
         {/*  <TabView.Item style={{ backgroundColor: 'green', width: '100%' }}>
           <Text h1>Cart</Text>

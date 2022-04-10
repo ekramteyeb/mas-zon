@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import tw from 'twrnc'
-import { Button, Text } from 'react-native-elements'
+import { Button, Text, Icon } from 'react-native-elements'
 import {
   StyleSheet,
   View,
@@ -18,16 +18,55 @@ import Tabs from './Tab'
 
 const ProductList = ({ products }) => {
   const navigation = useNavigation()
+  const [filter, setFilter] = useState('')
+  console.log(products[9])
 
   return (
     <>
       <SafeAreaView style={[styles.container, tw`bg-gray-100`]}>
-        <Text style={[styles.header]}>
-          {products?.length} Different Choices
-        </Text>
+        <View style={tw`flex-row justify-center bg-gray-300`}>
+          <Icon
+            raised
+            name="menuunfold"
+            type="antdesign"
+            color="red"
+            onPress={() => setFilter('')}
+          />
+          <Icon
+            raised
+            name="cake"
+            type="entypo"
+            color="red"
+            onPress={() => setFilter('cake')}
+          />
+          <Icon
+            raised
+            name="drink"
+            type="entypo"
+            color="green"
+            onPress={() => setFilter('softdrinks')}
+          />
+          <Icon
+            raised
+            name="cafe"
+            type="ionicon"
+            color="purple"
+            onPress={() => setFilter('hotdrinks')}
+          />
+          <Icon
+            raised
+            name="bowl"
+            type="entypo"
+            color="orange"
+            onPress={() => setFilter('soup')}
+          />
+        </View>
+        {/*  <Text h3 style={[styles.header]}></Text> */}
         {products?.length !== 0 ? (
           <FlatList
-            data={products}
+            data={
+              filter ? products.filter((p) => p.category == filter) : products
+            }
             initialNumToRender={4}
             renderItem={({ item }) => (
               <TouchableOpacity
@@ -72,8 +111,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     //marginTop: StatusBar.currentHeight || 0,
-    paddingTop: 12,
-    backgroundColor: 'red'
+    paddingTop: 0
   },
   item: {
     padding: 8,
