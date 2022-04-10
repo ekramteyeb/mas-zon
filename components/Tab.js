@@ -8,8 +8,8 @@ import { useSelector } from 'react-redux'
 export default function Tabs() {
   const [index, setIndex] = React.useState(0)
   const state = useSelector((state) => state.nav)
-  const randomRecent = Math.floor(Math.random() * state.products.length)
-  const randomFavorite = Math.floor(Math.random() * state.products.length)
+  const randomRecent = Math.floor(Math.random() * state.products?.length)
+  const randomFavorite = Math.floor(Math.random() * state.products?.length)
 
   return (
     <View style={{ height: '28%' }}>
@@ -51,10 +51,14 @@ export default function Tabs() {
 
       <TabView value={index} onChange={setIndex} animationType="spring">
         <TabView.Item style={[tw`bg-gray-300`, { width: '100%' }]}>
-          <MostSoldLists products={[state.products[randomRecent]]} />
+          <MostSoldLists
+            products={state.products ? [state.products[randomRecent]] : []}
+          />
         </TabView.Item>
         <TabView.Item style={[tw`bg-gray-300`, { width: '100%' }]}>
-          <MostSoldLists products={[state.products[randomFavorite]]} />
+          <MostSoldLists
+            products={state.products ? [state?.products[randomFavorite]] : []}
+          />
         </TabView.Item>
         <TabView.Item
           style={{
