@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   View,
   Text,
+  FlatList,
   StyleSheet,
   TextInput,
   Dimensions
@@ -23,6 +24,7 @@ const SoftDrinksScreen = () => {
   const state = useSelector((state) => state.nav)
   const dispatch = useDispatch()
   const [users, setUsers] = useState(null)
+  const navigation = useNavigation()
   //const tokentoken = '4|3FgxURT6E5PlTX22RuzqjSEFxBvyL2XLOj8oK8ar'
   const fetchUser = () => {
     axios({
@@ -44,8 +46,9 @@ const SoftDrinksScreen = () => {
   }
 
   return (
-    <View style={[styles.container /* tw`bg-white h-full` */]}>
-      <Icon raised name="home" color="#517fa4" onPress={() => alert('homee')} />
+    <SafeAreaView style={[styles.container, tw`bg-white h-full`]}>
+      {/*      <Icon raised name="home" color="#517fa4" onPress={() => alert('homee')} />
+       */}
       <Icon
         raised
         name="logo-youtube"
@@ -60,7 +63,6 @@ const SoftDrinksScreen = () => {
         color="blue"
         onPress={() => alert('home')}
       />
-
       {/* <Button
         title="Add cart"
         style={styles.buttons}
@@ -70,24 +72,38 @@ const SoftDrinksScreen = () => {
       ></Button> */}
       <Text h4>{users ? `User is ${state.user?.name}` : 'No user here'}</Text>
       <View>
-        {users?.map((user, index) => (
-          <View
-            style={tw`bg-gray-200 p-2 h-14 m-1  items-center justify-between flex-row`}
-            key={user.id * 201}
-          >
-            <Text style={tw`  text-blue-800 text-lg dark:text-white`}>
-              {user.name}
-            </Text>
-            <Button
-              title="Send text"
-              icon={{ name: 'chat', size: 15, color: 'orange' }}
-              onPress={() => sendPushNotification(user.device)}
-            />
-          </View>
-        ))}
+        {users?.length > 0 ? (
+          <FlatList
+            data={users}
+            initialNumToRender={4}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('UserDetail', { user: item })
+                }}
+              >
+                <View
+                  style={tw`bg-gray-200 p-2 h-14 m-1  items-center justify-between flex-row`}
+                  key={item.id * 201}
+                >
+                  <Text style={tw`  text-blue-800 text-lg dark:text-white`}>
+                    {item.name}
+                  </Text>
+                  <Button
+                    title="Send text"
+                    icon={{ name: 'chat', size: 15, color: 'orange' }}
+                    onPress={() => sendPushNotification(item.device)}
+                  />
+                </View>
+              </TouchableOpacity>
+            )}
+          />
+        ) : (
+          <Text></Text>
+        )}
       </View>
       <Button title="Bring user" onPress={() => fetchUser()}></Button>
-    </View>
+    </SafeAreaView>
   )
 }
 
