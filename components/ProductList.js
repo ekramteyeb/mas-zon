@@ -15,51 +15,67 @@ import ButtonToCart from '../components/ButtonToCart'
 import { CartModalManual } from './CartModalManual'
 import { useNavigation } from '@react-navigation/native'
 import Tabs from './Tab'
+import { useDispatch, useSelector } from 'react-redux'
 
 const ProductList = ({ products }) => {
   const navigation = useNavigation()
-  const [filter, setFilter] = useState('')
-  console.log(products[9])
+  const dispatch = useDispatch()
+  const filter = useSelector((state) => state.nav.filter)
 
   return (
     <>
       <SafeAreaView style={[styles.container, tw`bg-gray-100`]}>
-        <View style={tw`flex-row justify-center bg-gray-300`}>
-          <Icon
-            raised
-            name="menuunfold"
-            type="antdesign"
-            color="red"
-            onPress={() => setFilter('')}
-          />
-          <Icon
-            raised
-            name="cake"
-            type="entypo"
-            color="red"
-            onPress={() => setFilter('cake')}
-          />
-          <Icon
-            raised
-            name="drink"
-            type="entypo"
-            color="green"
-            onPress={() => setFilter('softdrinks')}
-          />
-          <Icon
-            raised
-            name="cafe"
-            type="ionicon"
-            color="purple"
-            onPress={() => setFilter('hotdrinks')}
-          />
-          <Icon
-            raised
-            name="bowl"
-            type="entypo"
-            color="orange"
-            onPress={() => setFilter('soup')}
-          />
+        <View style={tw`flex-row items-center bg-gray-300 pb-1`}>
+          <View style={styles.menuTabsView}>
+            <Icon
+              raised
+              name="menuunfold"
+              type="antdesign"
+              color="red"
+              onPress={() => dispatch(setFilter(''))}
+            />
+            <Text style={tw`text-xs font-bold`}>ALL</Text>
+          </View>
+          <View style={styles.menuTabsView}>
+            <Icon
+              raised
+              name="cake"
+              type="entypo"
+              color="red"
+              onPress={() => dispatch(setFilter('cake'))}
+            />
+            <Text style={tw`text-xs font-bold`}>CAKES</Text>
+          </View>
+          <View style={styles.menuTabsView}>
+            <Icon
+              raised
+              name="drink"
+              type="entypo"
+              color="green"
+              onPress={() => dispatch(setFilter('softdrinks'))}
+            />
+            <Text style={tw`text-xs font-bold`}>SOFTDRINK</Text>
+          </View>
+          <View style={styles.menuTabsView}>
+            <Icon
+              raised
+              name="cafe"
+              type="ionicon"
+              color="purple"
+              onPress={() => dispatch(setFilter('hotdrinks'))}
+            />
+            <Text style={tw`text-xs font-bold`}>HOTDRINK</Text>
+          </View>
+          <View style={styles.menuTabsView}>
+            <Icon
+              raised
+              name="bowl"
+              type="entypo"
+              color="orange"
+              onPress={() => dispatch(setFilter('soup'))}
+            />
+            <Text style={tw`text-xs font-bold`}>SOUP</Text>
+          </View>
         </View>
         {/*  <Text h3 style={[styles.header]}></Text> */}
         {products?.length !== 0 ? (
@@ -145,6 +161,10 @@ const styles = StyleSheet.create({
     height: 160,
     borderRadius: 4,
     resizeMode: 'cover'
+  },
+  menuTabsView: {
+    flex: 1,
+    alignItems: 'center'
   },
 
   productImageContainer: {}

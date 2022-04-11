@@ -5,6 +5,7 @@ const initialState = {
   token: null,
   loginToken: null,
   products: null,
+  filter: '',
   user: null
 }
 
@@ -27,6 +28,9 @@ export const navSlice = createSlice({
     setProducts: (state, action) => {
       state.products = action.payload
     },
+    setFilter: (state, action) => {
+      state.filter = action.payload
+    },
     setUser: (state, action) => {
       state.user = action.payload
     }
@@ -38,6 +42,7 @@ export const {
   setToken,
   setLoginToken,
   setProducts,
+  setFilter,
   setUser,
   setUpdateCart
 } = navSlice.actions

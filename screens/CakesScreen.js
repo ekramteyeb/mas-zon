@@ -19,7 +19,8 @@ const CakesScreen = () => {
   let products = useSelector((state) => state.nav.products)?.filter(
     (p) => p.category == 'cake'
   )
-
+  /* .sort((a, b) => a.price - b.price)
+  console.log(products[0], 'first cake') */
   return (
     <>
       <ProductList products={products} />
