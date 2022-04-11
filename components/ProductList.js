@@ -16,6 +16,7 @@ import { CartModalManual } from './CartModalManual'
 import { useNavigation } from '@react-navigation/native'
 import Tabs from './Tab'
 import { useDispatch, useSelector } from 'react-redux'
+import { setFilter } from '../slices/navSlice'
 
 const ProductList = ({ products }) => {
   const navigation = useNavigation()
@@ -34,7 +35,7 @@ const ProductList = ({ products }) => {
               color="red"
               onPress={() => dispatch(setFilter(''))}
             />
-            <Text style={tw`text-xs font-bold`}>ALL</Text>
+            <Text style={tw`text-xs font-bold `}>ALL</Text>
           </View>
           <View style={styles.menuTabsView}>
             <Icon
@@ -54,7 +55,7 @@ const ProductList = ({ products }) => {
               color="green"
               onPress={() => dispatch(setFilter('softdrinks'))}
             />
-            <Text style={tw`text-xs font-bold`}>SOFTDRINK</Text>
+            <Text style={[{ fontSize: 10 }, tw` font-bold`]}>SOFTDRINK</Text>
           </View>
           <View style={styles.menuTabsView}>
             <Icon

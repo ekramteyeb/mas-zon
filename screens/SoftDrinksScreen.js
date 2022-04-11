@@ -19,6 +19,7 @@ import { setCart } from '../slices/navSlice'
 import { sendPushNotification } from './HotDrinksScreen'
 import CartModalManual from '../components/CartModalManual'
 import ModalComponent from '../components/ModalComponent'
+import GoBackButton from '../components/GoBackButton'
 
 const SoftDrinksScreen = () => {
   const state = useSelector((state) => state.nav)
@@ -47,29 +48,6 @@ const SoftDrinksScreen = () => {
 
   return (
     <SafeAreaView style={[styles.container, tw`bg-white h-full`]}>
-      {/*      <Icon raised name="home" color="#517fa4" onPress={() => alert('homee')} />
-       */}
-      <Icon
-        raised
-        name="logo-youtube"
-        type="ionicon"
-        color="red"
-        onPress={() => alert('homegot me ')}
-      />
-      <Icon
-        raised
-        name="add-sharp"
-        type="ionicon"
-        color="blue"
-        onPress={() => alert('home')}
-      />
-      {/* <Button
-        title="Add cart"
-        style={styles.buttons}
-        onPress={() => {
-          dispatch(setCart(state.cart + 1)), sendPushNotification(state.token)
-        }}
-      ></Button> */}
       <Text h4>{users ? `User is ${state.user?.name}` : 'No user here'}</Text>
       <View>
         {users?.length > 0 ? (
@@ -102,7 +80,11 @@ const SoftDrinksScreen = () => {
           <Text></Text>
         )}
       </View>
-      <Button title="Bring user" onPress={() => fetchUser()}></Button>
+      {!users ? (
+        <Button title="Bring users" onPress={() => fetchUser()}></Button>
+      ) : (
+        <GoBackButton />
+      )}
     </SafeAreaView>
   )
 }

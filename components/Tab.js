@@ -68,12 +68,6 @@ export default function Tabs() {
         >
           <MostSoldLists products={state.cart} />
         </TabView.Item>
-        {/*  <TabView.Item style={{ backgroundColor: 'green', width: '100%' }}>
-          <Text h1>Cart</Text>
-        </TabView.Item> */}
-        {/* <TabView.Item style={{ backgroundColor: 'purple', width: '100%' }}>
-          <Text h1>Soup hhhhhh</Text>
-        </TabView.Item> */}
       </TabView>
     </View>
   )
