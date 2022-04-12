@@ -23,7 +23,7 @@ import {
   setProducts,
   setUser
 } from '../slices/navSlice'
-import { registerForPushNotificationsAsync } from './HotDrinksScreen'
+import { registerForPushNotificationsAsync } from './ComposeMessage'
 import MostSoldLists from '../components/MostSoldLists'
 
 const HomeScreen = () => {

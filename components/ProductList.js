@@ -21,7 +21,7 @@ import { setFilter } from '../slices/navSlice'
 const ProductList = ({ products }) => {
   const navigation = useNavigation()
   const dispatch = useDispatch()
-  const filter = useSelector((state) => state.nav.filter)
+  const state = useSelector((state) => state.nav)
 
   return (
     <>
@@ -79,10 +79,10 @@ const ProductList = ({ products }) => {
           </View>
         </View>
         {/*  <Text h3 style={[styles.header]}></Text> */}
-        {products?.length !== 0 ? (
+        {state.products?.length !== 0 ? (
           <FlatList
             data={
-              filter ? products.filter((p) => p.category == filter) : products
+              state.filter ? state.products.filter((p) => p.category == state.filter) : state.products
             }
             initialNumToRender={4}
             renderItem={({ item }) => (

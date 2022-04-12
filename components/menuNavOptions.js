@@ -10,7 +10,9 @@ import {
   Image
 } from 'react-native'
 import { Icon } from 'react-native-elements'
+import { useDispatch } from 'react-redux'
 import tw from 'twrnc'
+import { setFilter } from '../slices/navSlice'
 
 const data = [
   {
@@ -18,42 +20,49 @@ const data = [
     title: 'MainDishes',
     //image: "https://links.papareact.com/28w",
     image: 'https://husstey.sirv.com/Images/mas-zon/maindish.webp',
-    sreen: 'MainDishScreen'
+    sreen: 'MainDishScreen',
+    category: ''
   },
   {
     id: '9102',
     title: 'Soup',
     image: 'https://husstey.sirv.com/Images/mas-zon/soup.webp',
     //"https://husstey.sirv.com/Images/VW%20Beetle.jpg",
-    sreen: 'SoupScreen'
+    sreen: 'SoupScreen',
+    category: 'soup'
   },
   {
     id: '9103',
     title: 'Cakes',
     image: 'https://husstey.sirv.com/Images/mas-zon/cakes.webp',
-    sreen: 'CakesScreen'
+    sreen: 'CakesScreen',
+    category: 'cake'
   },
   {
     id: '2323',
     title: 'Salad',
     image: 'https://husstey.sirv.com/Images/mas-zon/salad.webp',
-    sreen: 'SaladScreen'
+    sreen: 'SaladScreen',
+    category: 'salad'
   },
   {
     id: '2424',
     title: 'Hot Drinks',
     image: 'https://husstey.sirv.com/Images/mas-zon/coffee2.jpg',
-    sreen: 'HotDrinksScreen'
+    sreen: 'HotDrinksScreen',
+    category: 'hotdrinks'
   },
   {
     id: '1234',
     title: 'Soft Drinks',
     image: 'https://husstey.sirv.com/Images/mas-zon/softdrinks.webp',
-    sreen: 'SoftDrinksScreen'
+    sreen: 'SoftDrinksScreen',
+    category: 'softdrinks'
   }
 ]
 const MenuNavOptions = () => {
   const navigation = useNavigation()
+  const dispatch = useDispatch()
 
   return (
     <>
@@ -66,7 +75,10 @@ const MenuNavOptions = () => {
           numColumns={3}
           renderItem={({ item }) => (
             <TouchableOpacity
-              onPress={() => navigation.navigate(item.sreen)}
+              onPress={() => {
+                dispatch(setFilter(item.category)),
+                  navigation.navigate(item.sreen)
+              }}
               style={[
                 tw`bg-gray-100  pl-0 m-1 mb-2 `,
                 {
