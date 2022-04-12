@@ -27,6 +27,7 @@ const ModalComponent = () => {
         <View style={styles.flexEndView}>
           <View style={[tw`bg-green-300`, styles.modalView]}>
             <Text style={styles.modalText}>Hello {state.user?.name} !</Text>
+            <Text style={tw`m-2 font-bold text-sm text-slate-500 underline `} onPress={() => alert('admin page')}> Admin page </Text>
             <Button
               title="Sign out"
               icon={{ name: 'logout', color: 'white', size: 18 }}
