@@ -33,7 +33,7 @@ const CartModalManual = ({ name, navigate }) => {
           </Text>
           <Text h4 style={tw`text-white`}>
             {state.cart?.length > 0
-              ? state.cart.reduce((a, b) => a + b.product?.price, 0)
+              ? state.cart.reduce((a, b) => a + b.product?.price * b.counter, 0)
               : 0}{' '}
             BIRR{' '}
           </Text>

@@ -12,7 +12,7 @@ export default function Tabs() {
   const randomFavorite = Math.floor(Math.random() * state.products?.length)
 
   return (
-    <View style={{ height: '28%' }}>
+    <View style={{ height: '30%' }}>
       <Tab
         value={index}
         onChange={(e) => setIndex(e)}
@@ -50,7 +50,7 @@ export default function Tabs() {
       </Tab>
 
       <TabView value={index} onChange={setIndex} animationType="spring">
-        <TabView.Item style={[tw`bg-gray-300`, { width: '100%' }]}>
+        <TabView.Item style={[tw`bg-white `, { width: '100%' }]}>
           <MostSoldLists
             products={state.products ? [state.products[randomRecent]] : []}
           />

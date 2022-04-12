@@ -12,7 +12,7 @@ export default function MostSold({ item }) {
   return (
     <>
       <TouchableOpacity>
-        <View style={[styles.container, tw`bg-white h-28`]}>
+        <View style={[styles.container, tw`bg-yellow-500 h-30`]}>
           <Image
             style={[tw``, styles.icon]}
             source={{
@@ -21,6 +21,7 @@ export default function MostSold({ item }) {
               //require("../assets/icon2.webp")
               //Ahmed, reem and afnan are my lovely children.
             }}
+            resizeMode='cover'
           />
           <Text style={styles.text}>{item.name}</Text>
           <Text style={styles.text}>{item.price}</Text>
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: 'auto',
-    margin: 6,
+    margin: 4,
     marginTop: 4,
     marginBottom: 2,
     paddingLeft: 10,
@@ -46,11 +47,12 @@ const styles = StyleSheet.create({
     borderRadius: 5
   },
   icon: {
-    height: 90,
-    width: 100
+    height: 106,
+    width: 130
   },
   text: {
     color: 'black',
-    fontSize: 18
+    fontSize: 18, 
+    fontWeight:'bold'
   }
 })
