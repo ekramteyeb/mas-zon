@@ -1,11 +1,11 @@
 import {
-  Text,
   SafeAreaView,
   StyleSheet,
   Image,
   TouchableOpacity
 } from 'react-native'
 import { Icon } from 'react-native-elements/dist/icons/Icon'
+import { Text } from 'react-native-elements'
 import { useSelector } from 'react-redux'
 import tw from 'twrnc'
 import CartModalManual from './CartModalManual'
@@ -30,7 +30,7 @@ export default function NavBarTop() {
               type="ionicon"
             /> */}
           </TouchableOpacity>
-          <Text style={tw`text-xl font-bold text-gray-600`}>Mass Zone</Text>
+          <Text h4 style={tw`text-xl font-bold text-gray-600`}>MASS ZONE</Text>
           <TouchableOpacity>
             <CartModal />
           </TouchableOpacity>

@@ -1,10 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
+import {Text} from 'react-native-elements'
 import React from 'react'
 
 const CheckoutScreen = () => {
   return (
     <View>
-      <Text>CheckoutScreen coming soon.....</Text>
+      <Text h4>Checkout Screen</Text>
     </View>
   )
 }
