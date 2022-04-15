@@ -30,7 +30,7 @@ export default function NavBarTop() {
               type="ionicon"
             /> */}
           </TouchableOpacity>
-          <Text h4 style={tw`text-xl font-bold text-gray-600`}>MASS ZONE</Text>
+          <Text h4 style={tw`text-xl font-bold text-gray-700`}>MASS ZONE</Text>
           <TouchableOpacity>
             <CartModal />
           </TouchableOpacity>
