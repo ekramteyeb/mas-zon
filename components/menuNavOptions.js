@@ -110,7 +110,7 @@ const MenuNavOptions = () => {
                 <Text
                   style={[
                     { textAlign: 'center' },
-                    tw`mt-2  text-lg font-semibold`
+                    tw`mt-2  text-lg font-bold bg-gray-300`
                   ]}
                 >
                   {item.title}
