@@ -22,7 +22,7 @@ const CheckoutScreen = () => {
             <Image
                   style={[
                     tw` bg-white`,
-                    { height: 106, width: '45%',resizeMode: 'cover' }
+                    { height: 106, width: '48%',resizeMode: 'contain' }
                   ]}
                   source={{ uri: item.product.image }}
                 />
