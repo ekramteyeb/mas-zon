@@ -19,11 +19,11 @@ const CartModalManual = ({ name, navigate }) => {
         }
       ]}
     >
-      <View style={[tw`bg-red-400 p-1 pr-2`, styles.container]}>
+      <View style={[tw`bg-red-700 p-1 pr-2`, styles.container]}>
         <Image
           style={[tw`bg-gray-200`, styles.cartViewIcon]}
           source={{
-            uri: state.cart?.length > 0 ? state.cart[0].product.image : 'kk'
+            uri: state.cart?.length > 0 ? state.cart[state?.cart?.length-1].product.image : 'kk'
             //uri: require('../assets/coffee.png')
           }}
         />
@@ -35,7 +35,7 @@ const CartModalManual = ({ name, navigate }) => {
             {state.cart?.length > 0
               ? state.cart.reduce((a, b) => a + b.product?.price * b.counter, 0)
               : 0} 
-            BIRR
+             {' '}BIRR
           </Text>
           <Text style={tw`text-white`}>inclusive of tax </Text>
         </View>
@@ -63,9 +63,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   cartViewIcon: {
-    height: '80%',
+    height: '100%',
     width: '20%',
-    borderRadius: 8,
+    borderRadius: 2,
     resizeMode: 'cover'
   }
 })
