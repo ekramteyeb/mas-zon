@@ -20,9 +20,9 @@ export default function ProductDetail({ navigation, route }) {
   return (
     <>
       <SafeAreaView style={[styles.container, tw`bg-gray-200 `]}>
-        <TouchableOpacity>
+        <TouchableOpacity style={tw`p-1`}>
           <Image
-            style={[tw`bg-gray-200 p-20`, styles.icon]}
+            style={[tw`bg-gray-200 rounded`, styles.icon]}
             source={{
               uri: product.image
               //require("../assets/icon2.webp")
