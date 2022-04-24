@@ -12,16 +12,16 @@ export default function MostSold({ item }) {
   return (
     <>
       <TouchableOpacity>
-        <View style={[styles.container, tw`bg-yellow-500 h-30`]}>
+        <View style={[styles.container, tw`bg-yellow-300 h-30`]}>
           <Image
-            style={[tw``, styles.icon]}
+            style={[tw`bg-yellow-300`, styles.icon]}
             source={{
               uri: item.image
               //uri: 'https://husstey.sirv.com/Images/icon2.jpeg'
               //require("../assets/icon2.webp")
               //Ahmed, reem and afnan are my lovely children.
             }}
-            resizeMode='cover'
+            resizeMode= {item.category == 'softdrinks' ? 'contain' : 'cover'}
           />
           <Text style={styles.text}>{item.name}</Text>
           <Text style={styles.text}>{item.price}</Text>
@@ -48,7 +48,9 @@ const styles = StyleSheet.create({
   },
   icon: {
     height: 106,
-    width: 130
+    width: 130, 
+    borderRadius:2
+    
   },
   text: {
     color: 'black',
