@@ -22,7 +22,7 @@ import ProductList from '../components/ProductList'
 import GoBackButton from '../components/GoBackButton'
 
 const HotDrinksScreen = () => {
-  const products = useSelector((state) => state.nav.products).filter(
+  const products = useSelector((state) => state.nav.products)?.filter(
     (p) => p.category == 'softdrinks'
   )
 
