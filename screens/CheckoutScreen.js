@@ -10,7 +10,7 @@ const CheckoutScreen = () => {
   
   return (
     <View>
-      <Text h4 style={tw`text-center text-xlg text-purple-800 bg-gray-900`}>Your Order</Text>
+      <Text h4 style={tw`text-center text-xlg text-purple-500 bg-gray-900`}>Your Order</Text>
       <FlatList
           data={cart}
           keyExtractor={(item) => item.id}
