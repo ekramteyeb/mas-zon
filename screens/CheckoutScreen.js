@@ -20,7 +20,7 @@ const CheckoutScreen = () => {
           renderItem={({ item }) => (
           <TouchableOpacity style={tw`flex-1 items-center`}>
             
-            <Text style={tw`p-1 m-2 text-xl  text-cyan-600`}>{item.product.name}</Text>
+            <Text style={tw`p-1 m-2 text-xl  text-cyan-500`}>{item.product.name}</Text>
             
             <Image
                   style={[
