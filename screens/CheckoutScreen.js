@@ -1,4 +1,4 @@
-import { StyleSheet, View, FlatList, TouchableOpacity, Image } from 'react-native'
+import { StyleSheet, SafeAreaView, FlatList, TouchableOpacity, Image } from 'react-native'
 import {Text} from 'react-native-elements'
 import React from 'react'
 import {useSelector} from 'react-redux'
@@ -9,8 +9,8 @@ const CheckoutScreen = () => {
   const cart = useSelector(state => state.nav.cart)
   
   return (
-    <View>
-      <Text h4 style={tw`text-center text-xlg text-purple-500 bg-gray-900`}>Your Order</Text>
+    <SafeAreaView style={tw`pb-0 h-full`}>
+      <Text h4 style={tw`text-center hover:text-base text-4xl text-purple-500 bg-gray-900`}>Your Order</Text>
       <FlatList
           data={cart}
           keyExtractor={(item) => item.id}
@@ -36,7 +36,7 @@ const CheckoutScreen = () => {
                 />
           </TouchableOpacity>)}
       />
-    </View>
+    </SafeAreaView>
   )
 }
 
