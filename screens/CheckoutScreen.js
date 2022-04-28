@@ -35,9 +35,9 @@ const CheckoutScreen = () => {
                   ]}
                   source={{ uri: item.product.image }}
                 />
-                <Text>Blue</Text>
-                <Divider style={{ backgroundColor: 'red', borderWidth:10 }} />
-                <Text>Red</Text>
+                <Text>{item.product.category}</Text>
+                <Divider style={{ backgroundColor: 'red', width:'80%' ,height:2 }} />
+                <Text>{item.product.price} birr </Text>
           </TouchableOpacity>)}
          
       />
