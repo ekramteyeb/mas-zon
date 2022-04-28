@@ -1,5 +1,6 @@
 import { StyleSheet, SafeAreaView, FlatList, TouchableOpacity, Image } from 'react-native'
-import {Text} from 'react-native-elements'
+//import {Text} from 'react-native-elements'
+import { Divider, Text } from 'react-native-paper'
 import React from 'react'
 import {useSelector} from 'react-redux'
 import tw from 'twrnc'
@@ -34,8 +35,13 @@ const CheckoutScreen = () => {
                   ]}
                   source={{ uri: item.product.image }}
                 />
+                <Text>Blue</Text>
+                <Divider style={{ backgroundColor: 'red', borderWidth:10 }} />
+                <Text>Red</Text>
           </TouchableOpacity>)}
+         
       />
+       
     </SafeAreaView>
   )
 }
