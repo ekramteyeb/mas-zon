@@ -37,7 +37,7 @@ const CheckoutScreen = () => {
                 />
                 
                 <Divider style={[tw`bg-purple-300 mt-4`,{ width:'80%' ,height:2 }]} />
-                <Text style={tw`text-red-500`}>{item.product.price} BIRR </Text>
+                <Text style={tw`text-red-600`}>{item.product.price} BIRR </Text>
           </TouchableOpacity>)}
          
       />
