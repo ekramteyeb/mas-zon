@@ -42,7 +42,7 @@ const CheckoutScreen = () => {
          
       />
       <Text>Personal Detials</Text>
-       <Divider style={[tw`bg-gray-300 mt-4`,{ width:'98%' ,height:2 }]} />
+       <Divider style={[tw`bg-purple-300 mt-4`,{ width:'98%' ,height:2 }]} />
     </SafeAreaView>
   )
 }
