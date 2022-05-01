@@ -36,7 +36,7 @@ const CheckoutScreen = () => {
                   source={{ uri: item.product.image }}
                 />
                 
-                <Divider style={[tw`bg-gray-300 mt-4`,{ width:'80%' ,height:2 }]} />
+                <Divider style={[tw`bg-purple-300 mt-4`,{ width:'80%' ,height:2 }]} />
                 <Text style={tw`text-red-500`}>{item.product.price} BIRR </Text>
           </TouchableOpacity>)}
          
