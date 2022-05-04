@@ -7,13 +7,14 @@ import tw from 'twrnc'
 
 
 const CheckoutScreen = () => {
-  const cart = useSelector(state => state.nav.cart)
+  const state = useSelector(state => state.nav)
   
   return (
     <SafeAreaView style={tw`pb-0 h-full`}>
       <Text h4 style={tw`text-center hover:text-base text-4xl text-purple-500 bg-gray-900`}>Your Order</Text>
+      <Text h4>Hello , {state.user.name} !</Text>
       <FlatList
-          data={cart}
+          data={state.cart}
           keyExtractor={(item) => item.id}
           initialNumToRender={2}
           numColumns={2}
