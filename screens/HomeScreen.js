@@ -71,7 +71,7 @@ const HomeScreen = () => {
         dispatch(setUser(response.data.data))
       })
       .catch(function (error) {
-        console.log('device not registerd', error)
+        console.log('device not register', error)
         /* setNotify('Incorrect email/password')
         notify ? setTimeout(() => setNotify(null), 3000) : '' */
       })
