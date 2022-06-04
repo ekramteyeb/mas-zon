@@ -28,14 +28,14 @@ const CartList = ({ products }) => {
   return (
     <>
       <SafeAreaView style={[styles.container, tw`bg-gray-300`]}>
-        <Text style={[styles.header]}>
+       {/*  <Text style={[styles.header]}>
           Cart : {products?.reduce((a, b) => a + b.counter, 0)} items in your
           cart{' '}
         </Text>
         <Text h4 style={[styles.header]}>
           Total {products?.reduce((a, b) => a + b.counter * b.product.price, 0)}{' '}
           Birr
-        </Text>
+        </Text> */}
         {products?.length !== 0 ? (
           <FlatList
             data={products}
@@ -158,13 +158,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     //marginTop: StatusBar.currentHeight || 0,
-    paddingTop: 12,
+    paddingTop: 4,
     backgroundColor: 'red'
   },
   item: {
-    padding: 8,
+    padding: 2,
     paddingRight: 0,
-    marginVertical: 6,
+    marginVertical: 0,
     marginHorizontal: 6,
     display: 'flex',
     justifyContent: 'space-between',
