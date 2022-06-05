@@ -5,6 +5,12 @@
 * order  passed to kitchen
 * kitechen   notify customers when order is ready
 
+# Technologies 
+ * React Native 
+ * Tailwind css 
+ * php larvel -backend 
+ * postgres -db 
+ * 
 # Run 
 - yarn install 
 - expo start 
