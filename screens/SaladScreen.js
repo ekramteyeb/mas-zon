@@ -23,7 +23,8 @@ const SaladScreen = () => {
 
   return (
     <>
-      <ProductList products={products} />
+    
+      <ProductList products={copyProducts} />
       <CartModalManual name=" VIEW CART" navigate="CartScreen" />
     </>
   )

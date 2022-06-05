@@ -10,7 +10,8 @@ import {
   SectionList,
   StyleSheet,
   TextInput,
-  Button
+  Button,
+  Alert
 } from 'react-native'
 import { Icon } from 'react-native-elements'
 import tw from 'twrnc'
@@ -44,6 +45,10 @@ const MainDishScreen = () => {
   const [number1, onChangeText] = React.useState(null)
   const [number, onChangeNumber] = React.useState(null)
   const [result, setResult] = React.useState(null)
+
+  const notify = () => {
+    Alert.alert('this is alert')
+  }
   return (
     <SafeAreaView style={[styles.container, tw`bg-white h-full `]}>
       <View style={styles.game}>
@@ -71,6 +76,7 @@ const MainDishScreen = () => {
               setResult(Number(number) + Number(number1))
               onChangeNumber(null)
               onChangeText(null)
+              /* setInterval(() => notify() , 10000) */
             }}
             title="Add"
             color="#841584"
