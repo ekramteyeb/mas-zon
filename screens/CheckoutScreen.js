@@ -1,5 +1,5 @@
-import { StyleSheet, SafeAreaView, FlatList, TouchableOpacity, Button, Image, Alert } from 'react-native'
-import {Text} from 'react-native-elements'
+import { StyleSheet, SafeAreaView, FlatList, TouchableOpacity,  Image, Alert } from 'react-native'
+import { Text ,Button} from 'react-native-elements'
 import { Divider} from 'react-native-paper'
 import React from 'react'
 import {useSelector} from 'react-redux'
@@ -8,6 +8,7 @@ import tw from 'twrnc'
 
 const CheckoutScreen = () => {
   const state = useSelector(state => state.nav)
+  
   
   return (
     <SafeAreaView style={tw`pb-0 h-full`}>
@@ -38,12 +39,12 @@ const CheckoutScreen = () => {
                 />
                 
                 <Divider style={[tw`bg-purple-300 mt-4`,{ width:'80%' ,height:2 }]} />
-                <Text style={tw`text-red-600`}>{item.product.price} BIRR </Text>
+                <Text  style={tw`text-red-600`}>{item.product.price} BIRR </Text>
           </TouchableOpacity>)}
          
       />
-      <Button title='Send Order' onPress={() => Alert.prompt('ask', 'Do you wanna send?', (text) => console.log('yess', text))}/>
-       <Divider style={[tw`bg-purple-300 mt-4`,{ width:'98%' ,height:2 }]} />
+      <Button title='Send Order' onPress={() => Alert.alert(`${state.user.email}`)}/>
+      <Divider style={[tw`bg-purple-300 mt-4`,{ width:'98%' ,height:2 }]} />
       
     </SafeAreaView>
   )
@@ -51,4 +52,6 @@ const CheckoutScreen = () => {
 
 export default CheckoutScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  
+})
