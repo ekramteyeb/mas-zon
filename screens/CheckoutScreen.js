@@ -2,13 +2,22 @@ import { StyleSheet, SafeAreaView, FlatList, TouchableOpacity,  Image, Alert } f
 import { Text ,Button} from 'react-native-elements'
 import { Divider} from 'react-native-paper'
 import React from 'react'
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import tw from 'twrnc'
+import { setOrders,setUpdateCart } from '../slices/navSlice'
+import { useNavigation } from '@react-navigation/native'
 
 
 const CheckoutScreen = () => {
   const state = useSelector(state => state.nav)
+  const dispatch = useDispatch()
+  const navigation = useNavigation()
   
+  const handleCheckout = () => {
+    dispatch(setOrders(...state.cart))
+    dispatch(setUpdateCart([]))
+    navigation.navigate("OrdersScreen")
+  }
   
   return (
     <SafeAreaView style={tw`pb-0 h-full`}>
@@ -43,7 +52,7 @@ const CheckoutScreen = () => {
           </TouchableOpacity>)}
          
       />
-      <Button title='Send Order' onPress={() => Alert.alert(`${state.user.email}`)}/>
+      <Button title='Send Order' onPress={handleCheckout}/>
       <Divider style={[tw`bg-purple-300 mt-4`,{ width:'98%' ,height:2 }]} />
       
     </SafeAreaView>
@@ -55,3 +64,4 @@ export default CheckoutScreen
 const styles = StyleSheet.create({
   
 })
+

@@ -6,7 +6,8 @@ const initialState = {
   loginToken: null,
   products: null,
   filter: '',
-  user: null
+  user: null,
+  orders:[]
 }
 
 export const navSlice = createSlice({
@@ -33,7 +34,14 @@ export const navSlice = createSlice({
     },
     setUser: (state, action) => {
       state.user = action.payload
-    }
+    },
+    setOrders: (state, action) => {
+      state.orders = [...state.orders, action.payload]
+    },
+    setUpdateOrders: (state, action) => {
+      state.orders = [...action.payload]
+    },
+
   }
 })
 
@@ -44,7 +52,9 @@ export const {
   setProducts,
   setFilter,
   setUser,
-  setUpdateCart
+  setUpdateCart,
+  setOrders,
+  setUpdateOrders
 } = navSlice.actions
 
 //Selectors
@@ -54,5 +64,8 @@ export const selectToken = (state) => state.nav.token
 export const selectLoginToken = (state) => state.nav.loginToken
 export const selectProducts = (state) => state.nav.products
 export const selectUser = (state) => state.nav.user
+export const selectOrders = (state) => state.nav.orders
+
+
 // reducer
 export default navSlice.reducer

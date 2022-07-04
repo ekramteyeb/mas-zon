@@ -18,6 +18,7 @@ import CheckoutScreen from './screens/CheckoutScreen'
 import Signup from './components/Signup'
 import Login from './components/Login'
 import NavBarTop from './components/NavBarTop'
+import OrdersScreen from './screens/OrdersScreen'
 
 export default function App() {
   const Stack = createNativeStackNavigator()
@@ -92,6 +93,11 @@ export default function App() {
             <Stack.Screen
               name="Login"
               component={Login}
+              options={{ headerShown: false }}
+            />
+             <Stack.Screen
+              name="OrdersScreen"
+              component={OrdersScreen}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>

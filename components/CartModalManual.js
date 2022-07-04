@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native'
 const CartModalManual = ({ name, navigate }) => {
   const state = useSelector((state) => state.nav)
   const navigation = useNavigation()
+  
   return (
     <View
       style={[

@@ -41,7 +41,7 @@ export default function Signup() {
         navigation.navigate('HomeScreen')
       })
       .catch(function (error) {
-        setNotify('Please enter proper email ex emaple@gmail.com')
+        setNotify('Please enter proper email like emaple@gmail.com')
         notify ? setTimeout(() => setNotify(null), 3000) : ''
         console.log('not fetched', error)
       })
