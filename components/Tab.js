@@ -55,14 +55,14 @@ export default function Tabs() {
             products={state.products ? [state.products[randomRecent]] : []}
           />
         </TabView.Item>
-        <TabView.Item style={[tw`bg-gray-300`, { width: '100%' }]}>
+        <TabView.Item style={[tw`bg-gray-200`, { width: '100%' }]}>
           <MostSoldLists
             products={state.products ? [state?.products[randomFavorite]] : []}
           />
         </TabView.Item>
         <TabView.Item
           style={{
-            backgroundColor: 'orange',
+            backgroundColor: 'lightgreen',
             width: '100%'
           }}
         >

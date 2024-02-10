@@ -27,7 +27,7 @@ const CartList = ({ products }) => {
 
   return (
     <>
-      <SafeAreaView style={[styles.container, tw`bg-gray-300`]}>
+      <SafeAreaView style={[styles.container, tw`bg-gray-100`]}>
        {/*  <Text style={[styles.header]}>
           Cart : {products?.reduce((a, b) => a + b.counter, 0)} items in your
           cart{' '}
@@ -46,7 +46,7 @@ const CartList = ({ products }) => {
                   navigation.navigate('ProductDetail', { product: item })
                 }}
               >
-                <View style={[styles.item, tw`bg-gray-200`]}>
+                <View style={[styles.item, tw`bg-white my-1 p-2`]}>
                   <View style={styles.productImageContainer}>
                     <Image
                       style={[styles.productImage, tw`bg-green-500`]}
@@ -201,5 +201,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover'
   },
 
-  productImageContainer: {}
+  productImageContainer: {
+    
+  }
 })

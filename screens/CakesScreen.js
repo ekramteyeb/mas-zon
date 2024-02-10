@@ -4,12 +4,14 @@ import tw from 'twrnc'
 import {
   StyleSheet,
   View,
+  Button,
   SafeAreaView,
   FlatList,
   Image,
   StatusBar,
   TouchableOpacity
 } from 'react-native'
+import { schedulePushNotification } from './ComposeMessage'
 
 import { useSelector } from 'react-redux'
 import ProductList from '../components/ProductList'
@@ -24,6 +26,7 @@ const CakesScreen = () => {
   return (
     <>
       <ProductList products={products} />
+     
       <CartModalManual name=" VIEW CART" navigate={'CartScreen'} />
     </>
   )

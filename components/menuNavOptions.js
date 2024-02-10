@@ -97,7 +97,7 @@ const MenuNavOptions = () => {
                 <Image
                   style={[
                     tw` bg-green-200`,
-                    { height: 106, resizeMode: 'cover' }
+                    { height: 206, resizeMode: 'cover' }
                   ]}
                   source={{ uri: item.image }}
                 />

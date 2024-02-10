@@ -6,23 +6,31 @@ import {useSelector, useDispatch} from 'react-redux'
 import tw from 'twrnc'
 import { setOrders,setUpdateCart } from '../slices/navSlice'
 import { useNavigation } from '@react-navigation/native'
+import { schedulePushNotification } from './ComposeMessage'
 
 
 const CheckoutScreen = () => {
   const state = useSelector(state => state.nav)
+  const cart = state.cart.length
   const dispatch = useDispatch()
   const navigation = useNavigation()
-  
-  const handleCheckout = () => {
-    dispatch(setOrders(...state.cart))
+
+ 
+  const handleCheckout = async () => {
+    if(state?.cart?.length == 0)
+    return 
+    await schedulePushNotification(`Ur orders `)
+    dispatch(setOrders(...state?.cart))
     dispatch(setUpdateCart([]))
     navigation.navigate("OrdersScreen")
   }
   
   return (
-    <SafeAreaView style={tw`pb-0 h-full`}>
+    <SafeAreaView style={tw`pb-0 h-full `}>
       <Text h3 style={tw`text-center hover:text-base text-4xl text-purple-500 bg-gray-900`}>Your items list</Text>
-      <Text h4 style={tw`pl-2`}>Hello , {state.user.name} !</Text>
+      <Text h4 style={tw`pl-2 mt-4 text-center text-xl`}>Hello , {state.user?.name} !</Text>
+      
+      {state.cart.length == 0 ? <Text style={tw`mt-4 text-center text-xl`}>Cart is empty go back to Shoping</Text> : ''}
       <FlatList
           data={state.cart}
           keyExtractor={(item) => item.id}
@@ -52,7 +60,12 @@ const CheckoutScreen = () => {
           </TouchableOpacity>)}
          
       />
-      <Button title='Send Order' onPress={handleCheckout}/>
+      {
+        cart == 0 ? 
+        <Button title="Go Back" onPress={() => navigation.navigate('HomeScreen')} /> : 
+        <Button title='Send Order' onPress={handleCheckout}/>
+      }
+      
       <Divider style={[tw`bg-purple-300 mt-4`,{ width:'98%' ,height:2 }]} />
       
     </SafeAreaView>

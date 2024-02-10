@@ -12,7 +12,7 @@ import MostSold from '../components/MostSold'
 function MostSoldLists({ products }) {
   return (
     <View>
-      {products?.length !== 0 ? (
+      {products.length > 0 && products.length !== 0 ? (
         <FlatList
           data={products}
           initialNumToRender={1}
@@ -23,7 +23,7 @@ function MostSoldLists({ products }) {
               </View>
             </TouchableOpacity>
           )}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item?.id}
           /* extraData={selectedId} */
         />
       ) : (

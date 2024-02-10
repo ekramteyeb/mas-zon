@@ -6,17 +6,19 @@ import { useSelector } from 'react-redux';
 import tw from 'twrnc'
 
 const OrdersScreen = () => {
+
   const navigate =  useNavigation()
   const state = useSelector(state => state.nav)
-    console.log(state.orders.length, 'orders')
-    console.log(state.cart.length, 'cart')
+    console.log(state?.orders, 'orders')
+    console.log(state?.cart.length, 'cart')
+
   const renderItem = ({ item }) => {
       
      
       return (
         <DataTable.Row style={styles.item}>
-            <DataTable.Cell>{item.id}</DataTable.Cell>
-            <DataTable.Cell>{state.user.name}</DataTable.Cell>
+            <DataTable.Cell>{item?.id}</DataTable.Cell>
+            <DataTable.Cell>{state?.user?.name}</DataTable.Cell>
             <DataTable.Cell>OnGoin</DataTable.Cell>
             <DataTable.Cell><Button title="Edit"/></DataTable.Cell>
             <DataTable.Cell><Button color="red" title="Dele"/></DataTable.Cell>
@@ -36,9 +38,9 @@ const OrdersScreen = () => {
             <DataTable.Title>Delete</DataTable.Title>
           </DataTable.Header>
           <FlatList
-             data={state.orders}
+             data={state?.orders}
             renderItem={renderItem}
-            keyExtractor={item => item.id}
+            keyExtractor={(item, index) => item?.id * index + 1 }
       />
       </DataTable>
     </SafeAreaView>

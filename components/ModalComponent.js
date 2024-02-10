@@ -61,8 +61,10 @@ const ModalComponent = () => {
         <Icon
           name="grid"
           color="purple"
-          raised
-          style={[tw`bg-blue-300` /* styles.button, styles.buttonOpen */]}
+          /* raised */
+          size={32}
+          /* style={[tw`flex-1 justify-center items-center mr-3`  */
+          style={[tw`ml-3` /* styles.button, styles.buttonOpen */]}
           type="ionicon"
         />
         {/* <Text style={styles.textStyle}>'Show Modal'</Text> */}

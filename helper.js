@@ -7,6 +7,7 @@ export function fetchUser() {
   axios({
     method: 'GET',
     url: 'https://mass-zone-backend.herokuapp.com/api/user',
+    //url: 'http://127.0.0.1:8000/api/user',
     headers: {
       Authorization: `Bearer ${state.loginToken}`
     }

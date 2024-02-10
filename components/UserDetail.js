@@ -8,13 +8,17 @@ import {
   TouchableOpacity
 } from 'react-native'
 import tw from 'twrnc'
+import { useSelector } from 'react-redux'
 import { Text } from 'react-native-elements'
 import GoBackButton from './GoBackButton'
 import HorizontalLine from './HorizontalLine'
 
 export default function UserDetail({ navigation, route }) {
   //const navigation = useNavigation()
-  const user = route.params.user
+  
+
+  const user = useSelector(state => state.nav)
+
   console.log(user, 'from user detail')
 
   return (
@@ -24,17 +28,17 @@ export default function UserDetail({ navigation, route }) {
           <Image
             style={[tw`bg-gray-200 p-16`, styles.icon]}
             source={{
-              uri: user.image
+              uri: user?.image
               //require("../assets/icon2.webp")
             }}
             resizeMode="cover"
           />
         </TouchableOpacity>
         <View style={tw`pl-4 pb-6 pt-6`}>
-          <Text h3>{user.name}</Text>
+          <Text h3>{user?.name}</Text>
           <HorizontalLine />
-          <Text style={tw`text-red-600 text-6 mb-2`}>Email : {user.email}</Text>
-          <Text>Role : {user.email}</Text>
+          <Text style={tw`text-red-600 text-6 mb-2`}>Email : {user?.email}</Text>
+          <Text>Role : user</Text>
           <Text>Status : inactive</Text>
         </View>
         <GoBackButton />

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Icon } from 'react-native-elements/dist/icons/Icon'
 import tw from 'twrnc'
+
 import {
   Alert,
   Modal,
@@ -15,9 +16,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setLoginToken } from '../slices/navSlice'
 import { useNavigation } from '@react-navigation/native'
 
+
 const CartModal = () => {
   const [modalVisible, setModalVisible] = useState(false)
   const state = useSelector((state) => state.nav)
+ 
   const navigation = useNavigation()
   const dispatch = useDispatch()
 
@@ -32,16 +35,17 @@ const CartModal = () => {
         hardwareAccelerated
         transparent={true}
         visible={modalVisible}
+        
         onRequestClose={() => {
           Alert.alert('Modal has been closed.')
           setModalVisible(!modalVisible)
         }}
       >
         <View style={styles.centeredView}>
-          <View style={[tw`bg-green-100 p-2`, styles.modalView]}>
+          <View style={[tw`bg-white pr-1`, styles.modalView]}>
             <Pressable
               style={[tw`` /* styles.button,   styles.buttonClose*/]}
-              onPress={() => setModalVisible(!modalVisible)}
+              //onPress={() => setModalVisible(!modalVisible)}
             >
               {/*  <Icon
                 name="close"
@@ -52,38 +56,73 @@ const CartModal = () => {
               /> */}
               {/* <Text style={styles.textStyle}>Hide Modal</Text> */}
 
-              <View style={[tw`  bg-red-100`, styles.cartView]}>
-                <Image
-                  style={[tw`bg-gray-200`, styles.cartViewIcon]}
+              <View style={[tw`bg-white pr-1`, styles.cartView]}>
+                {/* <Image
+                  style={[tw`bg-gray-200 rounded-full`, styles.cartViewIcon]}
                   source={{
-                    uri: state.products ? state.products[0].image : ''
+                    uri: state.products.length > 0 ? state.products[0].image : ''
                     //uri: require('../assets/coffee.png')
                   }}
                   resizeMode="cover"
                 />
-
-                <Text>{state.cart} items </Text>
+ */}
+                <Pressable
+              style={[tw`mt-0` /* styles.button,   styles.buttonClose*/]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Icon
+                name="close"
+                color="purple"
+                raised
+                style={[
+                  tw`bg-blue-300 ` /* styles.button, styles.buttonOpen */
+                ]}
+                type="ionicon"
+              />
+              {/* <Text style={styles.textStyle}>Hide Modal</Text> */}
+            </Pressable>
+                <Text > Welcome  </Text>
+                <Text>{state?.user?.name}</Text>
+                
+                <Text onPress={() => {
+                    navigation.navigate('OrdersScreen')
+                    setModalVisible(!modalVisible)
+                    
+                  }}
+                  style={{ fontSize:24, margin:2 }}
+                >
+                  Order
+                </Text>
                 <Button
-                  title="view cart"
-                  onPress={() => alert('cart page is coming')}
+                  title="view user"
+                  onPress={() => {
+                    navigation.navigate('UserDetail')
+                    setModalVisible(!modalVisible)
+                  }}
                 ></Button>
               </View>
             </Pressable>
+            
           </View>
+
+          
         </View>
+        
       </Modal>
       <Pressable
         /*  style={[styles.button, styles.buttonOpen]} */
+       
         onPress={() => {
           setModalVisible(!modalVisible)
+          
         }}
       >
         <Icon
           name="person"
           color="purple"
-          size={22}
-          raised
-          style={[tw`bg-blue-300` /* styles.button, styles.buttonOpen */]}
+          size={32}
+          /* raised */
+          style={[tw`flex-1 justify-center items-center mr-3` /* styles.button, styles.buttonOpen */]}
           type="ionicon"
         />
         {/* <Text style={styles.textStyle}>'Show Modal'</Text> */}
@@ -95,23 +134,26 @@ const CartModal = () => {
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
-    justifyContent: 'flex-end'
-    /* alignItems: 'center' */
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    
+    
   },
-  cartViewIcon: { height: '80%', width: '30%', resizeMode: 'stretch' },
+  cartViewIcon: { height: '25%', width: '50%', resizeMode: 'stretch' },
   cartView: {
     height: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around'
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    justifyContent:'flex-start',
+  
   },
   modalView: {
-    marginTop: 20,
+    marginTop: 0,
     width: '100%',
-    height: '14%',
+    height: '93%',
 
-    borderTopRightRadius: 10,
-    borderTopLeftRadius: 10,
+    /* borderTopRightRadius: 10, */
+    /* borderTopLeftRadius: 10, */
     padding: 0,
     /* alignItems: 'center', */
     shadowColor: '#000',

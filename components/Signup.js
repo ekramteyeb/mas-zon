@@ -33,17 +33,18 @@ export default function Signup() {
     axios({
       method: 'POST',
       url: 'https://mass-zone-backend.herokuapp.com/api/register',
-      //url: 'http://127.0.0.1:8000/api/register',
+      //url: 'http://localhost:8000/api/register',
       data: data
     })
       .then(function (response) {
-        dispatch(setLoginToken(response.data.data.token))
+        //dispatch(setLoginToken(response.data.data.token))
+        //do email verification by sending verification link to the given email
         navigation.navigate('HomeScreen')
       })
       .catch(function (error) {
         setNotify('Please enter proper email like emaple@gmail.com')
         notify ? setTimeout(() => setNotify(null), 3000) : ''
-        console.log('not fetched', error)
+        console.log('not fetched signup', error)
       })
   }
   return (

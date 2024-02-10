@@ -31,18 +31,22 @@ const HomeScreen = () => {
   const state = useSelector((state) => state.nav)
 
   //get user device token
-
-  useEffect(() => {
+  //Edited Feb 2 24
+ /*  useEffect(() => {
     registerForPushNotificationsAsync().then((token) => {
       dispatch(setToken(token))
     })
-  }, [])
+  }, []) */
+
+
+  
 
   // fetch products
   useEffect(() => {
     axios({
       method: 'GET',
       url: 'https://mass-zone-backend.herokuapp.com/api/products',
+      //url: 'http://localhost:8000/api/products',
       headers: {
         Authorization: `Bearer ${state.loginToken}`
       }
@@ -59,9 +63,11 @@ const HomeScreen = () => {
 
   //Register user device
   useEffect(() => {
+    
     axios({
       method: 'PUT',
       url: `https://mass-zone-backend.herokuapp.com/api/users/${state.user?.id}`,
+      //url: `http://127.0.0.1:8000/api/users/${state.user?.id}`,
       data: { device: state.token },
       headers: {
         Authorization: `Bearer ${state.loginToken}`
@@ -69,6 +75,7 @@ const HomeScreen = () => {
     })
       .then(function (response) {
         dispatch(setUser(response.data.data))
+        console.log('device registered', response.data )
       })
       .catch(function (error) {
         console.log('device not register', error)

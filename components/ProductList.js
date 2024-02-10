@@ -25,8 +25,8 @@ const ProductList = ({ products }) => {
 
   return (
     <>
-      <SafeAreaView style={[styles.container, tw`bg-gray-100`]}>
-        <View style={tw`flex-row items-center bg-gray-300 pb-1`}>
+      <SafeAreaView style={[styles.container, tw`bg-white`]}>
+        <View style={tw`flex-row items-center bg-white pb-1`}>
           <View style={styles.menuTabsView}>
             <Icon
               raised
@@ -79,7 +79,7 @@ const ProductList = ({ products }) => {
           </View>
         </View>
         {/*  <Text h3 style={[styles.header]}></Text> */}
-        {state.products?.length !== 0 ? (
+        {state.products && state.products?.length !== 0 ? (
           <FlatList
             data={
               state.filter ? state.products.filter((p) => p.category == state.filter) : state.products
@@ -91,12 +91,13 @@ const ProductList = ({ products }) => {
                   navigation.navigate('ProductDetail', { product: item })
                 }}
               >
-                <View style={[styles.item, tw`bg-gray-200`]}>
+                <View style={[styles.item, tw`bg-gray-100`]}>
                   <View style={styles.productImageContainer}>
                     <Image
                       style={[styles.productImage, tw`bg-green-500`]}
                       source={{
-                        uri: `${item?.image}`
+                        uri:  item.id % 2 == 0 ?  `${item?.image}` : 
+                        `https://foodish-api.com/images/dessert/dessert17.jpg`
                       }}
                     />
                   </View>

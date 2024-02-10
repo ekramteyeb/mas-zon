@@ -1,145 +1,115 @@
-import React, { useState, useEffect, useRef } from 'react'
-import tw from 'twrnc'
-import * as Device from 'expo-device'
-import * as Notifications from 'expo-notifications'
-import {
-  Text,
-  View,
-  Button,
-  Platform,
-  StyleSheet,
-  SafeAreaView
-} from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
-import { setToken } from '../slices/navSlice'
+import { useState, useEffect, useRef } from 'react';
+import { Text, View, Button, Platform } from 'react-native';
+import * as Device from 'expo-device';
+import { useDispatch } from 'react-redux';
+import { setExpoToken } from '../slices/navSlice';
+import * as Notifications from 'expo-notifications';
+import { PROJECT_ID }from '@env'
+
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowAlert: true,
     shouldPlaySound: true,
-    shouldSetBadge: false
-  })
-})
-const ComposeMessages = () => {
-  const [expoPushToken, setExpoPushToken] = useState('')
-  const [notification, setNotification] = useState(false)
-  const notificationListener = useRef()
-  const responseListener = useRef()
-  const state = useSelector((state) => state.nav)
+    shouldSetBadge: false,
+  }),
+});
+
+export default function ComposeMessages() {
+
+  const [expoPushToken, setExpoPushToken] = useState('');
+  const [notification, setNotification] = useState(false);
+  const notificationListener = useRef();
+  const responseListener = useRef();
   const dispatch = useDispatch()
-
+  
+  
   useEffect(() => {
-    registerForPushNotificationsAsync().then((token) => {
-      dispatch(setToken(token))
+    registerForPushNotificationsAsync().then(function(token){
       setExpoPushToken(token)
-    })
+      dispatch(setExpoToken(token))
+      
 
-    // This listener is fired whenever a notification is received while the app is foregrounded
-    notificationListener.current =
-      Notifications.addNotificationReceivedListener((notification) => {
-        setNotification(notification)
-      })
+    });
 
-    // This listener is fired whenever a user taps on or interacts with a notification (works when app is foregrounded, backgrounded, or killed)
-    responseListener.current =
-      Notifications.addNotificationResponseReceivedListener((response) => {
-        console.log(response)
-      })
+    notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
+      setNotification(notification);
+    });
+
+    responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
+      console.log(response);
+    });
 
     return () => {
-      Notifications.removeNotificationSubscription(notificationListener.current)
-      Notifications.removeNotificationSubscription(responseListener.current)
-    }
-  }, [])
+      Notifications.removeNotificationSubscription(notificationListener.current);
+      Notifications.removeNotificationSubscription(responseListener.current);
+    };
+  }, []);
 
   return (
     <View
       style={{
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'space-around'
-      }}
-    >
-      <Text>Your expo push token: {expoPushToken}</Text>
+        justifyContent: 'space-around',
+      }}>
+      <Text>Your expo push token: {expoPushToken} </Text>
       <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <Text>
-          Title: {notification && notification.request.content.title}{' '}
-        </Text>
+        <Text>Title: {notification && notification.request.content.title} </Text>
         <Text>Body: {notification && notification.request.content.body}</Text>
-        <Text>
-          Data:{' '}
-          {notification && JSON.stringify(notification.request.content.data)}
-        </Text>
+        <Text>Data: {notification && JSON.stringify(notification.request.content.data)}</Text>
       </View>
       <Button
-        title="Press to Send Notification"
+        title="Press to schedule a notification"
         onPress={async () => {
-          await sendPushNotification(expoPushToken)
+          await schedulePushNotification('Here is the data');
         }}
       />
     </View>
-  )
+  );
 }
 
-// Can use this function below, OR use Expo's Push Notification Tool-> https://expo.dev/notifications
-export async function sendPushNotification(expoPushToken) {
-  const message = {
-    to: expoPushToken,
-    sound: 'default',
-    title: 'Test',
-    body: 'To test sending message',
-    data: { someData: 'Data goes here in the app' }
-  }
-
-  await fetch('https://exp.host/--/api/v2/push/send', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Accept-encoding': 'gzip, deflate',
-      'Content-Type': 'application/json'
+export async function schedulePushNotification(data) {
+  await Notifications.scheduleNotificationAsync({
+    content: {
+      title: "You've got mail! 📬",
+      body: 'Here is the notification body',
+      data: {data},
     },
-    body: JSON.stringify(message)
-  })
+    trigger: { seconds: 2 },
+  });
 }
 
-export async function registerForPushNotificationsAsync() {
-  let token
-  if (Device.isDevice) {
-    const { status: existingStatus } = await Notifications.getPermissionsAsync()
-    let finalStatus = existingStatus
-    if (existingStatus !== 'granted') {
-      const { status } = await Notifications.requestPermissionsAsync()
-      finalStatus = status
-    }
-    if (finalStatus !== 'granted') {
-      alert('Failed to get push token for push notification!')
-      return
-    }
-    token = (await Notifications.getExpoPushTokenAsync()).data
-    console.log(token)
-  } else {
-    alert('Must use physical device for Push Notifications')
-  }
+async function registerForPushNotificationsAsync() {
+  let token;
 
   if (Platform.OS === 'android') {
-    Notifications.setNotificationChannelAsync('default', {
+    await Notifications.setNotificationChannelAsync('default', {
       name: 'default',
       importance: Notifications.AndroidImportance.MAX,
       vibrationPattern: [0, 250, 250, 250],
-      lightColor: '#FF231F7C'
-    })
+      lightColor: '#FF231F7C',
+    });
   }
 
-  return token
+  if (Device.isDevice) {
+    const { status: existingStatus } = await Notifications.getPermissionsAsync();
+    let finalStatus = existingStatus;
+    if (existingStatus !== 'granted') {
+      const { status } = await Notifications.requestPermissionsAsync();
+      finalStatus = status;
+    }
+    if (finalStatus !== 'granted') {
+      alert('Failed to get push token for push notification!');
+      return;
+    }
+    // Learn more about projectId:
+    // https://docs.expo.dev/push-notifications/push-notifications-setup/#configure-projectid
+    token = (await Notifications.getExpoPushTokenAsync({ projectId: PROJECT_ID })).data;
+    console.log(token, 'expo push  token');
+  } else {
+    alert('Must use physical device for Push Notifications');
+  }
+
+  return token;
 }
-export default ComposeMessages
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  text: {
-    fontSize: 25,
-    fontWeight: '500'
-  }
-})

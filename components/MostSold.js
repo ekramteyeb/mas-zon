@@ -16,15 +16,15 @@ export default function MostSold({ item }) {
           <Image
             style={[tw`bg-yellow-300`, styles.icon]}
             source={{
-              uri: item.image
+              uri: item?.image
               //uri: 'https://husstey.sirv.com/Images/icon2.jpeg'
               //require("../assets/icon2.webp")
               //Ahmed, reem and afnan are my lovely children.
             }}
-            resizeMode= {item.category == 'softdrinks' ? 'contain' : 'cover'}
+            resizeMode= {item?.category == 'softdrinks' ? 'contain' : 'cover'}
           />
-          <Text style={styles.text}>{item.name}</Text>
-          <Text style={styles.text}>{item.price}</Text>
+          <Text style={styles.text}>{item?.name}</Text>
+          <Text style={styles.text}>{item?.price}</Text>
         </View>
       </TouchableOpacity>
     </>

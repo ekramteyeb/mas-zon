@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   cart: [],
   token: null,
+  expoToken: null,
   loginToken: null,
   products: null,
   filter: '',
@@ -22,6 +23,9 @@ export const navSlice = createSlice({
     },
     setToken: (state, action) => {
       state.token = action.payload
+    },
+    setExpoToken: (state, action) => {
+      state.expoToken = action.payload
     },
     setLoginToken: (state, action) => {
       state.loginToken = action.payload
@@ -48,6 +52,7 @@ export const navSlice = createSlice({
 export const {
   setCart,
   setToken,
+  setExpoToken,
   setLoginToken,
   setProducts,
   setFilter,
@@ -61,6 +66,7 @@ export const {
 
 export const selectCart = (state) => state.nav.cart
 export const selectToken = (state) => state.nav.token
+export const selectExpoToken = (state) => state.nav.expoToken
 export const selectLoginToken = (state) => state.nav.loginToken
 export const selectProducts = (state) => state.nav.products
 export const selectUser = (state) => state.nav.user
